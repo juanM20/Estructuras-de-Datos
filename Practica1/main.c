@@ -48,12 +48,12 @@ boolean validar_parentesis(char *cad)
             }
             else if(cad[i] == ')')
             {
-                
+
                 if(Empty(&p))
                 {
                     printf("\nError: Falto abrir parentesis");
                     exit(1);
-                } 
+                }
                 else Pop(&p);
             }
             i++;
@@ -82,7 +82,7 @@ void expresion_posfija(char *cad, boolean validacion, char *cad_posfija)
         while(cad[i] != '\0')
         {
             if(cad[i] == '(')
-            {    
+            {
                 e.c = cad[i];
                 Push(&p,e);
             }
@@ -179,13 +179,16 @@ int main(){
         {
 
             case 1:
-                    Escribe_Expresion(&cad[0]); 
+                    Escribe_Expresion(&cad[0]);
                     break;
             case 2:
                     validacion = validar_parentesis(&cad[0]);
                     break;
             case 3:
                     expresion_posfija(&cad[0],validacion,&cad_posija[0]);
+                    break;
+                    
+            case 4:
                     break;
         }
 
