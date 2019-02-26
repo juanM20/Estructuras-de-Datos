@@ -22,13 +22,9 @@ void Escribir_Expresion(char *cad)
 
 boolean Validar_Parentesis(char *cad)
 {
-<<<<<<< HEAD
-
-=======
-  boolean validado=0;
+  boolean validado = FALSE;
 
   return validado;
->>>>>>> e945dc849ff61f76a6a4336bd4694213c8a7e864
 }
 
 
