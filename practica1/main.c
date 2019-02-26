@@ -22,7 +22,13 @@ void Escribir_Expresion(char *cad)
 
 boolean Validar_Parentesis(char *cad)
 {
+<<<<<<< HEAD
 
+=======
+  boolean validado=0;
+
+  return validado;
+>>>>>>> e945dc849ff61f76a6a4336bd4694213c8a7e864
 }
 
 
@@ -47,3 +53,4 @@ int main(){
   }
 
 }
+//this is a comentario alv :v
