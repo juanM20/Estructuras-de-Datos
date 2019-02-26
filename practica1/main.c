@@ -18,7 +18,7 @@ void Menu(){
 int main(){
 
   int opc,resp;
-  char cad[TAM]; 
+  char cad[TAM];
 
   Menu();
   printf("\nElige una opcion: ");
@@ -27,7 +27,7 @@ int main(){
   switch(opc){
 
     case 1:
-
+            Escribir_Expresion(&cad[0]);
             break;
   }
 
