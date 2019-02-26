@@ -15,20 +15,37 @@ void Menu(){
   printf("\n5.Salir.");
 }
 
+void Escribir_Expresion(char *cad)
+{
+    scanf("%s",&cad);
+}
+
+boolean Validar_Parentesis(char *cad)
+{
+  boolean validado=0;
+
+  return validado;
+}
+
+
 int main(){
 
   int opc,resp;
   char cad[TAM];
+  boolean v;
 
   Menu();
   printf("\nElige una opcion: ");
   scanf("%d",&opc);
 
-  switch(opc){
+  switch(opc)
+  {
 
     case 1:
             Escribir_Expresion(&cad[0]);
             break;
+    case 2:
+            v = Validar_Parentesis(&cad[0]);
   }
 
 }
