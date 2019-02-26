@@ -15,11 +15,6 @@ void Menu(){
   printf("\n5.Salir.");
 }
 
-void Escribir_Expresion(char *cad)
-{
-    scanf("%s",&cad);
-}
-
 int main(){
 
   int opc,resp;
@@ -37,3 +32,4 @@ int main(){
   }
 
 }
+//this is a comentario alv :v
