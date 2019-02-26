@@ -22,7 +22,7 @@ void Escribir_Expresion(char *cad)
 
 boolean Validar_Parentesis(char *cad)
 {
-  
+
 }
 
 
