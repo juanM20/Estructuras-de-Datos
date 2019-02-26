@@ -8,9 +8,9 @@ Estructura de datos en la que se cumple:
 Los elementos se añaden y se remueven por un solo extremo.
 Este extremo es llamado “tope” de la pila.
 
-OBSERVACIONES: Hablamos de una Estructura de datos estática cuando se le 
-asigna una cantidad fija de memoria para esa estructura 
-antes de la ejecución del programa. 
+OBSERVACIONES: Hablamos de una Estructura de datos estática cuando se le
+asigna una cantidad fija de memoria para esa estructura
+antes de la ejecución del programa.
 */
 
 //DEFINICIONES DE CONSTANTES
@@ -28,6 +28,7 @@ typedef struct elemento
 {
 	//Variables de la estructura "elemento" (El usuario puede modificar)
 	char c;
+  float valor
 	//***
 	//***
 	//***
@@ -35,7 +36,7 @@ typedef struct elemento
 
 //Definir una pila (Se modela con una estructura que unicamente incluye un puntero a "elemento")
 typedef struct pila
-{		
+{
 	elemento arreglo[MAX_ELEMENT];		//La pila es un arreglo estático de MAX_ELEMET
 	int tope; 							//El tope es un entero (Indice del arreglo de elementos)
 }pila;
