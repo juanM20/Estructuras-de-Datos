@@ -167,6 +167,7 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
         aux++;
         cad_posfija[aux] = e.c;
       }
+      i++;
     }
     aux++;
     cad_posfija[aux] = '\0';
