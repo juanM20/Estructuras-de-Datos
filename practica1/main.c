@@ -20,9 +20,50 @@ void Escribir_Expresion(char *cad)
     scanf("%s",&cad);
 }
 
+
+/*
+Validación de paréntesis:
+Recibe una cadena y devuelve TRUE si los paréntesis
+son correctos, y FALSE si no lo son.
+*/
 boolean Validar_Parentesis(char *cad)
 {
-  boolean validado = FALSE;
+  boolean validado;
+  int i=0, tamCadena=0;
+  pila pila_parentesis;
+  elemento elm;
+  Initialize(&pila_parentesis);
+  tamCadena= strlen(cad);
+
+  for(i=0; i<=tamCadena; i++)
+  {
+    if(cad[i]=='(')
+    {
+      elm.c='(';
+      Push(&pila_parentesis, elm);
+    }
+    else if(cad[i]==')')
+    {
+      if(Empty(&pila_parentesis))
+      {
+        validado=FALSE;
+        goto regresar; //puesto para poder salir del if, y tome el valor TRUE al seguri a la condición final
+      }
+      else
+      {
+        elm= Pop(&pila_parentesis);
+
+      }
+    }
+  }
+
+  if(Empty(&pila_parentesis))
+    validado=TRUE;
+  else
+  {
+    validado=FALSE;
+  }
+  regresar:
 
   return validado;
 }
