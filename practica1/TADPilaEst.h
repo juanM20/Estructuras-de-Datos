@@ -44,7 +44,8 @@ typedef struct pila
 	int tope; 							//El tope es un entero (Indice del arreglo de elementos)
 }pila;
 
-//DECLARACIÓN DE FUNCIONES
+
+//DECLARACIÓN DE FUNCIONES DE PILA
 
 //Inicializar pila (Iniciar una pila para su uso)
 void Initialize(pila *s);
@@ -66,3 +67,19 @@ int Size(pila *s);
 
 //Elimina pila (Borra a todos los elementos y a la pila de memoria)
 void Destroy(pila *s);
+
+
+//DECLARACIÓN DE OTRAS FUNCIONES
+
+//Muestra el menú para que el usuario inrteractúe con el programa
+void Menu();
+
+//Recibe la expresión del usuario:
+void Escribir_Expresion(char *cad);
+
+/*
+Validación de paréntesis:
+Recibe una cadena y devuelve TRUE si los paréntesis
+son correctos, y FALSE si no lo son.
+*/
+boolean Validar_Parentesis(char *cad);

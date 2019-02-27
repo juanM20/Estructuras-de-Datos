@@ -20,12 +20,6 @@ void Escribir_Expresion(char *cad)
     scanf("%s",&cad);
 }
 
-
-/*
-Validación de paréntesis:
-Recibe una cadena y devuelve TRUE si los paréntesis
-son correctos, y FALSE si no lo son.
-*/
 boolean Validar_Parentesis(char *cad)
 {
   boolean validado;
