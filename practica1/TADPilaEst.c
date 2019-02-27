@@ -1,15 +1,18 @@
 /*
-IMPLEMENTACIONES DE LA LIBRERIA DEL TAD PILA ESTÁTICA (TADPilaEst.h)
-AUTOR: Edgardo Adrián Franco Martínez (C) Septiembre 2016
+IMPLEMENTACIÓN DE LA LIBRERIA DEL TAD PILA ESTÁTICA (TADPilaEst.h)
+AUTORES: //orden alfabético
+Benítez Morales Manuel Emilio
+
+Febrero 2019
 VERSIÓN: 1.0
 
 DESCRIPCIÓN: TAD pila o stack.
-Estructura de datos en la que se cumple:
+Estructura de datos que cumple:
 Los elementos se añaden y se remueven por un solo extremo.
 Este extremo es llamado “tope” de la pila.
 
-OBSERVACIONES: Hablamos de una Estructura de datos estática cuando se le
-asigna una cantidad fija de memoria para esa estructura
+OBSERVACIONES: Estructura de datos estática, ya que se
+asigna una cantidad fija de memoria para dicha estructura,
 antes de la ejecución del programa.
 
 COMPILACIÓN PARA GENERAR EL CÓDIGO OBJETO: gcc TADPilaEst.c -c
@@ -52,7 +55,7 @@ void Push(pila *s, elemento e)
 	//Si el tope alcanzo a MAX_ELEMENT, ya no hay más espacio para elementos en el arreglo
 	if(s->tope==MAX_ELEMENT)
 	{
-		printf("\nERROR-Push(&s,e): Desbordamiento de la pila, no hay mas espacio en la pila");
+		printf("\nERROR: PUSH(*S, E) DESBORDAMIENTO, NO MÁS ESPACIO EN LA PILA");
 		exit(1);
 	}
 
@@ -76,7 +79,7 @@ elemento Pop (pila *s)
 	//Si el tope es -1, se intenta Pop de pila vacia
 	if(s->tope==-1)
 	{
-		printf("\nERROR-e=Pop(&s): Subdesbordamiento de la pila, no hay elementos en la pila");
+		printf("\nERROR POP(*S): SUBDESBORDAMIENTO, NO HAY ELEMENTOS EN LA PILA");
 		exit(1);
 	}
 
@@ -120,7 +123,7 @@ elemento Top(pila *s)
 	//Si el tope es -1, se intenta Pop de pila vacia
 	if(s->tope==-1)
 	{
-		printf("\nERROR-e=Top(&s): Subdesbordamiento de la pila, no hay elementos en la pila");
+		printf("\nERROR TOP(*S): SUBDESBORDAMIENTO, NO HAY ELEMENTOS EN LA PILA");
 		exit(1);
 	}
 
