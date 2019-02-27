@@ -27,6 +27,11 @@ boolean Validar_Parentesis(char *cad)
   return validado;
 }
 
+void Pasar_Posfijo(char *cad, boolean v)
+{
+  
+}
+
 
 int main(){
 
@@ -46,6 +51,11 @@ int main(){
             break;
     case 2:
             v = Validar_Parentesis(&cad[0]);
+            break;
+
+    case 3:
+            Pasar_Posfijo(&cad[0], v);
+            break;
   }
 
 }
