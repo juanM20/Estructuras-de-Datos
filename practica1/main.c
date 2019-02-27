@@ -16,14 +16,22 @@ son correctos, y FALSE si no lo son.
 */
 boolean Validar_Parentesis(char *cad);
 
+//PROPUESTAS
+void Corregir_Expresion(char *cad);
+void Pasar_Posfijo(char *cad, boolean v);
+int Evaluar_Expresion(char *cad);
+void Obtener_Valores();
+
 
 
 void Menu(){
-  printf("\n1.");
+  printf("\n1.Corregir expresion");
   printf("\n2.Validar Parentesis.");
   printf("\n3.Pasar a Posfija.");
   printf("\n4.Evaluar expresión");
   printf("\n5.Salir.");
+
+  return;
 }
 
 
@@ -72,6 +80,7 @@ boolean Validar_Parentesis(char *cad)
 void Pasar_Posfijo(char *cad, boolean v)
 {
 
+  return;
 }
 
 
@@ -83,6 +92,10 @@ int main(){
   printf("BIENVENIDO...\nPractica sobre el TAD Pila.\nEl programa recibe una expresion en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluacion.\n");
   printf("\nEscribe una expresion:\n");
   scanf("%s",cad);
+<<<<<<< HEAD
+=======
+  printf("%d\n", Validar_Parentesis(cad));
+>>>>>>> a75a8be9d6cb8f61dc7d42be246e7f780669be00
 
 /*
   switch(opc)
