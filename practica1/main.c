@@ -35,7 +35,7 @@ void Menu(){
   printf("\n1.Corregir expresion");
   printf("\n2.Validar Parentesis.");
   printf("\n3.Pasar a Posfija.");
-  printf("\n4.Evaluar expresión");
+  printf("\n4.Evaluar expresion");
   printf("\n5.Salir\n");
 
   return;
@@ -86,8 +86,8 @@ boolean Validar_Parentesis(char *cad)
 
 void Corregir_Expresion(char *cad)
 {
-  printf("Expresion anterior:\n%s", cad);
-  printf("\n\nEscriba la nueva expresion:\n");
+  printf("Expresión anterior:\n%s", cad);
+  printf("\n\nEscriba la nueva expresión:\n");
   scanf("%s", cad);
   //printf("%s\n", cad);
 
@@ -107,8 +107,8 @@ int main(){
   char cad[TAM]=""; //por sí solo ya es apuntador
   boolean v;
 
-  printf("BIENVENIDO...\nPractica sobre el TAD Pila.\nEl programa recibe una expresion en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluacion.\n");
-  printf("\nEscribe una expresion:\n");
+  printf("BIENVENIDO...\nPráctica sobre el TAD Pila.\nEl programa recibe una expresión en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluación.\n");
+  printf("\nEscribe una expresión:\n");
   scanf("%s",cad);
 
   do
@@ -123,10 +123,10 @@ int main(){
               break;
       case 2:
               if(Validar_Parentesis(cad))
-                printf("\nParentesis válidos, continua...\n");
+                printf("\nParentesis válidos, continúa...\n");
               else
               {
-                printf("\nParentesis inválidos, corrigelo...\n");
+                printf("\nParentesis inválidos, corrígelo...\n");
                 Corregir_Expresion(cad);
               }
               break;
