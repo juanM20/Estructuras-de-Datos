@@ -98,8 +98,6 @@ void Pasar_Posfijo(char *cad, boolean v)
 }
 
 
-
-
 int main(){
 
   int opc;
@@ -109,6 +107,7 @@ int main(){
   printf("BIENVENIDO...\nPractica sobre el TAD Pila.\nEl programa recibe una expresion en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluacion.\n");
   printf("\nEscribe una expresion:\n");
   scanf("%s",cad);
+  printf("%d\n", Validar_Parentesis(cad));
 
   do
   {
