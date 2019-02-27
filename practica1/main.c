@@ -69,6 +69,8 @@ boolean Validar_Parentesis(char *cad)
 }
 
 
+
+
 int main(){
 
   int opc,resp;
@@ -89,5 +91,6 @@ int main(){
             v = Validar_Parentesis(&cad[0]);
   }
 
+  return 0;
 }
 //this is a comentario alv :v
