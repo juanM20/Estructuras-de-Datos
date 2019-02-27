@@ -9,9 +9,6 @@
 //Muestra el menú para que el usuario inrteractúe con el programa
 void Menu();
 
-//Recibe la expresión del usuario:
-void Escribir_Expresion(char *cad);
-
 /*
 Validación de paréntesis:
 Recibe una cadena y devuelve TRUE si los paréntesis
@@ -22,18 +19,13 @@ boolean Validar_Parentesis(char *cad);
 
 
 void Menu(){
-
-  printf("\n1.Escribir una expresion.");
+  printf("\n1.");
   printf("\n2.Validar Parentesis.");
   printf("\n3.Pasar a Posfija.");
-  printf("\n4.Agregar Valores.");
+  printf("\n4.Evaluar expresión");
   printf("\n5.Salir.");
 }
 
-void Escribir_Expresion(char *cad)
-{
-    scanf("%s",&cad);
-}
 
 boolean Validar_Parentesis(char *cad)
 {
@@ -82,24 +74,24 @@ boolean Validar_Parentesis(char *cad)
 
 int main(){
 
-  int opc,resp;
-  char cad[TAM];
-  boolean v;
+  int opc;
+  char cad[TAM]="";
 
-  Menu();
-  printf("\nElige una opcion: ");
-  scanf("%d",&opc);
-
+  printf("BIENVENIDO...\nPractica sobre el TAD Pila.\nEl programa recibe una expresion en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluacion.\n");
+  printf("\nEscribe una expresion:\n");
+  scanf("%s",cad);
+  
+/*
   switch(opc)
   {
 
     case 1:
-            Escribir_Expresion(&cad[0]);
+            Escribir_Expresion();
             break;
     case 2:
             v = Validar_Parentesis(&cad[0]);
   }
-
+*/
   return 0;
 }
 //this is a comentario alv :v
