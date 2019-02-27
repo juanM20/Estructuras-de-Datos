@@ -76,22 +76,16 @@ void Pasar_Posfijo(char *cad, boolean v)
 
 
 
-<<<<<<< HEAD
-  int opc;
-  char cad[TAM]="";
-
-=======
 
 int main(){
 
   int opc;
   char cad[TAM]="";
 
->>>>>>> 85d9d3937282d83b31ce5281fdc54ef474fb120f
   printf("BIENVENIDO...\nPractica sobre el TAD Pila.\nEl programa recibe una expresion en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluacion.\n");
   printf("\nEscribe una expresion:\n");
   scanf("%s",cad);
-  
+
 /*
   switch(opc)
   {
@@ -101,14 +95,11 @@ int main(){
             break;
     case 2:
             v = Validar_Parentesis(&cad[0]);
-<<<<<<< HEAD
-=======
             break;
 
     case 3:
             Pasar_Posfijo(&cad[0], v);
             break;
->>>>>>> 85d9d3937282d83b31ce5281fdc54ef474fb120f
   }
 */
   return 0;
