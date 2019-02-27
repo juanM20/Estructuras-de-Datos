@@ -23,7 +23,16 @@ no devuelve valor, pero modifica la cadena a una nueva que sea entrada.
 */
 void Corregir_Expresion(char *cad);
 
-void Pasar_Posfijo(char *cad, boolean v);
+/*
+Convertir la Expresion de infija a posfija:
+Recibe...
+ -la direccion de cadena que se quiere convertir.
+ -la variable que verifica si esta validada la expresion dada.
+ -la direccion de la cadena donde se escribira la conversion de infija a posfija.
+ Devuelve...
+ -Nada.
+*/
+void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija);
 
 int Evaluar_Expresion(char *cad);
 
@@ -93,70 +102,76 @@ void Corregir_Expresion(char *cad)
   return;
 }
 
-void Pasar_Posfijo(char *cad, boolean v, char * cad_posfija)
+void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 {
   pila pila_posfija;
   elemento e;
   int i=0,aux=0;
 
-  while(cad[i] != '\0')
+  if(!v) printf("\nLa expresion no es válida...");
+  else
   {
-    e.c = cad[i];
-
-    if(e.c == '+' || e.c == '-')
+    while(cad[i] != '\0')
     {
-      if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c)
+      e.c = cad[i];
+
+      if(e.c == '+' || e.c == '-')
       {
-          aux++;
-          cad_posfija[aux] = Pop(&pila_posfija).c;
+        if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c)
+        {
+            aux++;
+            cad_posfija[aux] = Pop(&pila_posfija).c;
+            Push(&pila_posfija,e);
+        }
+        else if(Top(&pila_posfija).c == '*' || Top(&pila_posfija).c == '/' || Top(&pila_posfija).c == '^')
+        {
+          while(!Empty(&pila_posfija))
+          {
+            aux++;
+            cad_posfija[aux] = Pop(&pila_posfija).c;
+          }
           Push(&pila_posfija,e);
-      }
-      else if(Top(&pila_posfija).c == '*' || Top(&pila_posfija).c == '/' || Top(&pila_posfija).c == '^')
-      {
-        while(!Empty(&pila_posfija))
-        {
-          aux++;
-          cad_posfija[aux] = Pop(&pila_posfija).c;
         }
-        Push(&pila_posfija,e);
       }
-    }
-    else if(e.c == '*' || e.c == '/')
-    {
-      if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-')
+      else if(e.c == '*' || e.c == '/')
       {
-        Push(&pila_posfija,e);
-      }
-      else if(Top(&p).c == '^')
-      {
-        while(!Empty(&pila_posfija))
+        if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-')
         {
-          aux++;
-          cad_posfija[aux] = Pop(&pila_posfija).c;
+          Push(&pila_posfija,e);
         }
+        else if(Top(&p).c == '^')
+        {
+          while(!Empty(&pila_posfija))
+          {
+            aux++;
+            cad_posfija[aux] = Pop(&pila_posfija).c;
+          }
+          Push(&pila_posfija,e);
+        }
+      }
+      else if(e.c == '^')
+      {
         Push(&pila_posfija,e);
       }
-    }
-    else if(e.c == '^')
-    {
-      Push(&pila_posfija,e);
-    }
-    else if(e.c == ')')
-    {
+      else if(e.c == ')')
+      {
 
-      while(!Empty(&pila_posfija))
+        while(!Empty(&pila_posfija))
+        {
+          aux++;
+          cad_posfija[aux] = Pop(&pila_posfija).c;
+        }
+      }
+      else
       {
         aux++;
-        cad_posfija[aux] = Pop(&pila_posfija).c;
+        cad_posfija[aux] = e.c;
       }
     }
-    else
-    {
-      aux++;
-      cad_posfija[aux] = e.c;
-    }
-  }
+    aux++;
+    cad_posfija[aux] = '\0';
 
+  }
 
   return;
 }
@@ -179,7 +194,7 @@ int main(){
   int opc;
   char cad[TAM]=""; //por sí solo ya es apuntador
   char cad_posfija[TAM]="";
-  boolean v;
+  boolean v=FALSE;
 
   printf("BIENVENIDO...\nPráctica sobre el TAD Pila.\nEl programa recibe una expresión en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluación.\n");
   printf("\nEscribe una expresión:\n");
@@ -207,11 +222,7 @@ int main(){
               break;
 
       case 3:
-<<<<<<< HEAD
               Pasar_Posfijo(&cad[0], v, &cad_posfija[0]);
-=======
-              Pasar_Posfijo(cad, v);
->>>>>>> 34ae54a61e9fccefb025745632775bee6572feda
               break;
 
       case 4:
