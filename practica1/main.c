@@ -132,7 +132,7 @@ int main(){
               break;
 
       case 3:
-              Pasar_Posfijo(&cad[0], v);
+              Pasar_Posfijo(cad, v);
               break;
 
       case 4:
