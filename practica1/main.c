@@ -113,6 +113,18 @@ void Pasar_Posfijo(char *cad, boolean v)
   return;
 }
 
+int Evaluar_Expresion(char *cad)
+{
+  int valor;
+
+  return valor;
+}
+
+void Obtener_Valores()
+{
+
+  return;
+}
 
 int main(){
 
@@ -147,11 +159,15 @@ int main(){
               break;
 
       case 3:
+<<<<<<< HEAD
               Pasar_Posfijo(&cad[0], v, &cad_posfija[0]);
+=======
+              Pasar_Posfijo(cad, v);
+>>>>>>> 34ae54a61e9fccefb025745632775bee6572feda
               break;
 
       case 4:
-              Evaluar_Expresion();
+              Evaluar_Expresion(cad);
               break;
     }
   }
