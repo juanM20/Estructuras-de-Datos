@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "TADPilaEst.c"
+#include "TADPilaEst.h"
 //#include "TADPilaDin.c"
 
 #define TAM 100
