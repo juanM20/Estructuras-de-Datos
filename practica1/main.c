@@ -17,7 +17,9 @@ son correctos, y FALSE si no lo son.
 boolean Validar_Parentesis(char *cad);
 
 /*
-
+Correcion de la expresion ingresada:
+Recibe la cadena que acaba de entrar el usuario,
+no devuelve valor, pero modifica la cadena a una nueva que sea entrada.
 */
 void Corregir_Expresion(char *cad);
 
@@ -107,7 +109,6 @@ int main(){
   printf("BIENVENIDO...\nPractica sobre el TAD Pila.\nEl programa recibe una expresion en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluacion.\n");
   printf("\nEscribe una expresion:\n");
   scanf("%s",cad);
-  printf("%d\n", Validar_Parentesis(cad));
 
   do
   {
@@ -120,7 +121,13 @@ int main(){
               Corregir_Expresion(cad);
               break;
       case 2:
-              v = Validar_Parentesis(cad);
+              if(Validar_Parentesis(cad))
+                printf("\nParentesis válidos, continua...\n");
+              else
+              {
+                printf("\nParentesis inválidos, corrigelo...\n");
+                Corregir_Expresion(cad);
+              }
               break;
 
       case 3:
