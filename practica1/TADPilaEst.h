@@ -1,15 +1,18 @@
 /*
-LIBRERIA: Cabecera de el TAD PILA ESTÁTICA
-AUTOR: Edgardo Adrián Franco Martínez (C) Septiembre 2016
+LIBRERIA: Cabecera del TAD PILA ESTÁTICA
+AUTORES: //orden alfabético
+Benítez Morales Manuel Emilio
+
+Febrero 2019
 VERSIÓN: 1.0
 
 DESCRIPCIÓN: TAD pila o stack.
-Estructura de datos en la que se cumple:
+Estructura de datos que cumple:
 Los elementos se añaden y se remueven por un solo extremo.
 Este extremo es llamado “tope” de la pila.
 
-OBSERVACIONES: Hablamos de una Estructura de datos estática cuando se le
-asigna una cantidad fija de memoria para esa estructura
+OBSERVACIONES: Estructura de datos estática, ya que se
+asigna una cantidad fija de memoria para dicha estructura,
 antes de la ejecución del programa.
 */
 
@@ -28,7 +31,7 @@ typedef struct elemento
 {
 	//Variables de la estructura "elemento" (El usuario puede modificar)
 	char c;
-  float valor
+  float valor;
 	//***
 	//***
 	//***
@@ -41,11 +44,26 @@ typedef struct pila
 	int tope; 							//El tope es un entero (Indice del arreglo de elementos)
 }pila;
 
-//DECLARACIÓN DE FUNCIONES
-void Initialize(pila *s);			//Inicializar pila (Iniciar una pila para su uso)
-void Push(pila *s, elemento e);		//Empilar (Introducir un elemento a la pila)
-elemento Pop (pila *s);				//Desempilar (Extraer un elemento de la pila)
-boolean Empty(pila *s);				//Vacia (Preguntar si la pila esta vacia)
-elemento Top(pila *s);				//Tope (Obtener el "elemento" del tope de la pila si extraerlo de la pila)
-int Size(pila *s);					//Tamaño de la pila (Obtener el número de elementos en la pila)
-void Destroy(pila *s);				//Elimina pila (Borra a todos los elementos y a la pila de memoria)
+
+//DECLARACIÓN DE FUNCIONES DE PILA
+
+//Inicializar pila (Iniciar una pila para su uso)
+void Initialize(pila *s);
+
+//Empilar (Introducir un elemento a la pila)
+void Push(pila *s, elemento e);
+
+//Desempilar (Extraer un elemento de la pila)
+elemento Pop (pila *s);
+
+//Vacia (Preguntar si la pila esta vacia)
+boolean Empty(pila *s);
+
+//Tope (Obtener el "elemento" del tope de la pila si extraerlo de la pila)
+elemento Top(pila *s);
+
+//Tamaño de la pila (Obtener el número de elementos en la pila)
+int Size(pila *s);
+
+//Elimina pila (Borra a todos los elementos y a la pila de memoria)
+void Destroy(pila *s);
