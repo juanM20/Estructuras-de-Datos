@@ -222,11 +222,8 @@ int main(){
               break;
 
       case 3:
-<<<<<<< HEAD
               Pasar_Posfijo(&cad[0], v, &cad_posfija[0]);
-=======
-              Pasar_Posfijo(cad, v);
->>>>>>> 34ae54a61e9fccefb025745632775bee6572feda
+              printf("\nExpresion en posfijo: %s",cad_posfija);
               break;
 
       case 4:
