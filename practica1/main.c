@@ -94,7 +94,6 @@ boolean Validar_Parentesis(char *cad)
 
 void Corregir_Expresion(char *cad)
 {
-  printf("Expresión anterior:\n%s", cad);
   printf("\n\nEscriba la nueva expresión:\n");
   scanf("%s", cad);
   //printf("%s\n", cad);
@@ -267,10 +266,10 @@ int main(){
               break;
     }
 
-    printf("\nQuieres continuar: Si=1 No=0");
-    scanf("%d",&resp);
+    /*printf("\nQuieres continuar: Si=1 No=0");
+    scanf("%d",&resp);*/
 
-  } while (resp != 0);
+  } while (opc<5);
 
   return 0;
 }
