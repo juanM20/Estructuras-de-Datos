@@ -76,9 +76,8 @@ boolean Validar_Parentesis(char *cad)
   if(Empty(&pila_parentesis))
     validado=TRUE;
   else
-  {
     validado=FALSE;
-  }
+
   regresar:
 
   return validado;
@@ -94,18 +93,67 @@ void Corregir_Expresion(char *cad)
   return;
 }
 
-void Pasar_Posfijo(char *cad, boolean v)
+void Pasar_Posfijo(char *cad, boolean v, char * cad_posfija)
 {
-  pila p;
+  pila pila_posfija;
   elemento e;
-  int i=0;
+  int i=0,aux=0;
 
   while(cad[i] != '\0')
   {
-    if(cad[i] == '(')
+    e.c = cad[i];
+
+    if(e.c == '+' || e.c == '-')
     {
-      e = cad[i];
-      Push(&p,e);
+      if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c)
+      {
+          aux++;
+          cad_posfija[aux] = Pop(&pila_posfija).c;
+          Push(&pila_posfija,e);
+      }
+      else if(Top(&pila_posfija).c == '*' || Top(&pila_posfija).c == '/' || Top(&pila_posfija).c == '^')
+      {
+        while(!Empty(&pila_posfija))
+        {
+          aux++;
+          cad_posfija[aux] = Pop(&pila_posfija).c;
+        }
+        Push(&pila_posfija,e);
+      }
+    }
+    else if(e.c == '*' || e.c == '/')
+    {
+      if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-')
+      {
+        Push(&pila_posfija,e);
+      }
+      else if(Top(&p).c == '^')
+      {
+        while(!Empty(&pila_posfija))
+        {
+          aux++;
+          cad_posfija[aux] = Pop(&pila_posfija).c;
+        }
+        Push(&pila_posfija,e);
+      }
+    }
+    else if(e.c == '^')
+    {
+      Push(&pila_posfija,e);
+    }
+    else if(e.c == ')')
+    {
+
+      while(!Empty(&pila_posfija))
+      {
+        aux++;
+        cad_posfija[aux] = Pop(&pila_posfija).c;
+      }
+    }
+    else
+    {
+      aux++;
+      cad_posfija[aux] = e.c;
     }
   }
 
