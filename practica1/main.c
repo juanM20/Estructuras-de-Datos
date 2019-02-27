@@ -139,7 +139,7 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
         {
           Push(&pila_posfija,e);
         }
-        else if(Top(&p).c == '^')
+        else if(Top(&pila_posfija).c == '^')
         {
           while(!Empty(&pila_posfija))
           {
