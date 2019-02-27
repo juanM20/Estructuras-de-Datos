@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "TADPilaEst.h"
+#include "TADPilaEst.c"
 //#include "TADPilaDin.c"
 
 #define TAM 100
@@ -105,10 +105,12 @@ void Corregir_Expresion(char *cad)
 void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 {
   pila pila_posfija;
-  elemento e;
-  int i=0,aux=0;
+  elemento e,aux_e;
+  int i=0,aux=-1;
 
-  if(!v) printf("\nLa expresion no es válida...");
+  Initialize(&pila_posfija);
+
+  if(!v) printf("\nLa expresion no es válida o no ha sido validada...");
   else
   {
     while(cad[i] != '\0')
@@ -117,7 +119,11 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 
       if(e.c == '+' || e.c == '-')
       {
-        if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c)
+        if(Empty(&pila_posfija))
+        {
+          Push(&pila_posfija,e);
+        }
+        else if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-')
         {
             aux++;
             cad_posfija[aux] = Pop(&pila_posfija).c;
@@ -127,25 +133,41 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
         {
           while(!Empty(&pila_posfija))
           {
-            aux++;
-            cad_posfija[aux] = Pop(&pila_posfija).c;
+            aux_e = Pop(&pila_posfija);
+            if(aux_e.c != '('){
+              aux++;
+              cad_posfija[aux] = aux_e.c;
+            }
           }
+          Push(&pila_posfija,e);
+        }
+        else if(Top(&pila_posfija).c == '('){
           Push(&pila_posfija,e);
         }
       }
       else if(e.c == '*' || e.c == '/')
       {
-        if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-')
+        if(Empty(&pila_posfija))
         {
           Push(&pila_posfija,e);
         }
-        else if(Top(&p).c == '^')
+        else if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-')
+        {
+          Push(&pila_posfija,e);
+        }
+        else if(Top(&pila_posfija).c == '^')
         {
           while(!Empty(&pila_posfija))
           {
-            aux++;
-            cad_posfija[aux] = Pop(&pila_posfija).c;
+            aux_e = Pop(&pila_posfija);
+            if(aux_e.c != '('){
+              aux++;
+              cad_posfija[aux] = aux_e.c;
+            }
           }
+          Push(&pila_posfija,e);
+        }
+        else if(Top(&pila_posfija).c == '('){
           Push(&pila_posfija,e);
         }
       }
@@ -155,24 +177,37 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
       }
       else if(e.c == ')')
       {
-
         while(!Empty(&pila_posfija))
         {
-          aux++;
-          cad_posfija[aux] = Pop(&pila_posfija).c;
+          aux_e = Pop(&pila_posfija);
+          if(aux_e.c != '('){
+            aux++;
+            cad_posfija[aux] = aux_e.c;
+          }
         }
+      }
+      else if(e.c == '(')
+      {
+        Push(&pila_posfija,e);
       }
       else
       {
         aux++;
         cad_posfija[aux] = e.c;
       }
+      i++;
     }
-    aux++;
-    cad_posfija[aux] = '\0';
 
+    while(!Empty(&pila_posfija))
+    {
+      aux_e = Pop(&pila_posfija);
+      if(aux_e.c != '('){
+        aux++;
+        cad_posfija[aux] = aux_e.c;
+      }
+    }
   }
-
+  Destroy(&pila_posfija);
   return;
 }
 
@@ -191,9 +226,9 @@ void Obtener_Valores()
 
 int main(){
 
-  int opc;
-  char cad[TAM]=""; //por sí solo ya es apuntador
-  char cad_posfija[TAM]="";
+  int opc,resp;
+  char cad[TAM]; //por sí solo ya es apuntador
+  char cad_posfija[100];
   boolean v=FALSE;
 
   printf("BIENVENIDO...\nPráctica sobre el TAD Pila.\nEl programa recibe una expresión en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluación.\n");
@@ -202,6 +237,7 @@ int main(){
 
   do
   {
+    printf("\nExpresion: %s",cad);
     Menu();
     scanf("%d", &opc);
     switch(opc)
@@ -233,8 +269,11 @@ int main(){
               Evaluar_Expresion(cad);
               break;
     }
-  }
-  while (opc<5);
+
+    printf("\nQuieres continuar: Si=1 No=0");
+    scanf("%d",&resp);
+
+  } while (resp != 0);
 
   return 0;
 }
