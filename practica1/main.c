@@ -29,7 +29,7 @@ boolean Validar_Parentesis(char *cad)
 
 void Pasar_Posfijo(char *cad, boolean v)
 {
-  
+
 }
 
 
