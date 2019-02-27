@@ -96,6 +96,19 @@ void Corregir_Expresion(char *cad)
 
 void Pasar_Posfijo(char *cad, boolean v)
 {
+  pila p;
+  elemento e;
+  int i=0;
+
+  while(cad[i] != '\0')
+  {
+    if(cad[i] == '(')
+    {
+      e = cad[i];
+      Push(&p,e);
+    }
+  }
+
 
   return;
 }
@@ -105,6 +118,7 @@ int main(){
 
   int opc;
   char cad[TAM]=""; //por sí solo ya es apuntador
+  char cad_posfija[TAM]="";
   boolean v;
 
   printf("BIENVENIDO...\nPráctica sobre el TAD Pila.\nEl programa recibe una expresión en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluación.\n");
@@ -122,7 +136,8 @@ int main(){
               Corregir_Expresion(cad);
               break;
       case 2:
-              if(Validar_Parentesis(cad))
+              v = Validar_Parentesis(cad);
+              if(v)
                 printf("\nParentesis válidos, continúa...\n");
               else
               {
@@ -132,7 +147,7 @@ int main(){
               break;
 
       case 3:
-              Pasar_Posfijo(&cad[0], v);
+              Pasar_Posfijo(&cad[0], v, &cad_posfija[0]);
               break;
 
       case 4:
