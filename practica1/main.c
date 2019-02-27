@@ -100,6 +100,18 @@ void Pasar_Posfijo(char *cad, boolean v)
   return;
 }
 
+int Evaluar_Expresion(char *cad)
+{
+  int valor;
+
+  return valor;
+}
+
+void Obtener_Valores()
+{
+
+  return;
+}
 
 int main(){
 
@@ -136,7 +148,7 @@ int main(){
               break;
 
       case 4:
-              Evaluar_Expresion();
+              Evaluar_Expresion(cad);
               break;
     }
   }
