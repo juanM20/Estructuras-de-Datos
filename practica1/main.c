@@ -23,9 +23,10 @@ no devuelve valor, pero modifica la cadena a una nueva que sea entrada.
 */
 void Corregir_Expresion(char *cad);
 
-//PROPUESTAS
 void Pasar_Posfijo(char *cad, boolean v);
+
 int Evaluar_Expresion(char *cad);
+
 void Obtener_Valores();
 
 
@@ -132,6 +133,10 @@ int main(){
 
       case 3:
               Pasar_Posfijo(&cad[0], v);
+              break;
+
+      case 4:
+              Evaluar_Expresion();
               break;
     }
   }
