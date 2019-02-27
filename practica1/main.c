@@ -16,8 +16,12 @@ son correctos, y FALSE si no lo son.
 */
 boolean Validar_Parentesis(char *cad);
 
-//PROPUESTAS
+/*
+
+*/
 void Corregir_Expresion(char *cad);
+
+//PROPUESTAS
 void Pasar_Posfijo(char *cad, boolean v);
 int Evaluar_Expresion(char *cad);
 void Obtener_Valores();
@@ -29,7 +33,7 @@ void Menu(){
   printf("\n2.Validar Parentesis.");
   printf("\n3.Pasar a Posfija.");
   printf("\n4.Evaluar expresión");
-  printf("\n5.Salir.");
+  printf("\n5.Salir\n");
 
   return;
 }
@@ -77,6 +81,16 @@ boolean Validar_Parentesis(char *cad)
   return validado;
 }
 
+void Corregir_Expresion(char *cad)
+{
+  printf("Expresion anterior:\n%s", cad);
+  printf("\n\nEscriba la nueva expresion:\n");
+  scanf("%s", cad);
+  //printf("%s\n", cad);
+
+  return;
+}
+
 void Pasar_Posfijo(char *cad, boolean v)
 {
 
@@ -89,29 +103,34 @@ void Pasar_Posfijo(char *cad, boolean v)
 int main(){
 
   int opc;
-  char cad[TAM]="";
+  char cad[TAM]=""; //por sí solo ya es apuntador
+  boolean v;
 
   printf("BIENVENIDO...\nPractica sobre el TAD Pila.\nEl programa recibe una expresion en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluacion.\n");
   printf("\nEscribe una expresion:\n");
   scanf("%s",cad);
-  printf("%d\n", Validar_Parentesis(cad));
 
-/*
-  switch(opc)
+  do
   {
+    Menu();
+    scanf("%d", &opc);
+    switch(opc)
+    {
 
-    case 1:
-            Escribir_Expresion();
-            break;
-    case 2:
-            v = Validar_Parentesis(&cad[0]);
-            break;
+      case 1:
+              Corregir_Expresion(cad);
+              break;
+      case 2:
+              v = Validar_Parentesis(cad);
+              break;
 
-    case 3:
-            Pasar_Posfijo(&cad[0], v);
-            break;
+      case 3:
+              Pasar_Posfijo(&cad[0], v);
+              break;
+    }
   }
-*/
+  while (opc<5);
+
   return 0;
 }
 //this is a comentario alv :v
