@@ -38,6 +38,8 @@ int Evaluar_Expresion(char *cad);
 
 void Obtener_Valores();
 
+void No_Repite(char cadena[],int tam,char resultado[]);
+
 void Menu(){
   printf("\n1.Corregir expresion");
   printf("\n2.Validar Parentesis.");
@@ -264,6 +266,34 @@ printf("\n");
   return;
 }
 
+void No_Repite(char cadena[],int tam,char resultado[]){
+	int j=0,k=0,inicio,i;
+
+	for(i=0;i<tam;++i){
+		if(i==0){
+
+			resultado[j]=cadena[i];
+		}else{
+
+			for(inicio=0;inicio<=j;++inicio){
+
+				if((cadena[i]!=resultado[inicio])){
+					++k;
+				}else {
+					k=0;
+				    break;
+				}
+			}
+
+			if(k==j+1){
+			  ++j;
+	          resultado[j]=cadena[i];
+	           k=0;
+			}
+		}
+	}
+}
+
 int main(){
 
   int opc,resp;
@@ -317,51 +347,13 @@ int main(){
 
 //funcion que evita la repeticion
 
-void norepite(char cadena[],int tam,char resultado[]){
-	int j=0,k=0,inicio,i;
 
-	for(i=0;i<tam;++i){
-		if(i==0){
-
-			resultado[j]=cadena[i];
-		}else{
-
-			for(inicio=0;inicio<=j;++inicio){
-
-				if((cadena[i]!=resultado[inicio])){
-					++k;
-				}else {
-					k=0;
-				    break;
-				}
-			}
-
-			if(k==j+1){
-			  ++j;
-	          resultado[j]=cadena[i];
-	           k=0;
-			}
-		}
-	}
-}
 //this is a comentario alv :v
-
-junto con las demas
-ahorita todas las funciones estan arriba del main XD
-Eugenio
-Le cambié el nombre a tu funcion en la implementación chida por No_Repite,
-para que se vea igual que el resto, lo haré aquí también , va?
-
-va
-esperen, no está actualizado este archivo??, yo subí ya varios cambios,
-entre los cuales incluí la función que vimos en el salón
-
-no tienes los cambios en tu compu Emilio?
-
-Que pedo???'
-ya se cambió todo lo que hice en el int main(int argc, char const *argv[]) {
-  /* code */
-  return 0;
-}
-
-AL PARECER NO ESTA
+ya no entendí que pedo :'v
+tons se destruyo el archivo? la función que vimos en el salon ya está aquí
+pero no la veo
+Obtener_Valores a ya perfecto esa queria
+entonces ya esta bien con eso? XD
+o que mas falto de los cambio que hiciste?
+los haré ahora, y te aviso cuando ya esté en forma again XD
+jaaja va
