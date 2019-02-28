@@ -52,7 +52,7 @@ primer argumeto es el arreglo de solo literales, el segundo el tamaño del
 arreglo literales y el tercero es en donde se guardar el arreglo sin repeticion,
 el arreglo sin repeticiones se modifica por referencia por lo tanto no nesecita enviar nada
 */
-void No_Repite(char cadena[],int tam,char resultado[]);
+void No_Repite(char *cadena,int tam,char *resultado);
 
 void Menu()
 {
@@ -279,7 +279,7 @@ printf("\n");
 }
 
 //funcion que evita la repeticion
-void No_Repite(char cadena[],int tam,char resultado[]){
+void No_Repite(char *cadena,int tam,char *resultado){
 	int j=0,k=0,inicio,i;
 
 	for(i=0;i<tam;++i){
