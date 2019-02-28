@@ -1,7 +1,7 @@
 /*
 Forma de ejecución: gcc main.c TADPila(Est)(Din).c Biblioteca.c
 */
-
+//wgfdhedwjhed
 #include <stdio.h>
 #include "Biblioteca.h"
 
