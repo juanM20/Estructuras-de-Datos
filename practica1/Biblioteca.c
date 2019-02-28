@@ -207,13 +207,13 @@ void Obtener_Valores(char *cad, elemento *diccionario)
       i_aux++;
     }
   }
-  No_Repite(literalesDeExpresion, strlen(literalesDeExpresion), diccionario);
+  No_Repite(literalesDeExpresion, strlen(literalesDeExpresion), &diccionario[0]);
 
   //pedir al ususario el valor de dichas literales
   for(i=0; i<strlen(auxiliarAntiRepeticion); i++)
   {
-    printf("Valor de %c: ", auxiliarAntiRepeticion[i]);
-    scanf("%d", &valoresDeLiterales[i]);
+    printf("Valor de %c: ", diccionario[i].c);
+    scanf("%f", diccionario[i].valor);
   }
 
 /*
