@@ -253,15 +253,15 @@ void Obtener_Valores(char *cad)
   }
 
   //pedir al ususario el valor de dichas literales
-  for(i=0; i<strlen(auxiliarAntiRepeticion); i++)
+  for(i=0; i<strlen(literalesDeExpresion); i++)
   {
-    printf("Valor de %c: ", auxiliarAntiRepeticion[i]);
+    printf("Valor de %c: ", literalesDeExpresion[i]);
     scanf("%d", &valoresDeLiterales[i]);
   }
 
 
 
-/*
+
   //estos for solo prueban que los valores sean congruentes
   for(i=0; i<strlen(literalesDeExpresion); i++)
   {
@@ -272,7 +272,7 @@ printf("\n");
   {
     printf("%d,", valoresDeLiterales[i]);
   }
-  */
+
 
   return;
 }
@@ -304,6 +304,8 @@ void No_Repite(char *cadena,int tam,char *resultado)
 			}
 		}
 	}
+
+  return;
 }
 
 int main(){
@@ -344,7 +346,7 @@ int main(){
               break;
 
       case 4:
-              Evaluar_Expresion(&cad[0]);
+              Evaluar_Expresion(&cad_posfija[0]);
               break;
     }
 
