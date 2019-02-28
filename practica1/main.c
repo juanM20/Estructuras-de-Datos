@@ -242,7 +242,6 @@ int main(){
     scanf("%d", &opc);
     switch(opc)
     {
-
       case 1:
               Corregir_Expresion(cad);
               break;
@@ -271,7 +270,7 @@ int main(){
     scanf("%d",&resp);*/
 
   } while (opc<5);
-
+//golafff
   return 0;
 }
 //this is a comentario alv :v
