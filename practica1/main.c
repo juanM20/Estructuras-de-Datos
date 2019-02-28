@@ -279,7 +279,12 @@ printf("\n");
 }
 
 //funcion que evita la repeticion
+<<<<<<< HEAD
 void No_Repite(char *cadena,int tam,char *resultado){
+=======
+void No_Repite(char cadena[],int tam,char resultado[])
+{
+>>>>>>> 8d752ac8f137c683ab6318170e2cf53a565493e1
 	int j=0,k=0,inicio,i;
 
 	for(i=0;i<tam;++i){
@@ -305,6 +310,8 @@ void No_Repite(char *cadena,int tam,char *resultado){
 			}
 		}
 	}
+
+  return;
 }
 
 int main(){
