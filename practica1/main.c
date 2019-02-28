@@ -1,5 +1,5 @@
 /*
-Forma de ejecución: gcc main.c TADPila(Est)(Din).c Biblioteca.c
+Forma de ejecución: gcc main.c TADPila(Est)(Din).c Biblioteca.c -o archivo_ejecutable
 */
 
 #include <stdio.h>
@@ -8,7 +8,7 @@ Forma de ejecución: gcc main.c TADPila(Est)(Din).c Biblioteca.c
 int main()
 {
   int opc,resp;
-  char cad[TAM]; 
+  char cad[TAM];
   char cad_posfija[100];
   boolean v=FALSE;
 
