@@ -177,14 +177,17 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 int Evaluar_Expresion(char *cad_posfija)
 {
   int valor;
-  Obtener_Valores(cad_posfija);
+  elemento diccionario[TAM];
+
+  Obtener_Valores(cad_posfija, &diccionario[0]);
 
   return valor;
 }
 
-void Obtener_Valores(char *cad)
+void Obtener_Valores(char *cad, elemento *diccionario)
 {
-  int i, i_aux=0, o, o_aux=1;
+  int i, i_aux=0;
+
   /*
   Los siguientes 3 arreglos guardan las letras, sus valores, y sus no repeticiones respectivamente,
   la congruencia es que el valor en la posicion n de valoresDeLiterales
@@ -192,8 +195,8 @@ void Obtener_Valores(char *cad)
   mientras que auxiliarAntiRepeticion guarda sólo una copia de cada literal.
   */
   char literalesDeExpresion[TAM_CADENA_LITERALES]="";
-  int valoresDeLiterales[TAM_CADENA_LITERALES];
-  char auxiliarAntiRepeticion[TAM_CADENA_LITERALES]="";
+  //int valoresDeLiterales[TAM_CADENA_LITERALES];
+  //char auxiliarAntiRepeticion[TAM_CADENA_LITERALES]="";
 
   //Obtener las literales de la expresion
   for(i=0; i<strlen(cad); i++)
@@ -204,8 +207,7 @@ void Obtener_Valores(char *cad)
       i_aux++;
     }
   }
-
-  No_Repite(literalesDeExpresion, strlen(literalesDeExpresion), auxiliarAntiRepeticion);
+  No_Repite(literalesDeExpresion, strlen(literalesDeExpresion), diccionario);
 
   //pedir al ususario el valor de dichas literales
   for(i=0; i<strlen(auxiliarAntiRepeticion); i++)
@@ -213,6 +215,7 @@ void Obtener_Valores(char *cad)
     printf("Valor de %c: ", auxiliarAntiRepeticion[i]);
     scanf("%d", &valoresDeLiterales[i]);
   }
+
 /*
   //estos for solo prueban que los valores sean congruentes
   for(i=0; i<strlen(literalesDeExpresion); i++)
@@ -230,30 +233,35 @@ printf("\n");
 }
 
 //funcion que evita la repeticion
-void No_Repite(char *cadena,int tam,char *resultado)
+void No_Repite(char *cadena,int tam,elemento *diccionario)
 {
 	int j=0,k=0,inicio,i;
 
-	for(i=0;i<tam;++i){
-		if(i==0){
-
-			resultado[j]=cadena[i];
-		}else{
-
-			for(inicio=0;inicio<=j;++inicio){
-
-				if((cadena[i]!=resultado[inicio])){
+	for(i=0;i<tam;++i)
+  {
+		if(i==0)
+    {
+			diccionario[j].c = cadena[i];
+		}
+    else
+    {
+			for(inicio=0;inicio<=j;++inicio)
+      {
+				if((cadena[i] != diccionario[inicio].c ))
+        {
 					++k;
-				}else {
+				}
+        else
+        {
 					k=0;
 				    break;
 				}
 			}
-
-			if(k==j+1){
+			if(k==j+1)
+      {
 			  ++j;
-	          resultado[j]=cadena[i];
-	           k=0;
+	      diccionario[j].c = cadena[i];
+	      k=0;
 			}
 		}
 	}
