@@ -256,13 +256,15 @@ void Obtener_Valores(char *cad)
     }
   }
 
+  No_Repite(literalesDeExpresion, strlen(literalesDeExpresion), auxiliarAntiRepeticion);
+
   //pedir al ususario el valor de dichas literales
-  for(i=0; i<strlen(literalesDeExpresion); i++)
+  for(i=0; i<strlen(auxiliarAntiRepeticion); i++)
   {
-    printf("Valor de %c: ", literalesDeExpresion[i]);
+    printf("Valor de %c: ", auxiliarAntiRepeticion[i]);
     scanf("%d", &valoresDeLiterales[i]);
   }
-
+/*
   //estos for solo prueban que los valores sean congruentes
   for(i=0; i<strlen(literalesDeExpresion); i++)
   {
@@ -273,18 +275,14 @@ printf("\n");
   {
     printf("%d,", valoresDeLiterales[i]);
   }
-
+*/
 
   return;
 }
 
 //funcion que evita la repeticion
-<<<<<<< HEAD
-void No_Repite(char *cadena,int tam,char *resultado){
-=======
-void No_Repite(char cadena[],int tam,char resultado[])
+void No_Repite(char *cadena,int tam,char *resultado)
 {
->>>>>>> 8d752ac8f137c683ab6318170e2cf53a565493e1
 	int j=0,k=0,inicio,i;
 
 	for(i=0;i<tam;++i){
@@ -333,16 +331,16 @@ int main(){
     switch(opc)
     {
       case 1:
-              Corregir_Expresion(cad);
+              Corregir_Expresion(&cad[0]);
               break;
       case 2:
-              v = Validar_Parentesis(cad);
+              v = Validar_Parentesis(&cad[0]);
               if(v)
                 printf("\nParentesis válidos, continúa...\n");
               else
               {
                 printf("\nParentesis inválidos, corrígelo...\n");
-                Corregir_Expresion(cad);
+                Corregir_Expresion(&cad[0]);
               }
               break;
 
