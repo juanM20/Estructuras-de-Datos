@@ -352,7 +352,7 @@ int main(){
     scanf("%d",&resp);*/
 
   } while (opc<5);
-//golafff
+
   return 0;
 }
 //this is a comentario alv :v
