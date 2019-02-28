@@ -38,6 +38,12 @@ int Evaluar_Expresion(char *cad);
 
 void Obtener_Valores();
 
+/*
+primer argumeto es el arreglo de solo literales, el segundo el tamaño del
+arreglo literales y el tercero es en donde se guardar el arreglo sin repeticion,
+el arreglo sin repeticiones se modifica por referencia por lo tanto no nesecita enviar nada
+*/
+No_Repite(char cadena[],int tam,char resultado[]);
 
 
 void Menu()
@@ -222,6 +228,35 @@ void Obtener_Valores()
 {
 
   return;
+}
+
+void No_Repite(char *cadena,int tam,char *resultado)
+{
+	int j=0;
+  int k=0;
+  int inicio;
+  int i;
+	     for(i=0;i<tam;++i){//repite hasta alcanzar el tamaño de la expresion sin arreglar
+
+		        if(i==0){// caso base si i es cero ingresara automaticament
+			            resultado[j]=cadena[i];
+          }else{
+			         for(inicio=0;inicio<=j;++inicio){
+				             if((cadena[i]!=resultado[inicio])){
+                       ++k;
+                     }else {
+					               k=0;
+				                   break;
+				          }
+			}
+
+			if(k==j+1){
+			  ++j;
+	          resultado[j]=cadena[i];
+	           k=0;
+			}
+		}
+	}
 }
 
 int main(){
