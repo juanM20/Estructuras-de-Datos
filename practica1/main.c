@@ -36,22 +36,9 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija);
 
 int Evaluar_Expresion(char *cad);
 
-
-/*
-Pide los valores
-*/
 void Obtener_Valores();
 
-/*
-primer argumeto es el arreglo de solo literales, el segundo el tamaño del
-arreglo literales y el tercero es en donde se guardar el arreglo sin repeticion,
-el arreglo sin repeticiones se modifica por referencia por lo tanto no nesecita enviar nada
-*/
-void No_Repite(char cadena[],int tam,char resultado[]);
-
-
-void Menu()
-{
+void Menu(){
   printf("\n1.Corregir expresion");
   printf("\n2.Validar Parentesis.");
   printf("\n3.Pasar a Posfija.");
@@ -120,7 +107,7 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 
   Initialize(&pila_posfija);
 
-  if(!v) printf("\nLa expresion no es válida o no ha sido validada...");
+  if(!v) printf("\nParece que no has validado tu expresion...");
   else
   {
     while(cad[i] != '\0')
@@ -224,86 +211,12 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 int Evaluar_Expresion(char *cad)
 {
   int valor;
-  Obtener_Valores(cad);
 
   return valor;
 }
 
-void Obtener_Valores(char *cad)
+void Obtener_Valores()
 {
-  int i, i_aux=0, o, o_aux=1;
-  /*
-  Los siguientes 3 arreglos guardan las letras, sus valores, y sus no repeticiones respectivamente,
-  la congruencia es que el valor en la posicion n de valoresDeLiterales
-  corresponde a la letra en la misma posición en literalesDeExpresion,
-  mientras que auxiliarAntiRepeticion guarda sólo una copia de cada literal.
-  */
-  char literalesDeExpresion[55]="";
-  int valoresDeLiterales[55];
-  char auxiliarAntiRepeticion[55]="";
-
-  //Obtener las literales de la expresion
-  for(i=0; i<strlen(cad); i++)
-  {
-    if(cad[i]>=65 && cad[i]<=90)
-    {
-      literalesDeExpresion[i_aux]=cad[i];
-      i_aux++;
-    }
-  }
-
-  //pedir al ususario el valor de dichas literales
-  for(i=0; i<strlen(literalesDeExpresion); i++)
-  {
-    printf("Valor de %c: ", literalesDeExpresion[i]);
-    scanf("%d", &valoresDeLiterales[i]);
-  }
-
-
-
-
-  //estos for solo prueban que los valores sean congruentes
-  for(i=0; i<strlen(literalesDeExpresion); i++)
-  {
-    printf("%c,", literalesDeExpresion[i]);
-  }
-printf("\n");
-  for(i=0; i<sizeof(*valoresDeLiterales); i++)
-  {
-    printf("%d,", valoresDeLiterales[i]);
-  }
-
-
-  return;
-}
-
-void No_Repite(char *cadena,int tam,char *resultado)
-{
-	int j=0;
-  int k=0;
-  int inicio;
-  int i;
-	     for(i=0;i<tam;++i){//repite hasta alcanzar el tamaño de la expresion sin arreglar
-
-		        if(i==0){// caso base si i es cero ingresara automaticament
-			            resultado[j]=cadena[i];
-          }else{
-			         for(inicio=0;inicio<=j;++inicio){
-				             if((cadena[i]!=resultado[inicio])){
-                       ++k;
-                     }else {
-					               k=0;
-				                   break;
-				          }
-			}
-
-			if(k==j+1){
-			  ++j;
-	          resultado[j]=cadena[i];
-	           k=0;
-			}
-		}
-	}
 
   return;
 }
@@ -327,16 +240,16 @@ int main(){
     switch(opc)
     {
       case 1:
-              Corregir_Expresion(&cad[0]);
+              Corregir_Expresion(cad);
               break;
       case 2:
-              v = Validar_Parentesis(&cad[0]);
+              v = Validar_Parentesis(cad);
               if(v)
                 printf("\nParentesis válidos, continúa...\n");
               else
               {
                 printf("\nParentesis inválidos, corrígelo...\n");
-                Corregir_Expresion(&cad[0]);
+                Corregir_Expresion(cad);
               }
               break;
 
@@ -346,7 +259,7 @@ int main(){
               break;
 
       case 4:
-              Evaluar_Expresion(&cad_posfija[0]);
+              Evaluar_Expresion(cad);
               break;
     }
 
@@ -357,4 +270,45 @@ int main(){
 
   return 0;
 }
+
+
+//funcion que evita la repeticion
+
+void norepite(char cadena[],int tam,char resultado[]){
+	int j=0,k=0,inicio,i;
+
+	for(i=0;i<tam;++i){
+		if(i==0){
+
+			resultado[j]=cadena[i];
+		}else{
+
+			for(inicio=0;inicio<=j;++inicio){
+
+				if((cadena[i]!=resultado[inicio])){
+					++k;
+				}else {
+					k=0;
+				    break;
+				}
+			}
+
+			if(k==j+1){
+			  ++j;
+	          resultado[j]=cadena[i];
+	           k=0;
+			}
+		}
+	}
+}
 //this is a comentario alv :v
+
+junto con las demas
+ahorita todas las funciones estan arriba del main XD
+Eugenio
+Le cambié el nombre a tu funcion en la implementación chida por No_Repite,
+para que se vea igual que el resto, lo haré aquí también , va?
+
+va 
+esperen, no está actualizado este archivo??, yo subí ya varios cambios,
+entre los cuales incluí la función que vimos en el salón
