@@ -34,13 +34,28 @@ Recibe...
 */
 void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija);
 
-int Evaluar_Expresion(char *cad);
+/*
+Recibe la cadena postfija y devuelve el valor de
+la evaluación.
+Primero pide los valores de las literales por medio de Obtener_Valores.
+*/
+int Evaluar_Expresion(char *cad_posfija);
 
-void Obtener_Valores();
+/*
+Se ayuda de No_Repite, para pedir los valores de la literales una sola vez.
+Recibe la cadena de Evaluar_Expresion, no devuelve valores.
+*/
+void Obtener_Valores(char *cad);
 
+/*
+primer argumeto es el arreglo de solo literales, el segundo el tamaño del
+arreglo literales y el tercero es en donde se guardar el arreglo sin repeticion,
+el arreglo sin repeticiones se modifica por referencia por lo tanto no nesecita enviar nada
+*/
 void No_Repite(char cadena[],int tam,char resultado[]);
 
-void Menu(){
+void Menu()
+{
   printf("\n1.Corregir expresion");
   printf("\n2.Validar Parentesis.");
   printf("\n3.Pasar a Posfija.");
@@ -210,10 +225,10 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
   return;
 }
 
-int Evaluar_Expresion(char *cad)
+int Evaluar_Expresion(char *cad_posfija)
 {
   int valor;
-  Obtener_Valores(cad);
+  Obtener_Valores(cad_posfija);
 
   return valor;
 }
@@ -248,9 +263,6 @@ void Obtener_Valores(char *cad)
     scanf("%d", &valoresDeLiterales[i]);
   }
 
-
-
-
   //estos for solo prueban que los valores sean congruentes
   for(i=0; i<strlen(literalesDeExpresion); i++)
   {
@@ -266,6 +278,7 @@ printf("\n");
   return;
 }
 
+//funcion que evita la repeticion
 void No_Repite(char cadena[],int tam,char resultado[]){
 	int j=0,k=0,inicio,i;
 
@@ -332,7 +345,7 @@ int main(){
               break;
 
       case 4:
-              Evaluar_Expresion(cad);
+              Evaluar_Expresion(&cad_posfija[0]);
               break;
     }
 
@@ -343,17 +356,3 @@ int main(){
 
   return 0;
 }
-
-
-//funcion que evita la repeticion
-
-
-//this is a comentario alv :v
-ya no entendí que pedo :'v
-tons se destruyo el archivo? la función que vimos en el salon ya está aquí
-pero no la veo
-Obtener_Valores a ya perfecto esa queria
-entonces ya esta bien con eso? XD
-o que mas falto de los cambio que hiciste?
-los haré ahora, y te aviso cuando ya esté en forma again XD
-jaaja va
