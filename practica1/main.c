@@ -36,6 +36,10 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija);
 
 int Evaluar_Expresion(char *cad);
 
+
+/*
+Pide los valores
+*/
 void Obtener_Valores();
 
 /*
@@ -43,7 +47,7 @@ primer argumeto es el arreglo de solo literales, el segundo el tamaño del
 arreglo literales y el tercero es en donde se guardar el arreglo sin repeticion,
 el arreglo sin repeticiones se modifica por referencia por lo tanto no nesecita enviar nada
 */
-No_Repite(char cadena[],int tam,char resultado[]);
+void No_Repite(char cadena[],int tam,char resultado[]);
 
 
 void Menu()
@@ -220,12 +224,55 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 int Evaluar_Expresion(char *cad)
 {
   int valor;
+  Obtener_Valores(cad);
 
   return valor;
 }
 
-void Obtener_Valores()
+void Obtener_Valores(char *cad)
 {
+  int i, i_aux=0, o, o_aux=1;
+  /*
+  Los siguientes 3 arreglos guardan las letras, sus valores, y sus no repeticiones respectivamente,
+  la congruencia es que el valor en la posicion n de valoresDeLiterales
+  corresponde a la letra en la misma posición en literalesDeExpresion,
+  mientras que auxiliarAntiRepeticion guarda sólo una copia de cada literal.
+  */
+  char literalesDeExpresion[55]="";
+  int valoresDeLiterales[55];
+  char auxiliarAntiRepeticion[55]="";
+
+  //Obtener las literales de la expresion
+  for(i=0; i<strlen(cad); i++)
+  {
+    if(cad[i]>=65 && cad[i]<=90)
+    {
+      literalesDeExpresion[i_aux]=cad[i];
+      i_aux++;
+    }
+  }
+
+  //pedir al ususario el valor de dichas literales
+  for(i=0; i<strlen(auxiliarAntiRepeticion); i++)
+  {
+    printf("Valor de %c: ", auxiliarAntiRepeticion[i]);
+    scanf("%d", &valoresDeLiterales[i]);
+  }
+
+
+
+/*
+  //estos for solo prueban que los valores sean congruentes
+  for(i=0; i<strlen(literalesDeExpresion); i++)
+  {
+    printf("%c,", literalesDeExpresion[i]);
+  }
+printf("\n");
+  for(i=0; i<sizeof(*valoresDeLiterales); i++)
+  {
+    printf("%d,", valoresDeLiterales[i]);
+  }
+  */
 
   return;
 }
@@ -278,16 +325,16 @@ int main(){
     switch(opc)
     {
       case 1:
-              Corregir_Expresion(cad);
+              Corregir_Expresion(&cad[0]);
               break;
       case 2:
-              v = Validar_Parentesis(cad);
+              v = Validar_Parentesis(&cad[0]);
               if(v)
                 printf("\nParentesis válidos, continúa...\n");
               else
               {
                 printf("\nParentesis inválidos, corrígelo...\n");
-                Corregir_Expresion(cad);
+                Corregir_Expresion(&cad[0]);
               }
               break;
 
@@ -297,7 +344,7 @@ int main(){
               break;
 
       case 4:
-              Evaluar_Expresion(cad);
+              Evaluar_Expresion(&cad[0]);
               break;
     }
 
