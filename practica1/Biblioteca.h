@@ -44,7 +44,7 @@ int Evaluar_Expresion(char *cad_posfija);
 Se ayuda de No_Repite, para pedir los valores de la literales una sola vez.
 Recibe la cadena de Evaluar_Expresion, no devuelve valores.
 */
-void Obtener_Valores(char *cad);
+void Obtener_Valores(char *cad_posfija);
 
 /*
 primer argumeto es el arreglo de solo literales, el segundo el tamaño del
@@ -52,3 +52,9 @@ arreglo literales y el tercero es en donde se guardar el arreglo sin repeticion,
 el arreglo sin repeticiones se modifica por referencia por lo tanto no nesecita enviar nada
 */
 void No_Repite(char *cadena,int tam,char *resultado);
+
+/*
+Elimina el contenido de todos los arreglos usados a lo largo del programa,
+para poder analizar una nueva expresiónd e manera correcta.
+*/
+void Vaciar_Arreglos(char *cad, char *cad_posfija, char *literalesDeExpresion, int *valoresDeLiterales, char *auxiliarAntiRepeticion);
