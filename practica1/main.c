@@ -38,7 +38,10 @@ int Evaluar_Expresion(char *cad);
 
 void Obtener_Valores();
 
-void Menu(){
+
+
+void Menu()
+{
   printf("\n1.Corregir expresion");
   printf("\n2.Validar Parentesis.");
   printf("\n3.Pasar a Posfija.");
@@ -107,7 +110,7 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 
   Initialize(&pila_posfija);
 
-  if(!v) printf("\nParece que no has validado tu expresion...");
+  if(!v) printf("\nLa expresion no es válida o no ha sido validada...");
   else
   {
     while(cad[i] != '\0')
