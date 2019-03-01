@@ -14,7 +14,7 @@ int main()
 
   printf("BIENVENIDO...\nPráctica sobre el TAD Pila.\nEl programa recibe una expresión en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluación.\n");
   printf("\nEscribe una expresión:\n");
-  scanf("%s",cad);
+  scanf("%s",&cad[0]);
 
   do
   {
