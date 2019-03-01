@@ -176,20 +176,28 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 
 int Evaluar_Expresion(char *cad_posfija)
 {
-  int valor;
+  int valor,indice_dic=0;
   elemento diccionario[TAM];
-
-
 
   if(strlen(cad_posfija)==0)
     printf("\n\nParece que no has convertido a posfijo...");
   else
-    Obtener_Valores(cad_posfija, &diccionario[0]);
+  {
+    Obtener_Valores(cad_posfija, &diccionario[0],&indice_dic);
+
+    int i=0;
+    while(i < indice_dic+1)
+    {
+        printf("\n%c = %f", diccionario[i].c,diccionario[i].valor);
+        i++;
+    }
+  }
+
 
   return valor;
 }
 
-void Obtener_Valores(char *cad_posfija, elemento *diccionario)
+void Obtener_Valores(char *cad_posfija, elemento *diccionario, int *indice_dic)
 {
   int i, i_aux=0;
 
@@ -212,13 +220,15 @@ void Obtener_Valores(char *cad_posfija, elemento *diccionario)
       i_aux++;
     }
   }
-  No_Repite(&literalesDeExpresion[0], strlen(literalesDeExpresion), &diccionario[0]);
+  No_Repite(&literalesDeExpresion[0], strlen(literalesDeExpresion), &diccionario[0], indice_dic);
 
   //pedir al ususario el valor de dichas literales
-  for(i=0; i<strlen(diccionario); i++)
+  int j=0;
+  while(j < *indice_dic+1)
   {
-    printf("Valor de %c: ", diccionario[i].c);
-    scanf("%f", diccionario[i].valor);
+    printf("\nValor de %c:", diccionario[j].c);
+    scanf("%f",&diccionario[j].valor);
+    j++;
   }
 
 /*
@@ -238,19 +248,20 @@ printf("\n");
 }
 
 //funcion que evita la repeticion
-void No_Repite(char *cadena,int tam,elemento *diccionario)
+void No_Repite(char *cadena,int tam,elemento *diccionario, int *indice_dic)
 {
-	int j=0,k=0,inicio,i;
+	int k=0,inicio,i;
+  *indice_dic = 0;
 
 	for(i=0;i<tam;++i)
   {
 		if(i==0)
     {
-			diccionario[j].c = cadena[i];
+			diccionario[*indice_dic].c = cadena[i];
 		}
     else
     {
-			for(inicio=0;inicio<=j;++inicio)
+			for(inicio=0; inicio<=*indice_dic; ++inicio)
       {
 				if((cadena[i] != diccionario[inicio].c ))
         {
@@ -262,10 +273,10 @@ void No_Repite(char *cadena,int tam,elemento *diccionario)
 				    break;
 				}
 			}
-			if(k==j+1)
+			if(k==*indice_dic+1)
       {
-			  ++j;
-	      diccionario[j].c = cadena[i];
+			  ++*indice_dic;
+	      diccionario[*indice_dic].c = cadena[i];
 	      k=0;
 			}
 		}
