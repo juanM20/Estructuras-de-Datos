@@ -177,25 +177,19 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 int Evaluar_Expresion(char *cad_posfija)
 {
   int valor;
-<<<<<<< HEAD
   elemento diccionario[TAM];
 
   Obtener_Valores(cad_posfija, &diccionario[0]);
-=======
+
   if(strlen(cad_posfija)==0)
     printf("\n\nParece que no has convertido a posfijo...");
   else
     Obtener_Valores(cad_posfija);
->>>>>>> c6ff9a7feb4c234948e5b26680bf9b62328abcc7
 
   return valor;
 }
 
-<<<<<<< HEAD
-void Obtener_Valores(char *cad, elemento *diccionario)
-=======
-void Obtener_Valores(char *cad_posfija)
->>>>>>> c6ff9a7feb4c234948e5b26680bf9b62328abcc7
+void Obtener_Valores(char *cad_posfija, elemento *diccionario)
 {
   int i, i_aux=0;
 
