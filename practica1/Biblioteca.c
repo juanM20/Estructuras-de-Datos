@@ -179,12 +179,12 @@ int Evaluar_Expresion(char *cad_posfija)
   int valor;
   elemento diccionario[TAM];
 
-  Obtener_Valores(cad_posfija, &diccionario[0]);
+
 
   if(strlen(cad_posfija)==0)
     printf("\n\nParece que no has convertido a posfijo...");
   else
-    Obtener_Valores(cad_posfija);
+    Obtener_Valores(cad_posfija, &diccionario[0]);
 
   return valor;
 }
@@ -212,10 +212,10 @@ void Obtener_Valores(char *cad_posfija, elemento *diccionario)
       i_aux++;
     }
   }
-  No_Repite(literalesDeExpresion, strlen(literalesDeExpresion), &diccionario[0]);
+  No_Repite(&literalesDeExpresion[0], strlen(literalesDeExpresion), &diccionario[0]);
 
   //pedir al ususario el valor de dichas literales
-  for(i=0; i<strlen(auxiliarAntiRepeticion); i++)
+  for(i=0; i<strlen(diccionario); i++)
   {
     printf("Valor de %c: ", diccionario[i].c);
     scanf("%f", diccionario[i].valor);
