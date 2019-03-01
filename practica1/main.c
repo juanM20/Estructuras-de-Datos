@@ -46,7 +46,8 @@ int main()
               Evaluar_Expresion(&cad_posfija[0]);
               break;
 
-  } while (opc<5);
+    } while (opc<5);
 
-  return 0;
+    return 0;
+  }
 }
