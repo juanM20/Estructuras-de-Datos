@@ -174,10 +174,60 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
   return;
 }
 
-int Evaluar_Expresion(char *cad_posfija)
+float Potencia(float base, float exponente)
 {
-  int valor,indice_dic=0;
+  float pot;
+
+  if(base==0)
+    pot=0;
+
+  if(exponente==0)
+    pot= 1;
+  else
+    pot= Potencia(base, exponente-1)*base;
+
+  return pot;
+}
+
+float Evaluar_SubExpresiones(float valor1, char operador, float valor2)
+{
+  float r;
+
+  if(operador=='+')
+    r= valor1+valor2;
+
+  if(operador=='-')
+    r= valor1-valor2;
+
+  if(operador=='*')
+    r= valor1*valor2;
+
+  if(operador=='/')
+    r= valor1/valor2;
+
+  if(operador=='^')
+    r= Potencia(valor1, valor2);
+
+  return r;
+}
+
+float Evaluar_Expresion(char *cad_posfija)
+{
+  float valor;
+
   elemento diccionario[TAM];
+  int i=0, indice_dic=0;
+  elemento elm, aux_elmL1, aux_elmL2; //char
+  elemento elm_valorDeLetra; //float
+  pila eval_pila_postfija;
+
+  char valoresAOperar[2];
+  char operador;
+
+  float valorPrimeraLetra;
+  float valorSegundaLetra;
+
+  Initialize(&eval_pila_postfija);
 
   if(strlen(cad_posfija)==0)
     printf("\n\nParece que no has convertido a posfijo...");
@@ -188,10 +238,51 @@ int Evaluar_Expresion(char *cad_posfija)
     int i=0;
     while(i < indice_dic+1)
     {
-        printf("\n%c = %f", diccionario[i].c,diccionario[i].valor);
+        //printf("\n%c = %f", diccionario[i].c,diccionario[i].valor);
+
         i++;
     }
+
+    while(cad_posfija[i] != '\0')
+    {
+      elm.c= cad_posfija[i];
+      if(elm.c!='+' && elm.c!='-' && elm.c!='*' && elm.c!='/' && elm.c!='^')
+      {
+        //Busqueda en el diccionario
+        while(i < indice_dic+1)
+        {
+          if(diccionario[i].c==elm.c)
+            elm_valorDeLetra.valor= diccionario[i].valor;
+            Push(&eval_pila_postfija, elm_valorDeLetra);
+        }
+      }
+      else
+      {
+        operador= elm.c;
+        aux_elmL1= Pop(&eval_pila_postfija);
+        valoresAOperar[1]= aux_elmL1.c;
+        aux_elmL2= Pop(&eval_pila_postfija);
+        valoresAOperar[0]= aux_elmL2.c;
+
+        //Busqueda en el diccionario
+        while(i < indice_dic+1)
+        {
+          if(diccionario[i].c==valoresAOperar[0])
+            valorPrimeraLetra= diccionario[i].valor;
+
+          if(diccionario[i].c==valoresAOperar[1])
+            valorSegundaLetra= diccionario[i].valor;
+        }
+
+        elm_valorDeLetra.valor= Evaluar_SubExpresiones(valorPrimeraLetra, operador, valorSegundaLetra);
+        if(Empty(&eval_pila_postfija))
+          valor= elm_valorDeLetra.valor;
+        else
+          Push( &eval_pila_postfija,  elm_valorDeLetra);
+      }
+    }////////////////
   }
+
 
 
   return valor;
