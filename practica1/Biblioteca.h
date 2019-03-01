@@ -38,7 +38,20 @@ Recibe la cadena postfija y devuelve el valor de
 la evaluación.
 Primero pide los valores de las literales por medio de Obtener_Valores.
 */
-int Evaluar_Expresion(char *cad_posfija);
+float Evaluar_Expresion(char *cad_posfija);
+
+/*
+Recibe los dos valores desempilados a operador,
+y su respectivo operador, para devolver su valor
+y regresarlo a la pila posteriorente en Evaluar_Expresion.
+*/
+float Evaluar_SubExpresiones(float valor1, char operador, float valor2);
+
+/*
+Devuelve la potencia; se usa para cuando existe
+el operador ^
+*/
+float Potencia(float base, float exponente);
 
 /*
 Se ayuda de No_Repite, para pedir los valores de la literales una sola vez.
