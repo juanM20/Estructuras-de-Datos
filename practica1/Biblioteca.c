@@ -234,14 +234,11 @@ float Evaluar_Expresion(char *cad_posfija)
   else
   {
     Obtener_Valores(cad_posfija, &diccionario[0],&indice_dic);
-
-    int i=0;
-    while(i < indice_dic+1)
+  /*  while(i < indice_dic+1)
     {
-        //printf("\n%c = %f", diccionario[i].c,diccionario[i].valor);
-
+        printf("\n%c = %f", diccionario[i].c,diccionario[i].valor);
         i++;
-    }
+    }*/
 
     while(cad_posfija[i] != '\0')
     {
@@ -253,7 +250,8 @@ float Evaluar_Expresion(char *cad_posfija)
         {
           if(diccionario[i].c==elm.c)
             elm_valorDeLetra.valor= diccionario[i].valor;
-            Push(&eval_pila_postfija, elm_valorDeLetra);
+            //Push(&eval_pila_postfija, elm_valorDeLetra);
+            printf("%c\n", elm_valorDeLetra.c);
         }
       }
       else
