@@ -1,5 +1,5 @@
 /*
-Forma de ejecución: gcc main.c TADPila(Est)(Din).c Biblioteca.c
+Forma de ejecución: gcc main.c TADPila(Est)(Din).c Biblioteca.c -o archivo_ejecutable
 */
 
 #include <stdio.h>
@@ -8,7 +8,7 @@ Forma de ejecución: gcc main.c TADPila(Est)(Din).c Biblioteca.c
 int main()
 {
   int opc,resp;
-  char cad[TAM]; //por sí solo ya es apuntador
+  char cad[TAM];
   char cad_posfija[100];
   boolean v=FALSE;
 
@@ -46,11 +46,7 @@ int main()
               Evaluar_Expresion(&cad_posfija[0]);
               break;
     }
-
-    /*printf("\nQuieres continuar: Si=1 No=0");
-    scanf("%d",&resp);*/
-
   } while (opc<5);
 
-  return 0;
+    return 0;
 }

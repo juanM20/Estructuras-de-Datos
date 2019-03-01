@@ -58,10 +58,10 @@ boolean Validar_Parentesis(char *cad)
 
 void Corregir_Expresion(char *cad)
 {
+  //Vaciar_Arreglos(&cad[0], &cad_posfija[0], &literalesDeExpresion[0], &valoresDeLiterales, &auxiliarAntiRepeticion[0]);
   printf("\n\nEscriba la nueva expresión:\n");
   scanf("%s", cad);
   //printf("%s\n", cad);
-
   return;
 }
 
@@ -177,14 +177,25 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 int Evaluar_Expresion(char *cad_posfija)
 {
   int valor;
+<<<<<<< HEAD
   elemento diccionario[TAM];
 
   Obtener_Valores(cad_posfija, &diccionario[0]);
+=======
+  if(strlen(cad_posfija)==0)
+    printf("\n\nParece que no has convertido a posfijo...");
+  else
+    Obtener_Valores(cad_posfija);
+>>>>>>> c6ff9a7feb4c234948e5b26680bf9b62328abcc7
 
   return valor;
 }
 
+<<<<<<< HEAD
 void Obtener_Valores(char *cad, elemento *diccionario)
+=======
+void Obtener_Valores(char *cad_posfija)
+>>>>>>> c6ff9a7feb4c234948e5b26680bf9b62328abcc7
 {
   int i, i_aux=0;
 
@@ -199,11 +210,11 @@ void Obtener_Valores(char *cad, elemento *diccionario)
   //char auxiliarAntiRepeticion[TAM_CADENA_LITERALES]="";
 
   //Obtener las literales de la expresion
-  for(i=0; i<strlen(cad); i++)
+  for(i=0; i<strlen(cad_posfija); i++)
   {
-    if(cad[i]>=LIM_INFERIOR && cad[i]<=LIM_SUPERIOR)
+    if(cad_posfija[i]>=LIM_INFERIOR && cad_posfija[i]<=LIM_SUPERIOR)
     {
-      literalesDeExpresion[i_aux]=cad[i];
+      literalesDeExpresion[i_aux]=cad_posfija[i];
       i_aux++;
     }
   }
@@ -268,3 +279,23 @@ void No_Repite(char *cadena,int tam,elemento *diccionario)
 
   return;
 }
+/*
+void Vaciar_Arreglos(char *cad, char *cad_posfija, char *literalesDeExpresion, int *valoresDeLiterales, char *auxiliarAntiRepeticion)
+{
+  int i;
+  for(i=0; strlen(cad); i++)
+    cad[i]="";
+
+  for(i=0; strlen(cad_posfija); i++)
+    cad_posfija[i]="";
+
+  for(i=0; strlen(literalesDeExpresion); i++)
+    literalesDeExpresion[i]="";
+
+  for(i=0; sizeof(*valoresDeLiterales); i++)
+    valoresDeLiterales[i]=NULL;
+
+  for(i=0; strlen(auxiliarAntiRepeticion); i++)
+    auxiliarAntiRepeticion[i]="";
+}
+*/
