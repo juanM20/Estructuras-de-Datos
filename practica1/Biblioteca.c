@@ -216,7 +216,7 @@ float Evaluar_Expresion(char *cad_posfija)
   float valor;
 
   elemento diccionario[TAM];
-  int i=0, indice_dic=0;
+  int i=0, indice_dic=0, indice_cond=0;
   elemento elm, aux_elmL1, aux_elmL2; //char
   elemento elm_valorDeLetra; //float
   pila eval_pila_postfija;
@@ -245,15 +245,18 @@ float Evaluar_Expresion(char *cad_posfija)
       elm.c= cad_posfija[i];
       if(elm.c!='+' && elm.c!='-' && elm.c!='*' && elm.c!='/' && elm.c!='^')
       {
+        printf("No es operador");
         //Busqueda en el diccionario
+        /*i=0;
         while(i < indice_dic+1)
         {
           if(diccionario[i].c==elm.c)
             elm_valorDeLetra.valor= diccionario[i].valor;
-            //Push(&eval_pila_postfija, elm_valorDeLetra);
-            printf("%c\n", elm_valorDeLetra.c);
-        }
-      }
+            Push(&eval_pila_postfija, elm_valorDeLetra);
+            printf("%f\n", diccionario[i].valor);
+            printf("%ld\n", sizeof(diccionario));
+        }*/
+      }/*
       else
       {
         operador= elm.c;
@@ -276,15 +279,132 @@ float Evaluar_Expresion(char *cad_posfija)
         if(Empty(&eval_pila_postfija))
           valor= elm_valorDeLetra.valor;
         else
-          Push( &eval_pila_postfija,  elm_valorDeLetra);
+          Push( &eval_pila_postfija,  elm_valorDeLetra);*/
       }
+      i++;
     }////////////////
+
+  return 0;//valor;
+}
+
+
+
+/*
+float Evaluar_Expresion(char *cad_posfija)
+{
+  float valor=0;
+  int indice_d=-1, indice_aux=-1;
+  elemento diccionario[TAM];
+  char arreglo_auxiliar[TAM];
+  boolean repeticion = FALSE;
+  pila p;
+  elemento e;
+  float operador1,operador2;
+
+  int i=0;
+  while(cad_posfija[i] != '\0')
+  {
+    if(cad_posfija[i]>=LIM_INFERIOR && cad_posfija[i] <= LIM_SUPERIOR)
+    {
+      if(indice_aux == -1)
+      {
+        indice_aux++;
+        arreglo_auxiliar[indice_aux] = cad_posfija[i];
+
+        indice_d++;
+        diccionario[indice_d].c = cad_posfija[i];
+      }
+      else
+      {
+
+        int j=0;
+        while(arreglo_auxiliar[j] != '\0')
+        {
+          if(cad_posfija[i] == arreglo_auxiliar[j])
+          {
+            repeticion = TRUE;
+            break;
+          }
+        }
+
+        if(repeticion == FALSE)
+        {
+          indice_d++;
+          diccionario[indice_d].c = cad_posfija[i];
+
+          indice_aux++;
+          arreglo_auxiliar[indice_aux] = cad_posfija[i];
+        }
+
+      }
+    }
+    else
+    {
+      indice_d++;
+      diccionario[indice_d].c = cad_posfija[i];
+    }
   }
 
+  for(int i=0; i<indice_d+1; i++)
+  {
+    if(cad_posfija[i]>=LIM_INFERIOR && cad_posfija[i]<=LIM_SUPERIOR)
+    {
+      printf("\nValor de %c:", diccionario[i].c);
+      scanf("%f", &diccionario[i].valor);
+    }
+  }
 
+  i=0;
+  while(i < indice_d)
+  {
+    if(diccionario[i].c>=LIM_INFERIOR && diccionario[i].c<=LIM_SUPERIOR)
+    {
+      Push(&p,e);
+    }
+    else if(diccionario[i].c == '+')
+    {
+      operador2 = Pop(&p).valor;
+      operador1 = Pop(&p).valor;
+      e.valor = operador1 + operador2;
+      Push(&p,e);
+    }
+    else if(diccionario[i].c == '-')
+    {
+      operador2 = Pop(&p).valor;
+      operador1 = Pop(&p).valor;
+      e.valor = operador1 - operador2;
+      Push(&p,e);
+    }
+    else if(diccionario[i].c == '*')
+    {
+      operador2 = Pop(&p).valor;
+      operador1 = Pop(&p).valor;
+      e.valor = operador1 * operador2;
+      Push(&p,e);
+    }
+    else if(diccionario[i].c == '/')
+    {
+      operador2 = Pop(&p).valor;
+      operador1 = Pop(&p).valor;
+      e.valor = operador1 / operador2;
+      Push(&p,e);
+    }
+    else if(diccionario[i].c == '^')
+    {
+      operador2 = Pop(&p).valor;
+      operador1 = Pop(&p).valor;
+      e.valor = operador1 / operador2;
+      Push(&p,e);
+    }
+
+    i++;
+  }
+
+  valor = Pop(&p).valor;
 
   return valor;
 }
+*/
 
 void Obtener_Valores(char *cad_posfija, elemento *diccionario, int *indice_dic)
 {
