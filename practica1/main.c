@@ -45,10 +45,6 @@ int main()
       case 4:
               Evaluar_Expresion(&cad_posfija[0]);
               break;
-    }
-
-    /*printf("\nQuieres continuar: Si=1 No=0");
-    scanf("%d",&resp);*/
 
   } while (opc<5);
 
