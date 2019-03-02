@@ -43,7 +43,7 @@ int main()
               break;
 
       case 4:
-              Evaluar_Expresion(&cad_posfija[0]);
+              printf("\nResultado: %f\n", Evaluar_Expresion(&cad_posfija[0]) );
               break;
     }
   } while (opc<5);

@@ -36,7 +36,7 @@ boolean Validar_Parentesis(char *cad)
       if(Empty(&pila_parentesis))
       {
         validado=FALSE;
-        goto regresar; //puesto para poder salir del if, y tome el valor TRUE al seguri a la condición final
+        goto regresar; //puesto para poder salir del if, y tome el valor TRUE al seguir a la condición final
       }
       else
       {
@@ -216,75 +216,64 @@ float Evaluar_Expresion(char *cad_posfija)
   float valor;
 
   elemento diccionario[TAM];
-  int i=0, indice_dic=0, indice_cond=0;
+  int i, indice_dic=0, indice_cond=0, tam_cadPos=0;
   elemento elm, aux_elmL1, aux_elmL2; //char
   elemento elm_valorDeLetra; //float
   pila eval_pila_postfija;
 
-  char valoresAOperar[2];
+  float valoresAOperar[2];
   char operador;
 
-  float valorPrimeraLetra;
-  float valorSegundaLetra;
 
   Initialize(&eval_pila_postfija);
-
-  if(strlen(cad_posfija)==0)
+  tam_cadPos= strlen(cad_posfija);
+  if(tam_cadPos==0)
     printf("\n\nParece que no has convertido a posfijo...");
   else
   {
     Obtener_Valores(cad_posfija, &diccionario[0],&indice_dic);
-  /*  while(i < indice_dic+1)
+    for(i=0; i<tam_cadPos; i++)
     {
-        printf("\n%c = %f", diccionario[i].c,diccionario[i].valor);
-        i++;
-    }*/
-
-    while(cad_posfija[i] != '\0')
-    {
-      elm.c= cad_posfija[i];
-      if(elm.c!='+' && elm.c!='-' && elm.c!='*' && elm.c!='/' && elm.c!='^')
+      if(cad_posfija[i]!='+' && cad_posfija[i]!='-' && cad_posfija[i]!='*' && cad_posfija[i]!='/' && cad_posfija[i]!='^')
       {
-        printf("No es operador");
-        //Busqueda en el diccionario
-        /*i=0;
-        while(i < indice_dic+1)
+        if(cad_posfija[i]==diccionario[i].c)
         {
-          if(diccionario[i].c==elm.c)
-            elm_valorDeLetra.valor= diccionario[i].valor;
-            Push(&eval_pila_postfija, elm_valorDeLetra);
-            printf("%f\n", diccionario[i].valor);
-            printf("%ld\n", sizeof(diccionario));
-        }*/
-      }/*
+          elm.c= cad_posfija[i];
+          elm.valor= diccionario[i].valor;
+          printf("La letra: %c\t", elm.c);
+          Push(&eval_pila_postfija, elm);
+
+          printf("%c= %f\n", diccionario[i].c, diccionario[i].valor);
+          elemento cosa= Top(&eval_pila_postfija);
+          printf("%c\n", cosa.c);
+        }
+      }
       else
       {
-        operador= elm.c;
+        operador= cad_posfija[i];
+        printf("\n%c", operador);
         aux_elmL1= Pop(&eval_pila_postfija);
-        valoresAOperar[1]= aux_elmL1.c;
+        printf("\n%f", aux_elmL1.valor);
+        valoresAOperar[1]= aux_elmL1.valor;
         aux_elmL2= Pop(&eval_pila_postfija);
-        valoresAOperar[0]= aux_elmL2.c;
+        printf("\n%f", aux_elmL2.valor);
+        valoresAOperar[0]= aux_elmL2.valor;
+        printf("\n-------------------\n");
 
-        //Busqueda en el diccionario
-        while(i < indice_dic+1)
-        {
-          if(diccionario[i].c==valoresAOperar[0])
-            valorPrimeraLetra= diccionario[i].valor;
+        elm_valorDeLetra.valor= Evaluar_SubExpresiones(valoresAOperar[0], operador, valoresAOperar[1]);
 
-          if(diccionario[i].c==valoresAOperar[1])
-            valorSegundaLetra= diccionario[i].valor;
-        }
-
-        elm_valorDeLetra.valor= Evaluar_SubExpresiones(valorPrimeraLetra, operador, valorSegundaLetra);
         if(Empty(&eval_pila_postfija))
           valor= elm_valorDeLetra.valor;
         else
-          Push( &eval_pila_postfija,  elm_valorDeLetra);*/
-      }
-      i++;
-    }////////////////
+          Push( &eval_pila_postfija,  elm_valorDeLetra);
 
-  return 0;//valor;
+      }
+      //i++;
+    }
+
+  }////////////////
+
+  return valor;//valor;
 }
 
 
@@ -408,7 +397,7 @@ float Evaluar_Expresion(char *cad_posfija)
 
 void Obtener_Valores(char *cad_posfija, elemento *diccionario, int *indice_dic)
 {
-  int i, i_aux=0;
+  int i, i_aux=0, j=0;;
 
   /*
   Los siguientes 3 arreglos guardan las letras, sus valores, y sus no repeticiones respectivamente,
@@ -432,10 +421,9 @@ void Obtener_Valores(char *cad_posfija, elemento *diccionario, int *indice_dic)
   No_Repite(&literalesDeExpresion[0], strlen(literalesDeExpresion), &diccionario[0], indice_dic);
 
   //pedir al ususario el valor de dichas literales
-  int j=0;
   while(j < *indice_dic+1)
   {
-    printf("\nValor de %c:", diccionario[j].c);
+    printf("\nValor de %c: ", diccionario[j].c);
     scanf("%f",&diccionario[j].valor);
     j++;
   }
