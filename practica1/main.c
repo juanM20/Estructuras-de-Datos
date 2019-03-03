@@ -23,45 +23,49 @@ int main()
     printf("\nSelecciona opcion\n");
     scanf("%d", &opc);
 
-if(opc>0 && opc<5) //LIMITA EL INGRESO
-    switch(opc)
+    if(opc>0 && opc<5)//LIMITA EL INGRESO
     {
-      case 1:
-             system("cls");
-                Menu();
-              Corregir_Expresion(cad);
-              break;
-      case 2:
-              v = Validar_Parentesis(cad);
-              if(v){
-              	 system("cls");
-              	     Menu();
-              	  printf("\nParentesis validos, continua...\n");
-			  }
-
-              else
-              {
-			    system("cls");
-			        Menu();
-                printf("\nParentesis invalidos, corrigelo...\n");
+      switch(opc)
+      {
+        case 1:
+               system("cls");
+                  Menu();
                 Corregir_Expresion(cad);
-              }
-              break;
+                break;
+        case 2:
+                v = Validar_Parentesis(cad);
+                if(v)
+                {
+                	 system("cls");
+                	     Menu();
+                	  printf("\nParentesis validos, continua...\n");
+    		        }
 
-      case 3:
-      	       system("cls");
-      	       Menu();
-              Pasar_Posfijo(cad, v, cad_posfija);
+                else
+                {
+    		        system("cls");
+    		        Menu();
+                  printf("\nParentesis invalidos, corrigelo...\n");
+                  Corregir_Expresion(cad);
+                }
+                break;
 
-              break;
+        case 3:
+        	       system("cls");
+        	       Menu();
+                Pasar_Posfijo(cad, v, cad_posfija);
 
-      case 4:
-      	       system("cls");
-      	       Menu();
-      	        Obtener_Valores(cad,valoresDeLiterales,auxiliarAntiRepeticion);
-                Evaluar_Expresion(cad_posfija,valoresDeLiterales);
-              break;
-    }else
+                break;
+
+        case 4:
+        	       system("cls");
+        	       Menu();
+        	        Obtener_Valores(cad,valoresDeLiterales,auxiliarAntiRepeticion);
+                  Evaluar_Expresion(cad_posfija,valoresDeLiterales);
+                break;
+      }
+    }
+    else
       printf("Ingrese del 1-5\n");
   } while (opc<5);
 
