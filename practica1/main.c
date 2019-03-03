@@ -1,56 +1,69 @@
 /*
-Forma de ejecución: gcc main.c TADPila(Est)(Din).c Biblioteca.c
+Forma de ejecuciÃ³n: gcc main.c TADPila(Est)(Din).c Biblioteca.c -o archivo_ejecutable
 */
-//wgfdhedwjhed
+//CAMBIOS Eugenio
 #include <stdio.h>
 #include "Biblioteca.h"
 
 int main()
 {
-  int opc,resp;
-  char cad[TAM]; 
-  char cad_posfija[100];
+  int opc;                     //opcion del menu
+  char cad[TAM];               // guarda la expresion
+  char cad_posfija[TAM];       // guarda la expresion postfija
   boolean v=FALSE;
+  float valoresDeLiterales[90];
+  char auxiliarAntiRepeticion[90]="";
 
-  printf("BIENVENIDO...\nPráctica sobre el TAD Pila.\nEl programa recibe una expresión en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluación.\n");
-  printf("\nEscribe una expresión:\n");
-  scanf("%s",cad);
-
+  printf("BIENVENIDO...\nPrÃ¡ctica sobre el TAD Pila.\nEl programa recibe una expresiÃ³n en literales, y los valores de las mismas,\nfinalmente se obtiene el valor de la evaluaciÃ³n.\n");
+   Corregir_Expresion(cad);
+   Menu();
   do
   {
     printf("\nExpresion: %s",cad);
-    Menu();
+    printf("\nSelecciona opcion\n");
     scanf("%d", &opc);
+
+if(opc>0 && opc<5) //LIMITA EL INGRESO
     switch(opc)
     {
       case 1:
-              Corregir_Expresion(&cad[0]);
+             system("cls");
+                Menu();
+              Corregir_Expresion(cad);
               break;
       case 2:
-              v = Validar_Parentesis(&cad[0]);
-              if(v)
-                printf("\nParentesis válidos, continúa...\n");
+              v = Validar_Parentesis(cad);
+              if(v){
+              	 system("cls");
+              	     Menu();
+              	  printf("\nParentesis validos, continua...\n");
+			  }
+
               else
               {
-                printf("\nParentesis inválidos, corrígelo...\n");
-                Corregir_Expresion(&cad[0]);
+			    system("cls");
+			        Menu();
+                printf("\nParentesis invalidos, corrigelo...\n");
+                Corregir_Expresion(cad);
               }
               break;
 
       case 3:
-              Pasar_Posfijo(&cad[0], v, &cad_posfija[0]);
-              printf("\nExpresion en posfijo: %s",cad_posfija);
+      	       system("cls");
+      	       Menu();
+              Pasar_Posfijo(cad, v, cad_posfija);
+
               break;
 
       case 4:
-              Evaluar_Expresion(&cad_posfija[0]);
+      	       system("cls");
+      	       Menu();
+      	        Obtener_Valores(cad,valoresDeLiterales,auxiliarAntiRepeticion);
+                Evaluar_Expresion(cad_posfija,valoresDeLiterales);
               break;
-    }
-
-    /*printf("\nQuieres continuar: Si=1 No=0");
-    scanf("%d",&resp);*/
-
+    }else
+      printf("Ingrese del 1-5\n");
   } while (opc<5);
 
-  return 0;
+    return 0;
 }

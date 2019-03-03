@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "TADPilaEst.c"
+#include "TADPilaEst.h"
 #define TRUE 1
 
 void Pasar_Posfijo(char *cad, char *cad_posfija)
