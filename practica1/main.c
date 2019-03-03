@@ -1,7 +1,7 @@
 /*
 Forma de ejecuciÃ³n: gcc main.c TADPila(Est)(Din).c Biblioteca.c -o archivo_ejecutable
 */
-//CAMBIOS Eugenio
+//CAMBIOS EugenioJSS
 #include <stdio.h>
 #include "Biblioteca.h"
 
