@@ -8,7 +8,7 @@ Forma de ejecución: gcc main.c TADPila(Est)(Din).c Biblioteca.c -o archivo_ejec
 int main()
 {
   int opc,resp;
-  char cad[TAM];
+  char cad[TAM]; //estas aquí??
   char cad_posfija[100];
   boolean v=FALSE;
 
