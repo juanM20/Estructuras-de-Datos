@@ -5,10 +5,7 @@ Forma de ejecuciÃ³n: gcc main.c TADPila(Est)(Din).c Biblioteca.c -o archivo_ej
 #include <stdio.h>
 #include "Biblioteca.h"
 #include <stdlib.h>
-#include<math.h>
-#include <stdio.h>
-#include <string.h>
-#include "Biblioteca.h"
+
 
 int main()
 {
