@@ -7,6 +7,7 @@
 
 void Menu()
 {
+
   printf("\n1.Corregir expresion");
   printf("\n2.Validar Parentesis.");
   printf("\n3.Pasar a Posfija.");
@@ -117,9 +118,8 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
   pila pila_posfija;      // Guarda cadena
   elemento e;            //Caracter actual
   elemento aux_e;        //
-  int i=0;               //CEl
+  int i=0;
   int aux=-1;
-
   Initialize(&pila_posfija);
   printf("\n");
   if(!v) {
@@ -148,7 +148,7 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
         	*/
         	{
 
-            	aux++;
+            	++aux;
             	cad_posfija[aux] = Pop(&pila_posfija).c;
             	Push(&pila_posfija,e);
         	}
@@ -162,7 +162,7 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 
             	if(aux_e.c != '(') //si el ultimo elemento no es igual "("  guarda en la cadena_posfija
 				{
-             	 aux++;
+             	 ++aux;
               	cad_posfija[aux] = aux_e.c;
             	}
           	}
@@ -202,7 +202,7 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
           {
             aux_e = Pop(&pila_posfija);
             if(aux_e.c != '('){
-              aux++;
+              ++aux;
               cad_posfija[aux] = aux_e.c;
             }
           }
@@ -225,7 +225,7 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
           aux_e = Pop(&pila_posfija);// saca de la pila y guarda el tope
 
 		  if(aux_e.c != '('){ //si el ultimo elemento no es igual "("  guarda en la cadena_posfija
-            aux++;
+            ++aux;
             cad_posfija[aux] = aux_e.c;
           }else
             break;
@@ -249,13 +249,12 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
     {
       aux_e = Pop(&pila_posfija);
       if(aux_e.c != '('){
-        aux++;
+        ++aux;
         cad_posfija[aux] = aux_e.c;
       }
     }
 
     printf("Expresion postfija: %s",cad_posfija);
-
   }
 
 
@@ -417,7 +416,6 @@ printf("Pasos:\n");
 
 	    default:
 	        sprintf(float_cad,"%.1f",valoresDeLiterales[cad_posfija[i]]);
-			printf("nrl %s\n",cadena_num);
 	    	numero_conv.valor=valoresDeLiterales[cad_posfija[i]];
 	    	Push(&resultado,numero_conv);
 	    break;
