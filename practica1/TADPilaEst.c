@@ -1,3 +1,25 @@
+/*
+IMPLEMENTACIÃ“N DE LA LIBRERIA DEL TAD PILA ESTÃTICA (TADPilaEst.h)
+AUTORES: //orden alfabÃ©tico
+BenÃ­tez Morales Manuel Emilio
+
+Febrero 2019
+VERSIÃ“N: 1.0
+
+DESCRIPCIÃ“N: TAD pila o stack.
+Estructura de datos que cumple:
+Los elementos se aÃ±aden y se remueven por un solo extremo.
+Este extremo es llamado â€œtopeâ€ de la pila.
+
+OBSERVACIONES: Estructura de datos estÃ¡tica, ya que se
+asigna una cantidad fija de memoria para dicha estructura,
+antes de la ejecuciÃ³n del programa.
+
+COMPILACIÃ“N PARA GENERAR EL CÃ“DIGO OBJETO: gcc TADPilaEst.c -c
+*/
+
+//LIBRERAS
+#include<stdio.h>
 #include<stdlib.h>
 #include "TADPilaEst.h"
 

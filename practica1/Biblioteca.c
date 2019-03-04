@@ -4,7 +4,7 @@
 #include<math.h>
 #include "Biblioteca.h"
 
-//CAMBIOS EUGENIO JEuuy
+
 void Menu()
 {
   printf("\n1.Corregir expresion");
