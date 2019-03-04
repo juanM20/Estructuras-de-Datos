@@ -30,21 +30,21 @@ if(opc>0 && opc<5) //LIMITA EL INGRESO
     switch(opc)
     {
       case 1:
-             //system("cls");
+             system("cls");
                 Menu();
               Corregir_Expresion(cad);
               break;
       case 2:
               v = Validar_Parentesis(cad);
               if(v){
-              	 //system("cls");
+              	 system("cls");
               	     Menu();
               	  printf("\nParentesis validos, continua...\n");
 			  }
 
               else
               {
-			        //system("cls");
+			      system("cls");
 			        Menu();
                 printf("\nParentesis invalidos, corrigelo...\n");
                 Corregir_Expresion(cad);
@@ -52,7 +52,7 @@ if(opc>0 && opc<5) //LIMITA EL INGRESO
               break;
 
       case 3:
-      	       //system("cls");
+      	       system("cls");
 
 			  Menu();
 			   for(j=0;j<TAM;++j)//ESTO CAUSABA EL ERROR DE LIMPIEZA DE LA CADENA POSTFIJA
@@ -75,7 +75,7 @@ if(opc>0 && opc<5) //LIMITA EL INGRESO
                 printf("No ha pasado por la postfija");
 
 			   }else{
-			   	    //system("cls");
+			   	    system("cls");
 			   	    printf("\nParece que no has validado tu expresion...");
 			   	    Menu();
 			   }
