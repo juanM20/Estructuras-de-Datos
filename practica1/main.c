@@ -4,6 +4,8 @@ Forma de ejecuciÃ³n: gcc main.c TADPila(Est)(Din).c Biblioteca.c -o archivo_ej
 //EUGENIO CAMBIOS
 #include <stdio.h>
 #include "Biblioteca.h"
+#include <stdlib.h>
+
 
 int main()
 {
