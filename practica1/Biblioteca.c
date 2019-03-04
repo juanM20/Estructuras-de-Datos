@@ -286,7 +286,7 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 
 
   Destroy(&pila_posfija);
-  return;
+  return TRUE;
 }
 
 
