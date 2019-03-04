@@ -11,7 +11,7 @@ int main()
   int opc;                     //opcion del menu
   char cad[TAM];               // guarda la expresion
   char cad_posfija[TAM]="";       // guarda la expresion postfija
-  boolean v=FALSE;
+  boolean v=FALSE,posv=FALSE;
   float valoresDeLiterales[90];
   char auxiliarAntiRepeticion[90]="";
 
@@ -55,15 +55,29 @@ if(opc>0 && opc<5) //LIMITA EL INGRESO
 			  Menu();
 			   for(j=0;j<TAM;++j)//ESTO CAUSABA EL ERROR DE LIMPIEZA DE LA CADENA POSTFIJA
 	            cad_posfija[j]=0;
-              Pasar_Posfijo(cad, v, cad_posfija);
+             posv= Pasar_Posfijo(cad, v, cad_posfija);
 
               break;
 
       case 4:
-      	       system("cls");
-      	       Menu();
-      	        Obtener_Valores(cad,valoresDeLiterales,auxiliarAntiRepeticion);
-                Evaluar_Expresion(cad_posfija,valoresDeLiterales);
+      	     if(v){
+
+				if(posv){
+					for(j=0;j<90;++j)//ESTO CAUSABA EL ERROR DE LIMPIEZA DE REPETICION DE ELEMENTOS
+	            	auxiliarAntiRepeticion[j]=0;
+      	        	Obtener_Valores(cad,valoresDeLiterales,auxiliarAntiRepeticion);
+      	        	printf("Cadena Postfija: %s\n",cad_posfija);
+					Evaluar_Expresion(cad_posfija,valoresDeLiterales);
+				}
+                else
+                printf("No ha pasado por la postfija");
+
+			   }else{
+			   	    system("cls");
+			   	    printf("\nParece que no has validado tu expresion...");
+			   	    Menu();
+			   }
+
               break;
     }else
       printf("Ingrese del 1-5\n");

@@ -1,3 +1,27 @@
+/*
+
+IMPLEMENTACION: Implemetación de la Biblioteca de funciones especificas
+AUTORES:
+Ayona Lopez Eugenio Milton
+BenÃ­tez Morales Manuel Emilio
+Juan Manuel Tellez "EL PANCHO"
+
+
+Febrero 2019
+VERSIÃ“N: 1.0
+
+DESCRIPCIÃ“N: Herramientas usadas en el programa.
+Lista de funciones:
+Cada una de las funciones que aquí se declaran, cumplen un objetivo
+especifico en la implemetnacion, para poder llevar a cabo operaciones
+separadas de manera correcta.
+
+OBSERVACIONES: Esta libreria utiliza a TADPila Est o Din, y es la presente,
+que se importa en el archivo principal.
+
+COMPILACIÃ“N PARA GENERAR EL CÃ“DIGO OBJETO: gcc Biblioteca.c -c
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -54,7 +78,7 @@ boolean Validar_Parentesis(char *cad)
       }
       else
       {
-        elm= Pop(&pila_parentesis);// ¿para que se guarda el elemento sacado?
+        Pop(&pila_parentesis);
 
       }
     }
@@ -67,7 +91,8 @@ boolean Validar_Parentesis(char *cad)
   else
     validado=FALSE;
 
-  //regresar: ¿porque la pusiste aqui?
+  //regresar: ¿porque la pusiste aqui?//jajajaa bambi XD  MIRA AQUI ERA EL ERROR, donde??
+
   return validado;
 }
 
@@ -113,7 +138,7 @@ void Corregir_Expresion(char *cad)
     principio
 */
 
-void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
+boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 {
   pila pila_posfija;      // Guarda cadena
   elemento e;            //Caracter actual
@@ -161,10 +186,11 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
             	aux_e = Pop(&pila_posfija); // saca de la pila y guarda el tope
 
             	if(aux_e.c != '(') //si el ultimo elemento no es igual "("  guarda en la cadena_posfija
-				{
+				     {
              	 ++aux;
               	cad_posfija[aux] = aux_e.c;
-            	}
+            	} else
+                break;
           	}
 
           	Push(&pila_posfija,e);    /*ya que se han sacado los elementos debajo del signo de mayor precedncia (pila vacia)
@@ -204,7 +230,8 @@ void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
             if(aux_e.c != '('){
               ++aux;
               cad_posfija[aux] = aux_e.c;
-            }
+            }else
+              break;
           }
           Push(&pila_posfija,e);
 
@@ -383,7 +410,7 @@ printf("Pasos:\n");
 			n1= Pop(&resultado).valor;
 			n2= Pop(&resultado).valor;
 			printf("%.2f - %.2f\n",n2,n1);
-			valorNP.valor= n1+n2;
+			valorNP.valor= n2-n1;
 			Push(&resultado,valorNP);
 		break;
 
@@ -408,14 +435,12 @@ printf("Pasos:\n");
 		case '^':
 		n1= Pop(&resultado).valor;
 		n2= Pop(&resultado).valor;
-			printf("%.2f ^ %.2f\n",n2,n1);
+		printf("%.2f ^ %.2f\n",n2,n1);
 		valorNP.valor= pow(n2,n1);
 		Push(&resultado,valorNP);
 		break;
 
-
 	    default:
-	        sprintf(float_cad,"%.1f",valoresDeLiterales[cad_posfija[i]]);
 	    	numero_conv.valor=valoresDeLiterales[cad_posfija[i]];
 	    	Push(&resultado,numero_conv);
 	    break;
@@ -423,9 +448,6 @@ printf("Pasos:\n");
 	}
 
    }
-
-  printf("%s\n",cadena_num);
   printf("\nResultado de la expresion %.2f\n",Top(&resultado).valor);
-
 
 }

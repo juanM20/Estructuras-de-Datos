@@ -1,3 +1,23 @@
+/*
+LIBRERIA: Cabecera de la Biblioteca de funciones específicas para la Practica
+AUTORES:
+Ayona Lopez Eugenio Milton
+BenÃ­tez Morales Manuel Emilio
+Juan Manuel ---
+
+Febrero 2019
+VERSIÃ“N: 1.0
+
+DESCRIPCIÃ“N: Herramientas usadas en el programa.
+Lista de funciones:
+Cada una de las funciones que aquí se declaran, cumplen un objetivo
+especifico en la implemetnacion, para poder llevar a cabo operaciones
+separadas de manera correcta.
+
+OBSERVACIONES: Esta libreria utiliza a TADPila Est o Din, y es la presente,
+que se importa en el archivo principal.
+*/
+
 #include "TADPilaEst.h"
 
 #define TAM 100
@@ -20,8 +40,8 @@ Correcion de la expresion ingresada:
 Recibe la cadena que acaba de entrar el usuario,
 no devuelve valor, pero modifica la cadena a una nueva que sea entrada.
 */
-void Corregir_Expresion(char *cad);
-
+void Corregir_Expresion(char *cad);   //simon, tú eres el que hace el push, yo sólo edito XD
+                                      //ve comentando el codigo y arreglandolo, ahorita que acabe el algoritmo, corregimos el error
 /*
 Convertir la Expresion de infija a posfija:
 Recibe...
@@ -31,7 +51,7 @@ Recibe...
  Devuelve...
  -Nada.
 */
-void Pasar_Posfijo(char *cad, boolean v, char *cad_posfija);
+boolean  Pasar_Posfijo(char *cad, boolean v, char *cad_posfija);
 
 /*
 Recibe la cadena postfija y devuelve el valor de
@@ -48,25 +68,6 @@ y regresarlo a la pila posteriorente en Evaluar_Expresion.
 
 void Obtener_Valores();
 
-//float Evaluar_SubExpresiones(float valor1, char operador, float valor2);
-
-/*
-Devuelve la potencia; se usa para cuando existe
-el operador ^
-*/
-//float Potencia(float base, float exponente);
-
-/*
-Se ayuda de No_Repite, para pedir los valores de la literales una sola vez.
-Recibe la cadena de Evaluar_Expresion, no devuelve valores.
-*/
-//void Obtener_Valores(char *cad_posfija, elemento *diccionario, int *indice_dic);
-
-/*
-primer argumeto es el arreglo de solo literales, el segundo el tamaÃ±o del
-arreglo literales y el tercero es en donde se guardar el arreglo sin repeticion,
-el arreglo sin repeticiones se modifica por referencia por lo tanto no nesecita enviar nada
-*/
 void No_Repite(char* cadena,int tam,char* resultado);
 
 /*
