@@ -27,21 +27,18 @@ if(opc>0 && opc<5) //LIMITA EL INGRESO
     switch(opc)
     {
       case 1:
-             system("cls");
                 Menu();
               Corregir_Expresion(cad);
               break;
       case 2:
               v = Validar_Parentesis(cad);
               if(v){
-              	 system("cls");
               	     Menu();
               	  printf("\nParentesis validos, continua...\n");
 			  }
 
               else
               {
-			    system("cls");
 			        Menu();
                 printf("\nParentesis invalidos, corrigelo...\n");
                 Corregir_Expresion(cad);
@@ -49,14 +46,12 @@ if(opc>0 && opc<5) //LIMITA EL INGRESO
               break;
 
       case 3:
-      	       system("cls");
       	       Menu();
               Pasar_Posfijo(cad, v, cad_posfija);
 
               break;
 
       case 4:
-      	       system("cls");
       	       Menu();
       	        Obtener_Valores(cad,valoresDeLiterales,auxiliarAntiRepeticion);
                 Evaluar_Expresion(cad_posfija,valoresDeLiterales);
