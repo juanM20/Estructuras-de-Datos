@@ -22,12 +22,6 @@ que se importa en el archivo principal.
 COMPILACIÃ“N PARA GENERAR EL CÃ“DIGO OBJETO: gcc Biblioteca.c -c
 */
 
-#include <stdio.h>
-#include <string.h>
-#include<math.h>
-#include "Biblioteca.h"
-
-
 void Menu()
 {
 
