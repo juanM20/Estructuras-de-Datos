@@ -4,7 +4,7 @@ IMPLEMENTACION: Implemetación de la Biblioteca de funciones especificas
 AUTORES:
 Ayona Lopez Eugenio Milton
 BenÃ­tez Morales Manuel Emilio
-Juan Manuel Tellez "EL PANCHO"
+Tellez Perez Juan Manuel
 
 
 Febrero 2019

@@ -4,7 +4,7 @@ LIBRERIA: Cabecera de la Biblioteca de funciones específicas para la Practica
 AUTORES:
 Ayona Lopez Eugenio Milton
 BenÃ­tez Morales Manuel Emilio
-Juan Manuel Tellez Perez
+Tellez Perez Juan Manuel
 
 Febrero 2019
 VERSIÃ“N: 1.0
