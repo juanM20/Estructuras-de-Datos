@@ -352,27 +352,36 @@ printf("\n");
 void No_Repite(char* cadena,int tam,char* resultado){
 	int j=0,k=0,inicio,i;
 
+//recorre la cadena con repeticiones hasta que llega la final
 	for(i=0;i<tam;++i){
+
+  //la primera letra la mmete al arreglo sin repeticiones directamente
 		if(i==0){
 
 			resultado[j]=cadena[i];
 		}else{
 
+      //recorre las letras del arreglo sin repeticion
 			for(inicio=0;inicio<=j;++inicio){
-
+        //si detecta caracter diferente a los de la cadena sin repeticion
 				if((cadena[i]!=resultado[inicio])){
 					++k;
 				}else {
-					k=0;
-				    break;
+					 k=0;
+				   break;
 				}
 			}
 
+    //como k solo aumenta cuando el caracter es diferente al que esta en la cadena sin repeticion
+    //
+
 			if(k==j+1){
 			  ++j;
-	          resultado[j]=cadena[i];
-	           k=0;
+	      resultado[j]=cadena[i];
+	       k=0;
 			}
+
+
 		}
 	}
 }
