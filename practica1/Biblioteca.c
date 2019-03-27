@@ -332,7 +332,8 @@ void Obtener_Valores(char* cad,float* valoresDeLiterales, char* auxiliarAntiRepe
 
    No_Repite(literalesDeExpresion,i_aux,auxiliarAntiRepeticion);
   //pedir al ususario el valor de dichas literales
-  //COMO EL ARREGLO GUAR DIRECTAMENTE EN LA POSICION QUE OCUPA EL CARACTER DEL CODIGO ASCII DEBEMOS LIMITAR A NUESTRO ARREGLO HASTA EL RANGO QUE QUEREMOS
+  //COMO EL ARREGLO GUAR DIRECTAMENTE EN LA POSICION QUE OCUPA EL
+  //CARACTER DEL CODIGO ASCII DEBEMOS LIMITAR A NUESTRO ARREGLO HASTA EL RANGO QUE QUEREMOS
   for(k=0; k<strlen(auxiliarAntiRepeticion); k++)
   {
     printf("Valor de %2c: ", auxiliarAntiRepeticion[k]);
