@@ -244,17 +244,20 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 
 	case '^':
 
-  if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '/' ||Top(&pila_posfija).c == '*')  //caso precedencia mayor al caracter actual
+  if(Empty(&pila_posfija))
+      {
+        Push(&pila_posfija,e);
+      }
+  else if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '/' ||Top(&pila_posfija).c == '*')  //caso precedencia mayor al caracter actual
  {
    Push(&pila_posfija,e);
  }else if(Top(&pila_posfija).c == '^'){ //MISMA PRECEDENCIA
-   ++aux;
+     ++aux;
     cad_posfija[aux] = Pop(&pila_posfija).c;
     Push(&pila_posfija,e);
  }  else if(Top(&pila_posfija).c == '(')
    {
-     Push(&pila_posfija,e);
-   }
+     Push(&pila_posfija,e);   }
 
 	break;
 
