@@ -374,7 +374,6 @@ void No_Repite(char* cadena,int tam,char* resultado){
 			resultado[j]=cadena[i]; // Si es el primer caracter que toca se incluye en el arreglo sin repeticion
 		}else{
 
-<<<<<<< HEAD
 
  //j es variable su maximo sera los elementos sin repeticion por ejemplo AABBCCC el max de j sera [0,2]
 			for(inicio=0;inicio<=j;++inicio){//Recorre el arreglo sin repeticiones
@@ -410,7 +409,6 @@ void No_Repite(char* cadena,int tam,char* resultado){
 			      ++j;
 	          resultado[j]=cadena[i];
 	           k=0;
-=======
       //recorre las letras del arreglo sin repeticion
 			for(inicio=0;inicio<=j;++inicio){
         //si detecta caracter diferente a los de la cadena sin repeticion
@@ -429,7 +427,6 @@ void No_Repite(char* cadena,int tam,char* resultado){
 			  ++j;
 	      resultado[j]=cadena[i];
 	       k=0;
->>>>>>> db1e8dfe82eec71e25abf3711765da7c04bd01b9
 			}
 
 
