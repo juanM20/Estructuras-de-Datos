@@ -4,7 +4,7 @@ IMPLEMENTACION: Implemetación de la Biblioteca de funciones especificas
 AUTORES:
 Ayona Lopez Eugenio Milton
 BenÃ­tez Morales Manuel Emilio
-Tellez Perez Juan Manuel
+Juan Manuel Tellez "EL PANCHO"
 
 
 Febrero 2019
@@ -243,7 +243,19 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 	break;
 
 	case '^':
-	 Push(&pila_posfija,e);
+
+  if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '/' ||Top(&pila_posfija).c == '*')  //caso precedencia mayor al caracter actual
+ {
+   Push(&pila_posfija,e);
+ }else if(Top(&pila_posfija).c == '^'){ //MISMA PRECEDENCIA
+   ++aux;
+    cad_posfija[aux] = Pop(&pila_posfija).c;
+    Push(&pila_posfija,e);
+ }  else if(Top(&pila_posfija).c == '(')
+   {
+     Push(&pila_posfija,e);
+   }
+
 	break;
 
 	case ')'://caso cuando detecta que termino un parentesis
@@ -320,7 +332,8 @@ void Obtener_Valores(char* cad,float* valoresDeLiterales, char* auxiliarAntiRepe
 
    No_Repite(literalesDeExpresion,i_aux,auxiliarAntiRepeticion);
   //pedir al ususario el valor de dichas literales
-  //COMO EL ARREGLO GUAR DIRECTAMENTE EN LA POSICION QUE OCUPA EL CARACTER DEL CODIGO ASCII DEBEMOS LIMITAR A NUESTRO ARREGLO HASTA EL RANGO QUE QUEREMOS
+  //COMO EL ARREGLO GUAR DIRECTAMENTE EN LA POSICION QUE OCUPA EL
+  //CARACTER DEL CODIGO ASCII DEBEMOS LIMITAR A NUESTRO ARREGLO HASTA EL RANGO QUE QUEREMOS
   for(k=0; k<strlen(auxiliarAntiRepeticion); k++)
   {
     printf("Valor de %2c: ", auxiliarAntiRepeticion[k]);
@@ -348,28 +361,52 @@ printf("\n");
 
 
 //funcion que evita la repeticion
-
+//ESPERO LE  ENTIENDAN AMIGOS
 void No_Repite(char* cadena,int tam,char* resultado){
-	int j=0,k=0,inicio,i;
-
-	for(i=0;i<tam;++i){
+	int j=0;
+  int k=0;
+  int inicio;
+  int i;
+//AAABAA
+	for(i=0;i<tam;++i){//Recorre el arreglo con repeticiones
 		if(i==0){
 
-			resultado[j]=cadena[i];
+			resultado[j]=cadena[i]; // Si es el primer caracter que toca se incluye en el arreglo sin repeticion
 		}else{
 
-			for(inicio=0;inicio<=j;++inicio){
 
-				if((cadena[i]!=resultado[inicio])){
-					++k;
+ //j es variable su maximo sera los elementos sin repeticion por ejemplo AABBCCC el max de j sera [0,2]
+			for(inicio=0;inicio<=j;++inicio){//Recorre el arreglo sin repeticiones
+
+				if((cadena[i]!=resultado[inicio])){ //Con base a la cadena con repeticiones y la cadena sin repeticiones
+                                            //verifica si dentro de la cadena que la cadena sin repeticiones
+                                            //no este el caracter actual de la cadena con repeticiones
+                                            // en sintesis si un elemento de cadena no es igual a un elemento de resultado
+                                            // no habre
+
+					++k;  // Cada vez que haya un elemento diferente que no este dentro de resultado aumenta k
+                //prueba todas las combinaciones que puede haber entre el arreglo cadena y resultado por ejemplo
+                // CAD: AABBC  RES: A
+
+                   /*CAD        RES
+                      A          A    NO PASA NADA  K=0 Y DETIENE INTERNO  1)
+                      A          A    1)
+                      B          A    ELEMENTO DIFERENTE AUMENTA LA POSICION GUARDA B EN RES: AB  J DE RESULTADO Y SITUA A K=0 2)
+                      B          A    COMO J AUMENTO ESPERA QUE SE PRUEBEN TODAS LAS COMBINACIONES DE RESULTADO
+                      B          B   1)
+                      C          A   2)
+                      C          B   2)
+                      C                 //SI PASA POR TODO EL ARREGLO resultado  SIGNIFICA QUE NO ENCONTRO ELEMENTO PARECIDO K= TAM(RESULTADO)
+
+                  */
 				}else {
-					k=0;
+					  k=0;    //cuando haya un elemento igual en los dos arreglos detiene el ciclo interno
 				    break;
 				}
 			}
 
-			if(k==j+1){
-			  ++j;
+			if(k==j+1){ // SOLO ABRE CUANDO PRUEBA TODO EL ARREGLO RESULTADO FUE PROBADO CUANDO NO ENCUENTRA NIGUNA CONCIDENIA
+			      ++j;
 	          resultado[j]=cadena[i];
 	           k=0;
 			}
