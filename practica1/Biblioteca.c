@@ -181,19 +181,22 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
         	/*Si el tope de la pila tiene mayor precedencia que el caracter actual
 			*/
 			{
-         	 while(!Empty(&pila_posfija))//Mientras la pila no este vacia saca elemetos  de la pila
-          	{
-            	aux_e = Pop(&pila_posfija); // saca de la pila y guarda el tope
+        //!Empty(&pila_posfija) @EUGENI0
+      while(Top(&pila_posfija).c != '(' )
+      {
 
-            	if(aux_e.c != '(') //si el ultimo elemento no es igual "("  guarda en la cadena_posfija
-				     {
-             	 ++aux;
-              	cad_posfija[aux] = aux_e.c;
-            	} else
-                break;
-          	}
-          	Push(&pila_posfija,e);    /*ya que se han sacado los elementos debajo del signo de mayor precedncia (pila vacia)
-          	   						   se  coloca el caracter actual de la cadena en la pila*/
+     // if(Top(&pila_posfija).c == '^' || Top(&pila_posfija).c == '+'||Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '*'||Top(&pila_posfija).c == '/')	//@eugenio solucion
+        aux_e = Pop(&pila_posfija);
+
+       // if(aux_e.c != '('){
+          ++aux;
+          cad_posfija[aux] = aux_e.c;
+       // }
+
+  //else
+         // break;
+      }
+      Push(&pila_posfija,e);
         }
         else if(Top(&pila_posfija).c == '('){  // si  la cadena actual comienza con "(" guarda directamente
           Push(&pila_posfija,e);
@@ -223,16 +226,22 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
         }
         else if(Top(&pila_posfija).c == '^')  //caso de precedencia menor al caracter actual
         {
-          while(!Empty(&pila_posfija))
-          {
-            aux_e = Pop(&pila_posfija);
-            if(aux_e.c != '('){
-              ++aux;
-              cad_posfija[aux] = aux_e.c;
-            }else
-              break;
-          }
-          Push(&pila_posfija,e);
+          //!Empty(&pila_posfija) @EUGENI0
+        while(Top(&pila_posfija).c != '(' )
+        {
+
+       // if(Top(&pila_posfija).c == '^' || Top(&pila_posfija).c == '+'||Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '*'||Top(&pila_posfija).c == '/')	//@eugenio solucion
+          aux_e = Pop(&pila_posfija);
+
+         // if(aux_e.c != '('){
+            ++aux;
+            cad_posfija[aux] = aux_e.c;
+         // }
+
+    //else
+           // break;
+        }
+        Push(&pila_posfija,e);
 
         }
         else if(Top(&pila_posfija).c == '(')
@@ -264,17 +273,19 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 	break;
 
 	case ')'://caso cuando detecta que termino un parentesis
-    if(cad[i+1])
-	  while(Empty(&pila_posfija)==FALSE) //Mientras la pila no este vacia saca elemetos  de la pila  NO ES TRUE !NO FUNCIONA
-        {
-          aux_e = Pop(&pila_posfija);// saca de la pila y guarda el tope
+  while(Empty(&pila_posfija)) //Mientras la pila no este vacia saca elemetos  de la pila  NO ES TRUE !NO FUNCIONA
+       printf("Solucion poner un esto");
 
-		  if(aux_e.c != '('){ //si el ultimo elemento no es igual "("  guarda en la cadena_posfija
-            ++aux;
-            cad_posfija[aux] = aux_e.c;
-          }else
-            break;
-        }
+  {
+        aux_e = Pop(&pila_posfija);// saca de la pila y guarda el tope
+
+    if(aux_e.c != '('){ //si el ultimo elemento no es igual "("  guarda en la cadena_posfija
+          ++aux;
+          cad_posfija[aux] = aux_e.c;
+        }else
+          break;
+
+}
 	break;
 
 		case '(':   // Si detecta un parentesis "(" añade directamente a la pila
