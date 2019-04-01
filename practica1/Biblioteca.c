@@ -192,7 +192,6 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
             	} else
                 break;
           	}
-
           	Push(&pila_posfija,e);    /*ya que se han sacado los elementos debajo del signo de mayor precedncia (pila vacia)
           	   						   se  coloca el caracter actual de la cadena en la pila*/
         }
@@ -247,21 +246,25 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
   if(Empty(&pila_posfija))
       {
         Push(&pila_posfija,e);
-      }
-  else if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '/' ||Top(&pila_posfija).c == '*')  //caso precedencia mayor al caracter actual
+      }else if(Top(&pila_posfija).c == '^')
+      { //MISMA PRECEDENCIA
+      ++aux;
+     cad_posfija[aux] = Pop(&pila_posfija).c;
+     Push(&pila_posfija,e);
+  } else  if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '/' ||Top(&pila_posfija).c == '*')  //caso precedencia mayor al caracter actual
  {
    Push(&pila_posfija,e);
- }else if(Top(&pila_posfija).c == '^'){ //MISMA PRECEDENCIA
-     ++aux;
-    cad_posfija[aux] = Pop(&pila_posfija).c;
-    Push(&pila_posfija,e);
- }  else if(Top(&pila_posfija).c == '(')
+ }else if(Top(&pila_posfija).c == '(')
    {
-     Push(&pila_posfija,e);   }
+     Push(&pila_posfija,e);
+   }
+
+
 
 	break;
 
 	case ')'://caso cuando detecta que termino un parentesis
+    if(cad[i+1])
 	  while(Empty(&pila_posfija)==FALSE) //Mientras la pila no este vacia saca elemetos  de la pila  NO ES TRUE !NO FUNCIONA
         {
           aux_e = Pop(&pila_posfija);// saca de la pila y guarda el tope
