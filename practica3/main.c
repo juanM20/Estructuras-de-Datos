@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "Tabla_hash.c"
+#include "Tabla_hash.h"
 
 int main()
 {
@@ -23,6 +23,12 @@ int main()
 	{
 		numBins[i]= dec_bin(ascii[i]);
 	}
+
+	for(i=0; i<strlen(cadena); i++)
+	{
+		Operacion_Hash(numBins[i]);
+	}
+
 
 
 return 0;

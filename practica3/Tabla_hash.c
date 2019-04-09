@@ -84,3 +84,14 @@ int cuentaDigitosDeBinario(long num)
 
 	return contador;
 }
+
+/*
+
+*/
+int Operacion_Hash(long numBin)
+{
+	int ret;
+	printf("%d\n", numBin);
+
+	return ret;
+}
