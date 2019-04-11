@@ -7,8 +7,8 @@ VERSI脫N: 1.1
 
 DESCRIPCI脫N: TAD lista o (list)
 Estructura de datos en la que se cumple:
-Los elementos se consultan, a帽aden y se remueven con base en posiciones 
-dentro de un arreglo lineal el cual cuenta con un frente o cabeza 
+Los elementos se consultan, a帽aden y se remueven con base en posiciones
+dentro de un arreglo lineal el cual cuenta con un frente o cabeza
 y un final o cola.
 
 OBSERVACIONES: Este archivo solo incluye las estructuras, tipos de datos y
@@ -21,9 +21,9 @@ EL CODIGO QUE IMPLEMENTA LAS FUNCIONES ES EL ARCHIVO: TADListaSL.c
 
 typedef unsigned char boolean;
 
-typedef struct elemento { 
-char p[51]; //Palabras de tama駉 50 
-char d[251];//Definici髇 de la palabra de no m醩 de 250 caracteres 
+typedef struct elemento {
+char p[51]; //Palabras de tama锟給 50
+char d[251];//Definici锟絥 de la palabra de no m锟絪 de 250 caracteres
 }elemento;
 
 
@@ -32,7 +32,7 @@ typedef struct nodo
 {
 	elemento e;
 	//Realaci贸n con el siguiente nodo
-	struct nodo *siguiente;		
+	struct nodo *siguiente;
 } nodo;
 
 //Se define una posicion como un apuntador a nodo
@@ -68,7 +68,7 @@ posicion Previous (lista *l,posicion p);
 //Efecto: Recibe una lista l y un elemento e, devuelve la posici贸n del elemento que coincida exactamente con e.
 posicion Search (lista *l,elemento e);
 
-//Efecto: Recibe una lista l, una posici贸n p y devuelve el elemento en dicha posici贸n. 
+//Efecto: Recibe una lista l, una posici贸n p y devuelve el elemento en dicha posici贸n.
 //Requerimientos: La lista l es no vac铆a y la posici贸n p es una posici贸n valida.
 elemento Position (lista *l,posicion p);
 
@@ -104,7 +104,7 @@ void Remove (lista *l,posicion p);
 //Requerimientos: La lista l es no vac铆a y la posici贸n p es una posici贸n valida.
 void Replace (lista *l,posicion p, elemento e);
 
-//Funci贸n para usarse en depuraci贸n, la cu谩l imprime las direcciones de 
+//Funci贸n para usarse en depuraci贸n, la cu谩l imprime las direcciones de
 //memoria de los nodos y su apuntador a siguiente
 void VerLigasLista(lista *l);
 #endif    // __TADLista_H
