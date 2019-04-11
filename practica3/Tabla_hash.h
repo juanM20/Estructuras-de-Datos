@@ -13,30 +13,39 @@ typedef struct TablaH{
 
   lista list[TAM_TABLA];
 
-}TablaH
+}TablaH;
 
 /*
 Convierte la cadena leída del archivo a sus valores ASCII,
 recibe la cadena y un arreglo de destino para estos valores.
 */
-void caracter_a_ASCII(char* cadena, int ascii[]);
+void Caracter_a_ASCII(char* cadena, int ascii[]);
 
 /*
 Convierte un numero decimal a binario,
 recibe un entero, y devuelve un long con su equivalencia en base 2.
 */
-long dec_bin(int numAscii);
+long Dec_Bin(int numAscii);
 
 /*
 Convierte un numero binario a decimal,
 recibe un long, y devuelve un int con su equivalencia en base 10.
 */
-int bin_dec(long numBin);
+int Bin_Dec(long numBin);
 
 /*
-Cuanta los digitos que contiene el número binario, es util para analizar
+Cuenta los digitos que contiene el número binario, es util para analizar
 dicho numero y manipularlo,
 recibe el binario en formato long, y devuelve un entero que representa
 la cantidad de digitos (0 o 1) que lo componen.
 */
-int cuantaDigitosDeBinario(long num);
+int CuantaDigitosDeBinario(long num);
+
+/*
+
+*/
+int Operacion_Hash(long numBin);
+
+/*
+
+*/

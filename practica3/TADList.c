@@ -58,7 +58,7 @@ void Eliminar(lista *l, long id){
                 aux->sig->ant = aux->ant;
                 r=TRUE;
                 break;
-            }   
+            }
 
             aux = aux->sig;
         }
@@ -67,12 +67,12 @@ void Eliminar(lista *l, long id){
             printf("\nNo existe esa palabra...");
         }
 
-       
+
     }
     else{
         printf("\nLa lista está vacía...");
     }
-    
+
     if(r == TRUE) free(aux2);
 }
 

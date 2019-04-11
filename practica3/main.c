@@ -17,11 +17,11 @@ int main()
 	//printf("%d", (array0s));
 	printf("Ingresa una cadena: \n");
 	gets(cadena);
-	caracter_a_ASCII(cadena, ascii);
+	Caracter_a_ASCII(cadena, ascii);
 
 	for(i=0; i<strlen(cadena); i++)
 	{
-		numBins[i]= dec_bin(ascii[i]);
+		numBins[i]= Dec_Bin(ascii[i]);
 	}
 
 	for(i=0; i<strlen(cadena); i++)
