@@ -6,7 +6,7 @@ int main(){
   FILE *archivo;
   char caracter;
 
-  archivo = fopen("Lunfardo.txt","r");
+  archivo = fopen("Glosario BIOQUANTUM.txt","r");
 
   if(archivo == NULL){
     printf("\nError: no se puede abrir el archivo.\n\n");
