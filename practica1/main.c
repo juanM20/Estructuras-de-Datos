@@ -1,5 +1,5 @@
 /*
-Forma de ejecuciÃ³n: gcc main.c TADPila(Est)(Din).c Biblioteca.c -o archivo_ejecutable
+Forma de ejecuciÃ³n: gcc main.c TADPilaEst.c Biblioteca.c -o main
 */
 //EUGENIO CAMBIOS
 #include <stdio.h>

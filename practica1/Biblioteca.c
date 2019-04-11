@@ -4,7 +4,7 @@ IMPLEMENTACION: Implemetación de la Biblioteca de funciones especificas
 AUTORES:
 Ayona Lopez Eugenio Milton
 BenÃ­tez Morales Manuel Emilio
-Tellez Perez Juan Manuel
+Juan Manuel Tellez "EL PANCHO"
 
 
 Febrero 2019
@@ -181,20 +181,22 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
         	/*Si el tope de la pila tiene mayor precedencia que el caracter actual
 			*/
 			{
-         	 while(!Empty(&pila_posfija))//Mientras la pila no este vacia saca elemetos  de la pila
-          	{
-            	aux_e = Pop(&pila_posfija); // saca de la pila y guarda el tope
+        //!Empty(&pila_posfija) @EUGENI0
+      while(Top(&pila_posfija).c != '(' )
+      {
 
-            	if(aux_e.c != '(') //si el ultimo elemento no es igual "("  guarda en la cadena_posfija
-				     {
-             	 ++aux;
-              	cad_posfija[aux] = aux_e.c;
-            	} else
-                break;
-          	}
+     // if(Top(&pila_posfija).c == '^' || Top(&pila_posfija).c == '+'||Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '*'||Top(&pila_posfija).c == '/')	//@eugenio solucion
+        aux_e = Pop(&pila_posfija);
 
-          	Push(&pila_posfija,e);    /*ya que se han sacado los elementos debajo del signo de mayor precedncia (pila vacia)
-          	   						   se  coloca el caracter actual de la cadena en la pila*/
+       // if(aux_e.c != '('){
+          ++aux;
+          cad_posfija[aux] = aux_e.c;
+       // }
+
+  //else
+         // break;
+      }
+      Push(&pila_posfija,e);
         }
         else if(Top(&pila_posfija).c == '('){  // si  la cadena actual comienza con "(" guarda directamente
           Push(&pila_posfija,e);
@@ -224,16 +226,22 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
         }
         else if(Top(&pila_posfija).c == '^')  //caso de precedencia menor al caracter actual
         {
-          while(!Empty(&pila_posfija))
-          {
-            aux_e = Pop(&pila_posfija);
-            if(aux_e.c != '('){
-              ++aux;
-              cad_posfija[aux] = aux_e.c;
-            }else
-              break;
-          }
-          Push(&pila_posfija,e);
+          //!Empty(&pila_posfija) @EUGENI0
+        while(Top(&pila_posfija).c != '(' )
+        {
+
+       // if(Top(&pila_posfija).c == '^' || Top(&pila_posfija).c == '+'||Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '*'||Top(&pila_posfija).c == '/')	//@eugenio solucion
+          aux_e = Pop(&pila_posfija);
+
+         // if(aux_e.c != '('){
+            ++aux;
+            cad_posfija[aux] = aux_e.c;
+         // }
+
+    //else
+           // break;
+        }
+        Push(&pila_posfija,e);
 
         }
         else if(Top(&pila_posfija).c == '(')
@@ -243,20 +251,41 @@ boolean Pasar_Posfijo(char *cad, boolean v, char *cad_posfija)
 	break;
 
 	case '^':
-	 Push(&pila_posfija,e);
+
+  if(Empty(&pila_posfija))
+      {
+        Push(&pila_posfija,e);
+      }else if(Top(&pila_posfija).c == '^')
+      { //MISMA PRECEDENCIA
+      ++aux;
+     cad_posfija[aux] = Pop(&pila_posfija).c;
+     Push(&pila_posfija,e);
+  } else  if(Top(&pila_posfija).c == '+' || Top(&pila_posfija).c == '-'||Top(&pila_posfija).c == '/' ||Top(&pila_posfija).c == '*')  //caso precedencia mayor al caracter actual
+ {
+   Push(&pila_posfija,e);
+ }else if(Top(&pila_posfija).c == '(')
+   {
+     Push(&pila_posfija,e);
+   }
+
+
+
 	break;
 
 	case ')'://caso cuando detecta que termino un parentesis
-	  while(Empty(&pila_posfija)==FALSE) //Mientras la pila no este vacia saca elemetos  de la pila  NO ES TRUE !NO FUNCIONA
-        {
-          aux_e = Pop(&pila_posfija);// saca de la pila y guarda el tope
+  while(Empty(&pila_posfija)) //Mientras la pila no este vacia saca elemetos  de la pila  NO ES TRUE !NO FUNCIONA
+       printf("Solucion poner un esto");
 
-		  if(aux_e.c != '('){ //si el ultimo elemento no es igual "("  guarda en la cadena_posfija
-            ++aux;
-            cad_posfija[aux] = aux_e.c;
-          }else
-            break;
-        }
+  {
+        aux_e = Pop(&pila_posfija);// saca de la pila y guarda el tope
+
+    if(aux_e.c != '('){ //si el ultimo elemento no es igual "("  guarda en la cadena_posfija
+          ++aux;
+          cad_posfija[aux] = aux_e.c;
+        }else
+          break;
+
+}
 	break;
 
 		case '(':   // Si detecta un parentesis "(" añade directamente a la pila
@@ -320,7 +349,8 @@ void Obtener_Valores(char* cad,float* valoresDeLiterales, char* auxiliarAntiRepe
 
    No_Repite(literalesDeExpresion,i_aux,auxiliarAntiRepeticion);
   //pedir al ususario el valor de dichas literales
-  //COMO EL ARREGLO GUAR DIRECTAMENTE EN LA POSICION QUE OCUPA EL CARACTER DEL CODIGO ASCII DEBEMOS LIMITAR A NUESTRO ARREGLO HASTA EL RANGO QUE QUEREMOS
+  //COMO EL ARREGLO GUAR DIRECTAMENTE EN LA POSICION QUE OCUPA EL
+  //CARACTER DEL CODIGO ASCII DEBEMOS LIMITAR A NUESTRO ARREGLO HASTA EL RANGO QUE QUEREMOS
   for(k=0; k<strlen(auxiliarAntiRepeticion); k++)
   {
     printf("Valor de %2c: ", auxiliarAntiRepeticion[k]);
@@ -348,36 +378,80 @@ printf("\n");
 
 
 //funcion que evita la repeticion
-
+//ESPERO LE  ENTIENDAN AMIGOS
 void No_Repite(char* cadena,int tam,char* resultado){
-	int j=0,k=0,inicio,i;
-
-	for(i=0;i<tam;++i){
+	int j=0;
+  int k=0;
+  int inicio;
+  int i;
+//AAABAA
+	for(i=0;i<tam;++i){//Recorre el arreglo con repeticiones
 		if(i==0){
 
-			resultado[j]=cadena[i];
+			resultado[j]=cadena[i]; // Si es el primer caracter que toca se incluye en el arreglo sin repeticion
 		}else{
 
-			for(inicio=0;inicio<=j;++inicio){
 
-				if((cadena[i]!=resultado[inicio])){
-					++k;
+ //j es variable su maximo sera los elementos sin repeticion por ejemplo AABBCCC el max de j sera [0,2]
+			for(inicio=0;inicio<=j;++inicio){//Recorre el arreglo sin repeticiones
+
+				if((cadena[i]!=resultado[inicio])){ //Con base a la cadena con repeticiones y la cadena sin repeticiones
+                                            //verifica si dentro de la cadena que la cadena sin repeticiones
+                                            //no este el caracter actual de la cadena con repeticiones
+                                            // en sintesis si un elemento de cadena no es igual a un elemento de resultado
+                                            // no habre
+
+					++k;  // Cada vez que haya un elemento diferente que no este dentro de resultado aumenta k
+                //prueba todas las combinaciones que puede haber entre el arreglo cadena y resultado por ejemplo
+                // CAD: AABBC  RES: A
+
+                   /*CAD        RES
+                      A          A    NO PASA NADA  K=0 Y DETIENE INTERNO  1)
+                      A          A    1)
+                      B          A    ELEMENTO DIFERENTE AUMENTA LA POSICION GUARDA B EN RES: AB  J DE RESULTADO Y SITUA A K=0 2)
+                      B          A    COMO J AUMENTO ESPERA QUE SE PRUEBEN TODAS LAS COMBINACIONES DE RESULTADO
+                      B          B   1)
+                      C          A   2)
+                      C          B   2)
+                      C                 //SI PASA POR TODO EL ARREGLO resultado  SIGNIFICA QUE NO ENCONTRO ELEMENTO PARECIDO K= TAM(RESULTADO)
+
+                  */
 				}else {
-					k=0;
+					  k=0;    //cuando haya un elemento igual en los dos arreglos detiene el ciclo interno
 				    break;
 				}
 			}
 
-			if(k==j+1){
-			  ++j;
+			if(k==j+1){ // SOLO ABRE CUANDO PRUEBA TODO EL ARREGLO RESULTADO FUE PROBADO CUANDO NO ENCUENTRA NIGUNA CONCIDENIA
+			      ++j;
 	          resultado[j]=cadena[i];
 	           k=0;
+      //recorre las letras del arreglo sin repeticion
+			for(inicio=0;inicio<=j;++inicio){
+        //si detecta caracter diferente a los de la cadena sin repeticion
+				if((cadena[i]!=resultado[inicio])){
+					++k;
+				}else {
+					 k=0;
+				   break;
+				}
 			}
+
+    //como k solo aumenta cuando el caracter es diferente al que esta en la cadena sin repeticion
+    //
+
+			if(k==j+1){
+			  ++j;
+	      resultado[j]=cadena[i];
+	       k=0;
+			}
+
+
 		}
 	}
 }
 
-
+}
 
 void Evaluar_Expresion(char* cad_posfija, float* valoresDeLiterales)
 {
