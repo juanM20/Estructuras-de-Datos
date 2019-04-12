@@ -11,7 +11,8 @@ int main()
 	//int numDecs[TAM_CADENAS];
 	int ascii[TAM_CADENAS];
 	int array0s[]= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//32 es el tamaño que naneja el simulador
-	int i;
+	long numInicial= 00000000000000000000000000000000;
+	int i, sumaBinaria;
 
 	int prov=0;
 	//printf("%d", (array0s));
@@ -27,9 +28,11 @@ int main()
 	for(i=0; i<strlen(cadena); i++)
 	{
 		Operacion_Hash(numBins[i]);
+		//printf("\n");
+		sumaBinaria= Suma_Binaria(numBins[i], numInicial);
+
+		numInicial= sumaBinaria;
 	}
-
-
 
 return 0;
 }

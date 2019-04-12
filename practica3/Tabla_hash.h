@@ -49,3 +49,9 @@ int Operacion_Hash(long numBin);
 /*
 
 */
+long Suma_Binaria(long numBin, long numInicial);
+
+/*
+
+*/
+long Compuerta_XOR(long sumaBinaria);
