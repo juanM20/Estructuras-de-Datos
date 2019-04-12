@@ -24,7 +24,7 @@ int main()
 	{
 		numBins[i]= Dec_Bin(ascii[i]);
 	}
-
+/*
 	for(i=0; i<strlen(cadena); i++)
 	{
 		Operacion_Hash(numBins[i]);
@@ -33,6 +33,8 @@ int main()
 
 		numInicial= sumaBinaria;
 	}
+*/
 
+Compuerta_XOR(10101);
 return 0;
 }
