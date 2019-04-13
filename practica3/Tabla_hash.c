@@ -130,7 +130,7 @@ long Compuerta_XOR(long sumaBinaria)
 		sumaBinaria= sumaBinaria/10;
 	}
 
-	
+
 /*
 	for(i=0; i<tam_bin; i++)
 	{
@@ -148,24 +148,16 @@ int Comparacion_XOR(int bitArraySuma, int bitAuxXOR)
 	int salidaXOR;
 
 	if(bitArraySuma==0 && bitAuxXOR==0)
-	{
 		salidaXOR=0;
-	}
 
 	if(bitArraySuma==0 && bitAuxXOR==1)
-	{
 		salidaXOR=1;
-	}
 
 	if(bitArraySuma==1 && bitAuxXOR==0)
-	{
 		salidaXOR=1;
-	}
 
 	if(bitArraySuma==1 && bitAuxXOR==1)
-	{
 		salidaXOR=0;
-	}
 
 	return salidaXOR;
 }
