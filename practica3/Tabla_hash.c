@@ -130,13 +130,6 @@ long Compuerta_XOR(long sumaBinaria)
 		sumaBinaria= sumaBinaria/10;
 	}
 
-
-/*
-	for(i=0; i<tam_bin; i++)
-	{
-		printf("%d ", arraySumaBinaria[i]);
-	}
-*/
 	return res_XOR;
 }
 
