@@ -10,7 +10,9 @@
 int main()
 {
   FILE * archivo;
-  char caracter, c_aux;
+  char *c_aux;//cadena auxiliar que nos permitira extraer las palabras junto con su definicion.
+  char *p = (char *)malloc(sizeof(char)*50), *def = (char *)malloc(sizeof(char)*150);// p es la palabra que se guardará y def es la definicion.
+  c_aux = (char *)malloc(sizeof(char)*200);
 
 	char palabra[TAM_CADENAS];
 	char definicion[TAM_DEFINICION];
@@ -33,27 +35,30 @@ int main()
             if(archivo == NULL) printf("\nError: no se puede abrir el archivo.\n");
             else{
 
-              while( (caracter = fgetc(archivo)) != EOF){
+                while(!feof(archivo)){
 
-                int i=0,j=0;
+                  fgets(c_aux,200,archivo);
 
-                if(c_aux != ':'){
-                  int i=0;
-                  palabra[i++] = caracter;
+                  int i=0,j=0;
+                  while(c_aux[i] != ':'){
+                    p[i] = c_aux[i];
+                    i++;
+                  }
+                  p[i] = '\0';
+                  i++;
+                  j=i;
+
+                  i=0;
+                  while(c_aux[j] != '\0'){
+                    def[i] = c_aux[j];
+                    i++;
+                    j++;
+                  }
+                  def[i] = '\0';
+
+                  printf("\n%s :: %s",p,def);
                 }
-
-                else if(c_aux != '.'){
-                  int i=0;
-                  c_aux = fgetc(archivo);
-                  definicion[i++] = c_aux;
-                }
-
-                indice = sumaCaracteres(palabra)%VALORCADENA;
-                guardaDefinicion(indice,palabra,definicion,&colisiones[indice]);
-
-                caracter = c_aux;
               }
-            }
      break;
 
 		  case 2:
