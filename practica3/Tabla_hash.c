@@ -119,15 +119,47 @@ long Suma_Binaria(long numBin, long numInicial)
 long Compuerta_XOR(long sumaBinaria)
 {
 	long res_XOR;
-	int auxXOR[4];
-	int i, tam_bin, arraySumaBinaria[TAM_CADENAS];
+	int auxPreXOR[4], auxXOR[4];
+	int arraySumaBinaria[32]= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	int i, tam_bin;
 
-	//meter binario a la cadena de enteros para poder operarlo
+	//Meter binario a la cadena de enteros para poder operarlo
 	tam_bin= CuentaDigitosDeBinario(sumaBinaria);
-	for(i=0; i<tam_bin; i++)
+	//Insertar el numero binario en la ultima parte del arreglo
+	for(i=32-tam_bin; i<32; i++)
 	{
+		//printf("%d", i);
 		arraySumaBinaria[i]= sumaBinaria%10;
 		sumaBinaria= sumaBinaria/10;
+	}
+
+	//Meter los primeros enteros de la cadena a un arreglo auxiliar previo a la comparacion XOR
+	for(i=0; i<4; i++)
+	{
+		auxPreXOR[i]=arraySumaBinaria[i];
+	}
+
+	/////////Realizacion de la operacion XOR
+	//Se compara una seccion de la cadena arraySumaBinaria con el previo del XOR
+	for(i=10; i<14; i++)
+	{
+		auxXOR[i-10]= Comparacion_XOR(arraySumaBinaria[i], auxPreXOR[i-10]);
+	}
+
+	//Se sustituye la seccion de la cadena original con la comparacion realizada
+	for(i=0; i<4; i++)
+	{
+		arraySumaBinaria[i+10]=auxXOR[i];
+	}
+
+	for(i=0; i<4; i++)
+	{
+		printf("%d", auxXOR[i]);
+	}
+printf("\n");
+	for(i=0; i<32; i++)
+	{
+		printf("%d", arraySumaBinaria[i]);
 	}
 
 	return res_XOR;
