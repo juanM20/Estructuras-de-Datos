@@ -4,7 +4,7 @@
 IMPLEMENTACIONES DEL TAD LISTA (TADLista.h)
 AUTOR: Edgardo Adrián Franco Martínez (C) Marzo 2017
 VERSIÓN: 1.1
-
+-
 DESCRIPCIÓN: TAD lista o (list)
 Estructura de datos en la que se cumple:
 Los elementos se consultan, añaden y se remueven con base en posiciones
