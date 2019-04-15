@@ -121,6 +121,7 @@ long Compuerta_XOR(long sumaBinaria)
 	long res_XOR;
 	int auxPreXOR[4], auxXOR[4];
 	int arraySumaBinaria[32]= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	char charArraySumaBinaria[32];
 	int i, tam_bin;
 
 	//Meter binario a la cadena de enteros para poder operarlo
@@ -151,17 +152,16 @@ long Compuerta_XOR(long sumaBinaria)
 	{
 		arraySumaBinaria[i+10]=auxXOR[i];
 	}
+	/////////
 
-	for(i=0; i<4; i++)
-	{
-		printf("%d", auxXOR[i]);
-	}
-printf("\n");
+	//Conversion auxiliar para transformar el arreglo de enteros a un solo entero
 	for(i=0; i<32; i++)
 	{
-		printf("%d", arraySumaBinaria[i]);
+		charArraySumaBinaria[i]= (char)(arraySumaBinaria[i]+48);
 	}
 
+	res_XOR= atoi(charArraySumaBinaria);
+	
 	return res_XOR;
 }
 
