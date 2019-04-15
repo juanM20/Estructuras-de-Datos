@@ -35,6 +35,7 @@ long Dec_Bin(int numAscii)
 	if(numAscii<2)
 		r_bin= numAscii;
 	else
+
 		r_bin= numAscii%2 + (10*Dec_Bin(numAscii/2));
 
 	return r_bin;
@@ -91,7 +92,65 @@ int CuentaDigitosDeBinario(long num)
 int Operacion_Hash(long numBin)
 {
 	int ret;
-	printf("%d\n", numBin);
+	//printf("\t%d\n", numBin);
 
 	return ret;
+}
+
+/*
+
+*/
+long Suma_Binaria(long numBin, long numInicial)
+{
+	long suma;
+	int decNumBin, decNumInicial;
+
+	decNumBin= Bin_Dec(numBin);
+	decNumInicial= Bin_Dec(numInicial);
+
+	suma= Dec_Bin(decNumBin+decNumInicial);
+  //printf("suma: %d\n", suma);
+	return suma;
+}
+
+/*
+
+*/
+long Compuerta_XOR(long sumaBinaria)
+{
+	long res_XOR;
+	int auxXOR[4];
+	int i, tam_bin, arraySumaBinaria[TAM_CADENAS];
+
+	//meter binario a la cadena de enteros para poder operarlo
+	tam_bin= CuentaDigitosDeBinario(sumaBinaria);
+	for(i=0; i<tam_bin; i++)
+	{
+		arraySumaBinaria[i]= sumaBinaria%10;
+		sumaBinaria= sumaBinaria/10;
+	}
+
+	return res_XOR;
+}
+
+/*
+
+*/
+int Comparacion_XOR(int bitArraySuma, int bitAuxXOR)
+{
+	int salidaXOR;
+
+	if(bitArraySuma==0 && bitAuxXOR==0)
+		salidaXOR=0;
+
+	if(bitArraySuma==0 && bitAuxXOR==1)
+		salidaXOR=1;
+
+	if(bitArraySuma==1 && bitAuxXOR==0)
+		salidaXOR=1;
+
+	if(bitArraySuma==1 && bitAuxXOR==1)
+		salidaXOR=0;
+
+	return salidaXOR;
 }

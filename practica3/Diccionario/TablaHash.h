@@ -19,20 +19,19 @@ Restricciones: Como todo se controla con un switch cada vez que nosotros queramo
 por ejemplo tampalacadMax=12 aqui hay 12 cases de 1-12 si nosotros quisieramos  tampalacadMax=13 deberemos agregar un caso demas.
 
 */
-
 void guardaDefinicion(int indice,char* palabra,char* definicion,lista* colisiones);
 
 
 /*
  Recibe: Una lista, apuntador a char una palabra y la definicion de ella
-  
- Efecto: Guarda las palabras y deficiones en una lista añadiendo cada palabra
+
+ Efecto: Guarda las palabras y deficiones en una lista aï¿½adiendo cada palabra
  una seguida de otra, hay que destacar que para cada palabra se genera un codigo unico
  que esta dado por la formula cod=sumatcara%(tampalacadMax+1) entre mas grande sea (palacadMax+1)
  menos colisiones habra pero las colisiones se manejan de la siguiente manera
- 
+
  supongamos:
- 
+
  palabra     codigo
  y              4
  457            4    (esta es una colision de palabras)
@@ -42,13 +41,12 @@ void guardaDefinicion(int indice,char* palabra,char* definicion,lista* colisione
     n           4
  No hay problema para ello ya que la lista puede solucionar este problema
  de la siguiente manera.
- 
+
  y---->457....--->n
- 
- 
+
+
 
 */
-
 void colision(lista* colisiones,char* palabra,char * definicion);
 
 void menu();
@@ -77,19 +75,18 @@ subcadena entre str1 y str2:  1  (creo)
 
 
 */
-
 int sumaCaracteres(char * cadena);
 
 /*
 Recibe el numero especifico para cada palabra(posicion)
  recibe la lista.
- Efecto: Al recibir la posicion especifica de la palabra en la lista 
+ Efecto: Al recibir la posicion especifica de la palabra en la lista
  utilizamos element para ir a el elemento especifico de la posicion asiganada.
- 
+
  Restricciones: Cuando recibe un mismo caracter o palabra aumenta la posicion especifica de esa palabra.
- Aunque por el momento ese efecto no importa ya que la el aumento lo controla la misma palabra para cada 
+ Aunque por el momento ese efecto no importa ya que la el aumento lo controla la misma palabra para cada
  diferente es un aumento diferente.
-palabra  pos 
+palabra  pos
  y        1
  y        2
 eugenio   1
@@ -100,4 +97,3 @@ void BusquedaPalabra(int posicion,lista* colisiones);
 
 
 void Elimina(int posicion12,lista* colision,elemento palabraEl);
-

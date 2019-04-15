@@ -13,142 +13,127 @@ luego en valor sera el indice que se usara en cadalista y enlazar
 en esa lista cuando alla colisiones
 determinada 0-VALORCADEDA-1
 */
-
-
-
 int sumaCaracteres(char * cadena){
-int sumatotal=0,i;	
+int sumatotal=0,i;
 
 	for(i=0;i<strlen(cadena);++i){
 		sumatotal+=(int) cadena[i];
 	}
-	
-
 
 return sumatotal;
-	
-}
 
+}
 
 
 void guardaDefinicion(int indice,char* palabra,char* definicion,lista* colisiones){
 
-switch(indice){
-case 1:
+	switch(indice){
+	case 1:
+	 colision(colisiones,palabra,definicion);
+	break;
 
- colision(colisiones,palabra,definicion);	 
-break;	
- 
-case 2:
- colision(colisiones,palabra,definicion);
-break;	
+	case 2:
+	 colision(colisiones,palabra,definicion);
+	break;
 
+	case 3:
+	 colision(colisiones,palabra,definicion);
+	break;
 
-case 3:
- colision(colisiones,palabra,definicion);
-break;	
-
-case 4:
-    colision(colisiones,palabra,definicion);  	  
-break;	
-case 5:
-  colision(colisiones,palabra,definicion);
-      
-break;	
-case 6:
- colision(colisiones,palabra,definicion);
-break;	
-case 7:
- colision(colisiones,palabra,definicion);
-break;	
-case 8:
+	case 4:
+	    colision(colisiones,palabra,definicion);
+	break;
+	case 5:
+	  colision(colisiones,palabra,definicion);
+	break;
+	case 6:
 	 colision(colisiones,palabra,definicion);
-break;	
-case 9:
+	break;
+	case 7:
 	 colision(colisiones,palabra,definicion);
-break;	
-case 10:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 11:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 12:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 13:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 14:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 15:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 16:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 17:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 18:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 19:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 20:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 21: 
-	 colision(colisiones,palabra,definicion);
-break;	
-case 22:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 23:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 24:
-	 colision(colisiones,palabra,definicion);
-break;	
-case 25:
-	 colision(colisiones,palabra,definicion);
-break;		
-}	
-	
-	
+	break;
+	case 8:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 9:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 10:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 11:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 12:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 13:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 14:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 15:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 16:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 17:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 18:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 19:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 20:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 21:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 22:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 23:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 24:
+		 colision(colisiones,palabra,definicion);
+	break;
+	case 25:
+		 colision(colisiones,palabra,definicion);
+	break;
+	}
 }
 
 void colision(lista* colisiones,char* palabra,char * definicion){
-	 elemento datos;	
+	 elemento datos;
 	 strcpy (datos.p,palabra);
 	 strcpy (datos.d,definicion);
-	 Add(colisiones,datos);	 
+	 Add(colisiones,datos);
 }
 
 void menu(){
-	
+
 	printf("1.- Cargar un archivo de definiciones\n"
-"2.- Agregar una palabra y su definición\n"
-"3.- Buscar una palabra y ver su definición\n"
-"4.- Modificar una definición\n"
-"5.- Eliminar una palabra\n"
-"6.- Salir\n");	
+				 "2.- Agregar una palabra y su definiciï¿½n\n"
+				 "3.- Buscar una palabra y ver su definiciï¿½n\n"
+				 "4.- Modificar una definiciï¿½n\n"
+				 "5.- Eliminar una palabra\n"
+				 "6.- Salir\n");
 }
 
 
 void BusquedaPalabra(int posicion, lista* colisiones){
-printf("%s: %s\n",Element(colisiones,posicion).p, Element(colisiones,posicion).d);	
+	printf("%s: %s\n",Element(colisiones,posicion).p, Element(colisiones,posicion).d);
 }
 
 
 void Elimina(int posicion12,lista* colision,elemento palabraEl){
-	
-	
-posicion eliminaDato= ElementPosition(colision,posicion12);
-Remove(colision,eliminaDato);	
-
-printf("Palabra elimina con exito\n");
+	posicion eliminaDato= ElementPosition(colision,posicion12);
+	Remove(colision,eliminaDato);
+	printf("Palabra elimina con exito\n");
 }
-
