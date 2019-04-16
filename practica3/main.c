@@ -10,9 +10,8 @@ int main()
 	int numBins[TAM_CADENAS];
 	//int numDecs[TAM_CADENAS];
 	int ascii[TAM_CADENAS];
-	int array0s[]= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//32 es el tamaño que naneja el simulador
 	long numInicial= 00000000000000000000000000000000;
-	int i, sumaBinaria;
+	int i;
 
 	int prov=0;
 	//printf("%d", (array0s));
@@ -21,20 +20,18 @@ int main()
 	Caracter_a_ASCII(cadena, ascii);
 
 	for(i=0; i<strlen(cadena); i++)
-	{
 		numBins[i]= Dec_Bin(ascii[i]);
-	}
-/*
+
+
 	for(i=0; i<strlen(cadena); i++)
-	{
-		Operacion_Hash(numBins[i]);
-		//printf("\n");
-		sumaBinaria= Suma_Binaria(numBins[i], numInicial);
+		Operacion_Hash(numBins[i], &numInicial);
 
-		numInicial= sumaBinaria;
-	}
-*/
+	//tam_bin= CuentaDigitosDeBinario(numBin);
 
-Compuerta_XOR(10101);
+
+
+	//printf("\n%d", Bin_Dec(numInicial));
+
+//Compuerta_XOR(10101);
 return 0;
 }

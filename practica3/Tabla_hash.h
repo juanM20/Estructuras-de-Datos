@@ -44,7 +44,7 @@ int CuantaDigitosDeBinario(long num);
 /*
 
 */
-int Operacion_Hash(long numBin);
+int Operacion_Hash(long numBin, long* numInicial);
 
 /*
 

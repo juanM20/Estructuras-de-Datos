@@ -89,10 +89,16 @@ int CuentaDigitosDeBinario(long num)
 /*
 
 */
-int Operacion_Hash(long numBin)
+int Operacion_Hash(long numBin, long* numInicial)
 {
-	int ret;
-	//printf("\t%d\n", numBin);
+	int ret, i, tam_bin;
+	int array0s[]= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//32 es el tamaño que naneja el simulador
+	long sumaBinaria;
+
+	sumaBinaria= Suma_Binaria(*numInicial, numBin);
+	printf("\nd%d", sumaBinaria);
+	*numInicial= Compuerta_XOR(sumaBinaria);
+	printf("\n%d", *numInicial);
 
 	return ret;
 }
@@ -136,32 +142,25 @@ long Compuerta_XOR(long sumaBinaria)
 
 	//Meter los primeros enteros de la cadena a un arreglo auxiliar previo a la comparacion XOR
 	for(i=0; i<4; i++)
-	{
 		auxPreXOR[i]=arraySumaBinaria[i];
-	}
 
 	/////////Realizacion de la operacion XOR
 	//Se compara una seccion de la cadena arraySumaBinaria con el previo del XOR
 	for(i=10; i<14; i++)
-	{
 		auxXOR[i-10]= Comparacion_XOR(arraySumaBinaria[i], auxPreXOR[i-10]);
-	}
 
 	//Se sustituye la seccion de la cadena original con la comparacion realizada
 	for(i=0; i<4; i++)
-	{
 		arraySumaBinaria[i+10]=auxXOR[i];
-	}
 	/////////
 
 	//Conversion auxiliar para transformar el arreglo de enteros a un solo entero
 	for(i=0; i<32; i++)
-	{
 		charArraySumaBinaria[i]= (char)(arraySumaBinaria[i]+48);
-	}
+
 
 	res_XOR= atoi(charArraySumaBinaria);
-	
+
 	return res_XOR;
 }
 
