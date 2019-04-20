@@ -24,7 +24,7 @@ int main()
 
 
 	for(i=0; i<strlen(cadena); i++)
-		Operacion_Hash(numBins[i], &numInicial);
+		printf("\nSuma %d\n", Operacion_Hash(numBins[i], &numInicial));
 
 	//tam_bin= CuentaDigitosDeBinario(numBin);
 
