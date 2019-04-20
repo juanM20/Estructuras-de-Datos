@@ -42,21 +42,23 @@ la cantidad de digitos (0 o 1) que lo componen.
 int CuantaDigitosDeBinario(long num);
 
 /*
-
+Realiza la acción de acomodar la palabra en la tabla hash
 */
 int Operacion_Hash(long numBin, long* numInicial);
 
 /*
-
+Realiza la suma de los numero bianrios generados en las conversiones de
+las funciones correcpondientes
 */
 long Suma_Binaria(long numBin, long numInicial);
 
 /*
-
+Realiza la comparacion de una seccion del arreglo inicial con un arreglo auxiliar,
+de modo que surge una nueva expresion con una comparacion y/o.
 */
 long Compuerta_XOR(long sumaBinaria);
 
 /*
-
+Auxiliar para al comparacion de 0s y 1s, contiene la tabla de verdad de la compuerta XOR
 */
 int Comparacion_XOR(int bitArraySuma, int bitAuxXOR);
