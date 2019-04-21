@@ -14,7 +14,8 @@ en esa lista cuando alla colisiones
 determinada 0-VALORCADEDA-1
 */
 int sumaCaracteres(char * cadena){
-int sumatotal=0,i=0;
+
+	int sumatotal=0,i=0;
 
 	while(cadena[i] != '\0'){
 		sumatotal+=(int) cadena[i];
