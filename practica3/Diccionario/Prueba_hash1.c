@@ -59,15 +59,15 @@ int main()
 
                   indice = sumaCaracteres(&p[0])%VALORCADENA;
                   if(colisiones[indice].tamanio > 1) num_colisiones++;
-                  guardaDefinicion(indice,p,def,&colisiones[indice]);
+                  guardaDefinicion(indice,&p[0],&def[0],&colisiones[indice]);
                   printf("\nIndice:%d \t%s : %s",indice,p,def);
                 }
 
                 /*printf("\nEstadísticas:\n\n");
                 for(int i=0; i<VALORCADENA; i++){
                   VerLigasLista(&colisiones[i]);
-                }
-                printf("\nNumero de colisiones: %d",num_colisiones);*/
+                }*/
+                printf("\nNumero de colisiones: %d",num_colisiones);
               }
      break;
 

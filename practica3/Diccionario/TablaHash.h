@@ -47,7 +47,7 @@ void guardaDefinicion(int indice,char* palabra,char* definicion,lista* colisione
 
 
 */
-void colision(lista* colisiones,char* palabra,char * definicion);
+void colision(lista* colisiones,char* palabra,char * definicion, int indice);
 
 void menu();
 

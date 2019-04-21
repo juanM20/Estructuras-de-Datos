@@ -16,105 +16,28 @@ determinada 0-VALORCADEDA-1
 int sumaCaracteres(char * cadena){
 int sumatotal=0,i=0;
 
-	while(cadena[i] != '\0')`+,.-kl´ç
+	while(cadena[i] != '\0'){
 		sumatotal+=(int) cadena[i];
 		i++;
+	}
 
 
 return sumatotal;
 
 }
 
-
-void guardaDefinicion(int indice,char* palabra,char* definicion,lista* colisiones){
-
-	switch(indice){
-	case 1:
-	 colision(colisiones,palabra,definicion);
-	break;
-
-	case 2:
-	 colision(colisiones,palabra,definicion);
-	break;
-
-	case 3:
-	 colision(colisiones,palabra,definicion);
-	break;
-
-	case 4:
-	    colision(colisiones,palabra,definicion);
-	break;
-	case 5:
-	  colision(colisiones,palabra,definicion);
-	break;
-	case 6:
-	 colision(colisiones,palabra,definicion);
-	break;
-	case 7:
-	 colision(colisiones,palabra,definicion);
-	break;
-	case 8:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 9:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 10:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 11:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 12:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 13:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 14:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 15:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 16:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 17:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 18:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 19:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 20:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 21:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 22:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 23:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 24:
-		 colision(colisiones,palabra,definicion);
-	break;
-	case 25:
-		 colision(colisiones,palabra,definicion);
-	break;
-	}
-}
-
-void colision(lista* colisiones,char* palabra,char * definicion){
+void colision(lista* colisiones,char* palabra,char * definicion, int indice){
 	 elemento datos;
 	 strcpy (datos.p,palabra);
 	 strcpy (datos.d,definicion);
-	 Add(colisiones,datos);
+	 Add(&colisiones[indice],datos);
+}
+
+void guardaDefinicion(int indice,char* palabra,char* definicion,lista* colisiones){
+
+	if(indice > 0 && indice < VALORCADENA){
+		colision(&colisiones[indice],palabra,definicion, indice);
+	}
 }
 
 void menu(){
