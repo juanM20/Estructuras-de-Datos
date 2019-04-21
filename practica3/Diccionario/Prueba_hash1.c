@@ -13,10 +13,11 @@ int main()
   char *c_aux;//cadena auxiliar que nos permitira extraer las palabras junto con su definicion.
   char *p = (char *)malloc(sizeof(char)*50), *def = (char *)malloc(sizeof(char)*150);// p es la palabra que se guardará y def es la definicion.
   c_aux = (char *)malloc(sizeof(char)*200);
+  int i=0,j=0;
 
 	char palabra[TAM_CADENAS];
 	char definicion[TAM_DEFINICION];
-	int indice=0,opcion=0;
+	int indice=0,opcion=0,num_colisiones=0;
 	lista colisiones[VALORCADENA];
   static int PosicionCadena[VALORCADENA]={0};
 	elemento palabraEl;
@@ -39,7 +40,7 @@ int main()
 
                   fgets(c_aux,200,archivo);
 
-                  int i=0,j=0;
+                  i=0;
                   while(c_aux[i] != ':'){
                     p[i] = c_aux[i];
                     i++;
@@ -56,8 +57,17 @@ int main()
                   }
                   def[i] = '\0';
 
-                  printf("\n%s :: %s",p,def);
+                  indice = sumaCaracteres(&p[0])%VALORCADENA;
+                  if(colisiones[indice].tamanio > 1) num_colisiones++;
+                  guardaDefinicion(indice,p,def,&colisiones[indice]);
+                  printf("\nIndice:%d \t%s : %s",indice,p,def);
                 }
+
+                /*printf("\nEstadísticas:\n\n");
+                for(int i=0; i<VALORCADENA; i++){
+                  VerLigasLista(&colisiones[i]);
+                }
+                printf("\nNumero de colisiones: %d",num_colisiones);*/
               }
      break;
 

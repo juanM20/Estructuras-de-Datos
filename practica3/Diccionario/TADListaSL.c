@@ -1,15 +1,15 @@
 /*
 IMPLEMENTACIONES DE LA LIBRERIA DEL TAD LISTA (TADLista.h)
-AUTOR: Edgardo Adrián Franco Martínez (C) 
+AUTOR: Edgardo Adrián Franco Martínez (C)
 VERSIÓN: 1.5 (Abril 2018)
 
 DESCRIPCIÓN: TAD lista o (list)
 Estructura de datos en la que se cumple:
-Los elementos se consultan, añaden y se remueven con base en posiciones 
-dentro de un arreglo lineal el cual cuenta con un frente o cabeza 
+Los elementos se consultan, añaden y se remueven con base en posiciones
+dentro de un arreglo lineal el cual cuenta con un frente o cabeza
 y un final o cola.
 
-OBSERVACIONES: TADLista por definición es una Estructura de Datos dinámica. 
+OBSERVACIONES: TADLista por definición es una Estructura de Datos dinámica.
 La implementación del presente código se realiza mediante el principo de "Lista Simplemente Ligada"
 i.e. nodos que contienen un elemento y se encuentran ligados hacia siguiente de estos.
 
@@ -18,16 +18,16 @@ Frente                                                       Final
       *    *    *    *    *    *    *    *    *    *    *    *
       * N1 *    * N2 *    * N3 *    * N4 *    * N5 *    * N6 *
       *    * -> *    * -> *    * -> *    * -> *    * -> *    * -> NULL
-      ******    ******    ******    ******    ******    ******    
+      ******    ******    ******    ******    ******    ******
 
-COMPILACIÓN PARA GENERAR EL CÓDIGO OBJETO: gcc TADListaSL.c -c 
+COMPILACIÓN PARA GENERAR EL CÓDIGO OBJETO: gcc TADListaSL.c -c
 */
 
 //LIBRERAS
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "TADListaSL.h" 
+#include "TADListaSL.h"
 
 //DEFINICIÓN DE FUNCIONES
 
@@ -39,7 +39,7 @@ void Initialize(lista *l)
 Descripción: Inicializar lista (Iniciar una lista para su uso)
 Recibe: lista *l (Referencia a la lista "l" a operar)
 Devuelve:
-Observaciones: El usuario a creado una lista y l tiene la referencia a ella, 
+Observaciones: El usuario a creado una lista y l tiene la referencia a ella,
 si esto no ha pasado se ocasionara un error.
 */
 void Initialize (lista *l)
@@ -56,23 +56,23 @@ void Destroy(lista *l)
 Descripción: Destruir una lista (Recibe una lista l y la libera completamente)
 Recibe: lista *l (Referencia a la lista "l" a operar)
 Devuelve:
-Observaciones: El usuario a creado una lista y l tiene la referencia a ella, 
+Observaciones: El usuario a creado una lista y l tiene la referencia a ella,
 si esto no ha pasado se ocasionara un error.
 */
-void Destroy (lista *l)	
+void Destroy (lista *l)
 {
 	//Apuntador auxiliar a nodo
 	nodo *aux;
-	
+
 	//Mientras el apuntador del frente de la lista no sea "NULL"
 	while(l->frente != NULL)
 	{
 		//Guardar la referencia el frente
 		aux = l->frente;
-		
+
 		//El nuevo frente es el siguiente
 		l->frente = l->frente->siguiente;
-		
+
 		//Liberar el antiguo frente de memoria
 		free(aux);
 	}
@@ -80,7 +80,7 @@ void Destroy (lista *l)
 	//Colocar el final inicializado en "NULL"
 	l->final = NULL;
 	l->tamanio = 0;
-	
+
 	return;
 }
 
@@ -89,11 +89,11 @@ Operaciones de posicionamiento y busqueda
 ***************************************************/
 /*
 posicion Final(lista *l)
-Descripción: Recibe una lista l y regresa la posición del final (Recibe una 
+Descripción: Recibe una lista l y regresa la posición del final (Recibe una
 lista l y retorna la posición del elemento al final de esta.)
 Recibe: lista *l (Referencia a la lista "l" a operar)
 Devuelve: posición del nodo que contiene al elemeto final de la lista
-Observaciones: El usuario a creado una lista y l tiene la referencia a ella, 
+Observaciones: El usuario a creado una lista y l tiene la referencia a ella,
 si esto no ha pasado se ocasionara un error.
 */
 posicion Final (lista *l)
@@ -103,11 +103,11 @@ posicion Final (lista *l)
 
 /*
 posicion First(lista *l)
-Descripción: Recibe una lista l y regresa la posición del frente (Recibe una 
+Descripción: Recibe una lista l y regresa la posición del frente (Recibe una
 lista l y retorna la posición del elemento al frente de esta.)
 Recibe: lista *l (Referencia a la lista "l" a operar)
 Devuelve: posición del nodo que contiene al elemento del frente de la lista
-Observaciones: El usuario a creado una lista y l tiene la referencia a ella, 
+Observaciones: El usuario a creado una lista y l tiene la referencia a ella,
 si esto no ha pasado se ocasionara un error.
 */
 posicion First (lista *l)
@@ -117,11 +117,11 @@ posicion First (lista *l)
 
 /*
 posicion Following(lista *l, posicion p)
-Descripción: Recibe una lista l, una posición p y devuelve la posición del 
+Descripción: Recibe una lista l, una posición p y devuelve la posición del
 elemento siguiente de p
 Recibe: lista *l y posicion p (Referencia a la lista "l" a operar y posición valida de la lista)
 Devuelve: posición del nodo siguiente a la posicion dada
-Observaciones: El usuario a creado una lista y l tiene la referencia a ella, p es una posicion valida de la lista, 
+Observaciones: El usuario a creado una lista y l tiene la referencia a ella, p es una posicion valida de la lista,
 si esto no ha pasado se ocasionara un error.
 */
 posicion Following (lista *l,posicion p)
@@ -129,7 +129,7 @@ posicion Following (lista *l,posicion p)
 	if(ValidatePosition(l,p))
 	{
 		return p->siguiente;
-	}	
+	}
 	else
 	{
 		printf("ERROR: Función Following (p es invalida)");
@@ -140,7 +140,7 @@ posicion Following (lista *l,posicion p)
 
 /*
 posicion Previous(lista *l, posicion p)
-Descripción: Recibe una lista L, una posición P y devuelve la posición del 
+Descripción: Recibe una lista L, una posición P y devuelve la posición del
 elemento anterior de P
 Recibe: lista *l y posicion p (Referencia a la lista "l" a operar y posición valida de la lista)
 Devuelve: posición del nodo anterior a la posicion dada
@@ -160,7 +160,7 @@ posicion Previous (lista *l,posicion p)
 		aux=aux->siguiente;
 	}
 	printf("ERROR: Función Previous (p es invalida)");
-	exit(1);	
+	exit(1);
 }
 
 
@@ -169,17 +169,17 @@ posicion Search(lista *l, elemento e)
 Descripción: Recibe una lista l y un elemento e, regresa la posición que coincida exactamente con el elemento e.
 Recibe: lista *l y un elemento e (Referencia a la lista "l" a operar y elemento a buscar en la lista)
 Devuelve: posición del elemento en caso de ser encontrado, si no se encuentra se devuelve una posicion invalida
-Observaciones: El usuario a creado una lista y l tiene la referencia a ella el elemento a buscar se compara directamente 
-a nivel de bytes. 
+Observaciones: El usuario a creado una lista y l tiene la referencia a ella el elemento a buscar se compara directamente
+a nivel de bytes.
 */
 posicion Search (lista *l,elemento e)
-{	
+{
 	posicion aux=l->frente;
 	while(aux!=NULL)
 	{
 		if(memcmp(&aux->e,&e,sizeof(elemento))==0)
 		{
-			return aux;			
+			return aux;
 		}
 		aux=aux->siguiente;
 	}
@@ -191,7 +191,7 @@ Operaciónes de consulta
 /***************************************************/
 /*
 elemento Position(lista *l, posicion p)
-Descripción: Recibe una lista l, una posición p y devuelve el elemento en dicha posición. 
+Descripción: Recibe una lista l, una posición p y devuelve el elemento en dicha posición.
 Recibe: lista *l y una posicion p(Referencia a la lista "l" a operar posicion valida en la lista)
 Devuelve: Elemento en la posicion dada, si la posicion es invalida se genera error.
 Observaciones: La lista l es no vacía y la posición p es una posición valida.
@@ -212,7 +212,7 @@ elemento Position (lista *l,posicion p)
 boolean ValidatePosition(lista *l, posicion p)
 Descripción: Recibe una lista l, una posición p y devuelve TRUE si la posición es una posición p valida en la lista l y FALSE en caso contrario.
 Recibe: lista *l y una posicion p(Referencia a la lista "l" a operar y una posicion)
-Devuelve: Booleano 
+Devuelve: Booleano
 Observaciones:
 */
 boolean ValidatePosition (lista *l,posicion p)
@@ -220,19 +220,19 @@ boolean ValidatePosition (lista *l,posicion p)
 	posicion aux;
 	aux=l->frente;
 	while(aux!=NULL)
-	{		
+	{
 		if(aux==p) //**************
-			return TRUE;	
-		aux=aux->siguiente;		
-	}	
-	return FALSE;	
+			return TRUE;
+		aux=aux->siguiente;
+	}
+	return FALSE;
 }
 
 /*
 elemento Element(lista *l, int n)
 Descripción: Recibe una lista y un índice (entre 1 y el tamaño de la lista) y devuelve el elemento que se encuentra en la lista en ese índice partiendo del frente de este =1 hacia atrás.
 Recibe: lista *l y una entero
-Devuelve: elemento 
+Devuelve: elemento
 Observaciones: Si la cola esta vacía o el índice se encuentra fuera del tamaño de la lista se produce error.
 */
 elemento Element(lista *l, int n)
@@ -252,16 +252,16 @@ elemento Element(lista *l, int n)
 	else
 	{
 		printf("\nERROR (Element): Se intenta acceder a elemento %d inexistente",n);
-		exit(1);		
+		exit(1);
 	}
-	return r;	
+	return r;
 }
 
 /*
 posicion ElementPosition(lista *l, int n)
 Descripción: Recibe una lista y un índice (entre 1 y el tamaño de la lista) y devuelve la posicion del elemento que se encuentra en la lista en ese índice partiendo del frente de este =1 hacia atrás.
 Recibe: lista *l y una entero
-Devuelve: posicion 
+Devuelve: posicion
 Observaciones: Si la cola esta vacía o el índice se encuentra fuera del tamaño de la lista se produce error.
 */
 posicion ElementPosition(lista *l, int n)
@@ -280,9 +280,9 @@ posicion ElementPosition(lista *l, int n)
 	else
 	{
 		printf("\nERROR (ElementPosition): Se intenta acceder a posicion %d inexistente",n);
-		exit(1);		
+		exit(1);
 	}
-	return aux;			
+	return aux;
 }
 
 /*
@@ -313,32 +313,32 @@ Operaciones de modificación
 ****************************************************/
 /*
 void Insert (lista * l, posicion p, elemento e, boolean b);
-Descripción: Inserta un elemento e en la lista este deberá agregarse al frente de p 
-si b es verdadero y atrás de p en caso contrario. Si p es invalida 
-Recibe: lista *l (Referencia a la lista "l"), posición p (Posición valida o invalida en la lista), 
+Descripción: Inserta un elemento e en la lista este deberá agregarse al frente de p
+si b es verdadero y atrás de p en caso contrario. Si p es invalida
+Recibe: lista *l (Referencia a la lista "l"), posición p (Posición valida o invalida en la lista),
 elemento e (Elemento a insertar en la lita), boolean b (Indicador de inserción antes de p=TRUE o despues de p =FALSE)
-Devuelve: 
-Observaciones: El usuario a creado una lista,la lista fue correctamente inicializada, si P es no valida o NULL, 
+Devuelve:
+Observaciones: El usuario a creado una lista,la lista fue correctamente inicializada, si P es no valida o NULL,
 se insertará a e al frente de la lista.
 */
 void Insert (lista * l, posicion p, elemento e, boolean b)
 {
 	nodo *aux,*aux2; //posicion aux;
-	
-	//Crear el nodo e insertar e	
+
+	//Crear el nodo e insertar e
 	aux=malloc(sizeof(nodo));
-	
-	//Si no se puede reservar memoria para el nuevo nodo (ERROR de lista) 
+
+	//Si no se puede reservar memoria para el nuevo nodo (ERROR de lista)
 	if(aux==NULL)
 	{
 		printf("\nERROR (Insert): No se puede crear un nuevo nodo");
 		exit(1);
-		
+
 	}
-	
+
 	//Introducir a e en el nuevo nodo
-	aux->e=e;	
-	
+	aux->e=e;
+
 	//Validamos la posicion p
 	if(!ValidatePosition(l,p))
 	{//Si es invalida insertar al frente de la lista
@@ -352,7 +352,7 @@ void Insert (lista * l, posicion p, elemento e, boolean b)
 			aux->siguiente=l->frente;
 			l->frente=aux;
 			l->final=aux;
-			
+
 		}
 	}
 	else
@@ -380,13 +380,13 @@ void Insert (lista * l, posicion p, elemento e, boolean b)
 			if(aux2==NULL)
 			{
 				aux->siguiente=l->frente;
-				l->frente=aux;					
+				l->frente=aux;
 			}
 			//Insertar despues de aux2
 			else
 			{
 				aux2->siguiente=aux;
-				aux->siguiente=p;				
+				aux->siguiente=p;
 			}
 		}
 	}
@@ -399,30 +399,30 @@ void Insert (lista * l, posicion p, elemento e, boolean b)
 void Add (lista *l,elemento e);
 Descripción: Recibe una lista l y un elemento e, se agrega a e al final de la lista l.
 Recibe: lista *l (Referencia a la lista "l"), elemento e (Elemento a insertar en la lita)
-Devuelve: 
+Devuelve:
 Observaciones: El usuario a creado una lista,la lista fue correctamente inicializada.
 */
 void Add (lista *l,elemento e)
 {
-	posicion aux;	
+	posicion aux;
 	aux=malloc(sizeof(nodo));
-	
-	//Si no se puede reservar memoria para el nuevo nodo (ERROR de lista) 
+
+	//Si no se puede reservar memoria para el nuevo nodo (ERROR de lista)
 	if(aux==NULL)
 	{
 		printf("\nERROR (Add): No se puede crear un nuevo nodo");
 		exit(1);
 	}
-	
+
 	//Agregar el elemento al nodo
 	aux->e=e;
-	
+
 	//Si la lista esta vacia
 	if(l->final==NULL&&l->frente==NULL&&l->tamanio==0)
 	{
 		aux->siguiente=NULL;
 		l->frente=aux;
-		l->final=aux;								
+		l->final=aux;
 	}
 	//Si la lista no esta vacia
 	else
@@ -431,7 +431,7 @@ void Add (lista *l,elemento e)
 		aux->siguiente=NULL;
 		l->final=aux;
 	}
-//Incrementar el tamaniode la lista	
+//Incrementar el tamaniode la lista
 	l->tamanio++;
 	return;
 }
@@ -440,7 +440,7 @@ void Add (lista *l,elemento e)
 void Remove (lista *l,posicion p);
 Descripción: Recibe una lista l y una posición p, el elemento en la posición p será removido.
 Recibe: lista *l (Referencia a la lista "l"), posicion p (posicion a eliminar en la lista)
-Devuelve: 
+Devuelve:
 Observaciones: El usuario a creado una lista,la lista fue correctamente inicializada, la posicion p es valida.
 */
 void Remove (lista *l,posicion p)
@@ -456,7 +456,7 @@ void Remove (lista *l,posicion p)
 			l->final=NULL;
 			l->frente=NULL;
 			l->tamanio=0;
-		}		
+		}
 		//Si la p es el final
 		else if(p==l->final)
 		{
@@ -479,14 +479,14 @@ void Remove (lista *l,posicion p)
 			aux->siguiente=p->siguiente;
 			free(p);
 			l->tamanio--;
-		}		
+		}
 	}
 	else
 	{
 		printf("\nERROR: Remove p es invalida");
 		exit(1);
 	}
-	
+
 	return;
 }
 
@@ -495,7 +495,7 @@ void Remove (lista *l,posicion p)
 void Replace (lista *l,posicion p, elemento e);
 Descripción: Recibe una lista l, una posición p y un elemento e, el elemento en la posición p será sustituido por e
 Recibe: lista *l (Referencia a la lista "l"), posicion p (posicion a remplazar en la lista), elemento e (elemento que remplazara al existente en p)
-Devuelve: 
+Devuelve:
 Observaciones: El usuario a creado una lista,la lista fue correctamente inicializada, la posicion p es valida.
 */
 void Replace (lista *l,posicion p, elemento e)
@@ -514,22 +514,19 @@ void Replace (lista *l,posicion p, elemento e)
 }
 
 /********************************************************************************
-//Función para usarse en depuración, la cuál imprime las direcciones de 
+//Función para usarse en depuración, la cuál imprime las direcciones de
 //memoria de los nodos y su apuntador a siguiente
 ********************************************************************************/
 void VerLigasLista(lista *l)
 {
-	posicion aux;	
-	aux=l->frente;	
-	printf("\n*************************************************************");
+	posicion aux;
+	aux=l->frente;
+
 	while(aux!=NULL)
 	{
-		printf("\nPosicion=%p\tSiguiente=%p",aux,aux->siguiente);
+		printf("[%s] ->",aux->e.p);
 		aux=aux->siguiente;
 	}
-	printf("\n*************************************************************");
 
 	return;
 }
-
-

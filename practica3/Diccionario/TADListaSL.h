@@ -41,7 +41,7 @@ typedef nodo* posicion;
 //Estructura de una lista
 typedef struct lista
 {
-	 int tamanio;
+	int tamanio;
 	posicion frente;
 	posicion final;
 }lista;

@@ -14,11 +14,12 @@ en esa lista cuando alla colisiones
 determinada 0-VALORCADEDA-1
 */
 int sumaCaracteres(char * cadena){
-int sumatotal=0,i;
+int sumatotal=0,i=0;
 
-	for(i=0;i<strlen(cadena);++i){
+	while(cadena[i] != '\0')`+,.-kl´ç
 		sumatotal+=(int) cadena[i];
-	}
+		i++;
+
 
 return sumatotal;
 

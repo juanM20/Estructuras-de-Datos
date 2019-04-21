@@ -25,6 +25,7 @@ int main()
 	scanf("%d",&opcion);
 	 switch(opcion){
 
+
 		  case 2:
 		  	    fflush(stdin);
 		  			printf("Ingresa una Palabra: \n");
