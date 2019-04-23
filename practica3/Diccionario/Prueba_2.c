@@ -3,7 +3,7 @@
 #include <string.h>
 #include "TADList.h"
 
-#define TAM_TABLA 20 //definimos el tamaño de la tabla HASH.
+#define TAM_TABLA 1000 //definimos el tamaño de la tabla HASH.
 #define TAM_PALABRA 50 //definimos el tamaño de la palabra.
 #define TAM_DEF 150 //definimos el tamaño de la definicion.
 #define TAM_CADENA TAM_DEF+TAM_PALABRA
@@ -26,10 +26,24 @@ return sumatotal;
 void Agregar_Definicion(lista *colision, char *palabra, char *definicion){
 
   element e;
+	int i=0;
 
   e.id_palabra = sumaCaracteres(palabra);
-  strcpy(e.palabra, palabra);
-  strcpy(e.significado, definicion);
+
+	while(palabra[i] != '\0'){
+		e.palabra[i] = palabra[i];
+		i++;
+	}
+	e.palabra[i] = '\0';
+
+	i=0;
+	while(definicion[i] != '\0'){
+		e.significado[i] = definicion[i];
+		i++;
+	}
+	e.significado[i] = '\0';
+
+
   Insertar(colision,e);
 }
 
@@ -60,9 +74,7 @@ int main(){
 
   for(int i=0; i<TAM_TABLA; i++){
     Init(&colisiones[i]);
-    printf("tam[%d]: %d  ",i, colisiones[i].tam);
   }
-  printf("\n");
 
   do{
 
@@ -99,16 +111,17 @@ int main(){
                   definicion[i] = '\0';
 
                   indice = sumaCaracteres(&palabra[0])%TAM_TABLA;
-                  //if(Tam_Lista(&colisiones[indice]) > 1) num_colisiones++;
-                  //Agregar_Definicion(&colisiones[indice],&palabra[0],&definicion[0]);
+                  if(Tam_Lista(&colisiones[indice]) > 1) num_colisiones++;
+                  Agregar_Definicion(&colisiones[indice],&palabra[0],&definicion[0]);
                   printf("\nIndice: %d \t%s : %s",indice, palabra, definicion);
 
                 }
 
-                /*printf("\nEstadísticas:\n\n");
+                printf("\nEstadísticas:\n\n");
                 for(int i=0; i<TAM_TABLA; i++){
-                  Imprimir_Lista(&colisiones[i]);
-                }*/
+                  Imprimir_Colisiones(&colisiones[i]);
+									printf("\n\n");
+                }
                 printf("\nNumero de colisiones: %d",num_colisiones);
 
               }

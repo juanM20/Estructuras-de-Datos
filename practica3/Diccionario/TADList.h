@@ -33,4 +33,5 @@ void Insertar(lista *l, element e);
 boolean Lista_Vacia(lista *l);
 void Eliminar(lista *l, long id);
 void Imprimir_Lista(lista *l);
+void Imprimir_Colisiones(lista *l);
 int Tam_Lista(lista *l);

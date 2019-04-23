@@ -20,6 +20,7 @@ void Insertar(lista *l, element e){
 
        l->frente = nuevo_nodo;
        l->fin = nuevo_nodo;
+       l->tam++;
        return;
    }
 
@@ -86,7 +87,20 @@ void Imprimir_Lista(lista *l){
 
     while(aux != NULL){
 
-        printf("%s: %s --->",aux->e.palabra, aux->e.significado);
+        printf("%s: %s -> ",aux->e.palabra, aux->e.significado);
+        aux = aux->sig;
+    }
+}
+
+void Imprimir_Colisiones(lista *l){
+
+    nodo *aux;
+
+    aux = l->frente;
+
+    while(aux != NULL){
+
+        printf("[%s]-> ", aux->e.palabra);
         aux = aux->sig;
     }
 }
