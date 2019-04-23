@@ -3,7 +3,60 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Tabla_hash.h"
+#include "TADList.h"
+
+#define TAM_TABLA 1000 //definimos el tamaño de la tabla HASH.
+#define TAM_PALABRA 50 //definimos el tamaño de la palabra.
+#define TAM_DEF 150 //definimos el tamaño de la definicion.
+#define TAM_CADENA TAM_DEF+TAM_PALABRA
+
+
+int sumaCaracteres(char * cadena)
+{
+
+	int sumatotal=0,i=0;
+
+	while(cadena[i] != '\0'){
+		sumatotal+=(int) cadena[i];
+		i++;
+	}
+
+return sumatotal;
+
+}
+
+void Agregar_Definicion(lista *colision, char *palabra, char *definicion){
+
+  element e;
+	int i=0;
+
+  e.id_palabra = sumaCaracteres(palabra);
+
+	while(palabra[i] != '\0'){
+		e.palabra[i] = palabra[i];
+		i++;
+	}
+	e.palabra[i] = '\0';
+
+	i=0;
+	while(definicion[i] != '\0'){
+		e.significado[i] = definicion[i];
+		i++;
+	}
+	e.significado[i] = '\0';
+
+  Insertar(colision,e);
+}
+
+void menu(){
+
+	printf("1.- Cargar un archivo de definiciones\n"
+				 "2.- Agregar una palabra y su definici�n\n"
+				 "3.- Buscar una palabra y ver su definici�n\n"
+				 "4.- Modificar una definici�n\n"
+				 "5.- Eliminar una palabra\n"
+				 "6.- Salir\n");
+}
 
 
 int main(){

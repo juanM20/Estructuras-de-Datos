@@ -3,7 +3,7 @@
 #include "TADList.h"
 
 void Init(lista *l){
-
+    l->tam = 0;
     l->frente = NULL;
     l->fin = NULL;
 
@@ -20,12 +20,15 @@ void Insertar(lista *l, element e){
 
        l->frente = nuevo_nodo;
        l->fin = nuevo_nodo;
+       l->tam++;
        return;
    }
 
     nuevo_nodo->sig = l->frente;
     l->frente->ant = nuevo_nodo;
     l->frente = nuevo_nodo;
+
+    l->tam++;
 
 }
 
@@ -57,6 +60,7 @@ void Eliminar(lista *l, long id){
                 aux->ant->sig = aux->sig;
                 aux->sig->ant = aux->ant;
                 r=TRUE;
+                l->tam--;
                 break;
             }
 
@@ -66,7 +70,6 @@ void Eliminar(lista *l, long id){
         if(r == FALSE){
             printf("\nNo existe esa palabra...");
         }
-
 
     }
     else{
@@ -84,8 +87,24 @@ void Imprimir_Lista(lista *l){
 
     while(aux != NULL){
 
-        printf("\n%s: %s",aux->e.palabra, aux->e.significado);
+        printf("%s: %s -> ",aux->e.palabra, aux->e.significado);
         aux = aux->sig;
     }
+}
 
+void Imprimir_Colisiones(lista *l){
+
+    nodo *aux;
+
+    aux = l->frente;
+
+    while(aux != NULL){
+
+        printf("[%s]-> ", aux->e.palabra);
+        aux = aux->sig;
+    }
+}
+
+int Tam_Lista(lista *l){
+  return l->tam;
 }
