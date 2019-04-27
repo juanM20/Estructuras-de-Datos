@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "TADList.h"
 
 void Init(lista *l){
@@ -27,7 +28,6 @@ void Insertar(lista *l, element e){
     nuevo_nodo->sig = l->frente;
     l->frente->ant = nuevo_nodo;
     l->frente = nuevo_nodo;
-
     l->tam++;
 
 }
@@ -43,7 +43,7 @@ boolean Lista_Vacia(lista *l){
     return r;
 }
 
-void Eliminar(lista *l, long id){
+void Eliminar(lista *l, char *p){
 
     nodo *aux,*aux2;
     boolean r= FALSE;
@@ -54,7 +54,7 @@ void Eliminar(lista *l, long id){
 
         while(aux != NULL){
 
-            if(aux->e.id_palabra == id){
+            if(strcmp(aux->e.palabra,p) == 0){
 
                 aux2 = aux;
                 aux->ant->sig = aux->sig;
@@ -107,4 +107,49 @@ void Imprimir_Colisiones(lista *l){
 
 int Tam_Lista(lista *l){
   return l->tam;
+}
+
+void Buscar_Elemento(lista *l, char *p){
+
+  nodo *aux = l->frente;
+
+  while(aux != NULL){
+    if(strcmp(aux->e.palabra,p) == 0){
+      printf("\n%s: %s",aux->e.palabra,aux->e.significado);
+      return;
+    }
+    aux = aux->sig;
+  }
+
+  printf("\nLa palabra no existe.");
+  return;
+
+}
+
+void Modificar_Elemento(lista *l, char *p){
+
+  nodo *aux = l->frente;
+  char nueva_def[150];
+  int i=0;
+
+  while(aux != NULL){
+    if(strcmp(aux->e.palabra,p) == 0){
+      while(getchar() != '\n');
+      printf("\nEcribe la nueva definicion: ");
+      gets(nueva_def);
+      while(nueva_def[i] != '\0'){
+        aux->e.significado[i] = nueva_def[i];
+        i++;
+      }
+      aux->e.significado[i] = '\0';
+
+      printf("\n%s: %s",aux->e.palabra,aux->e.significado);
+      return;
+    }
+    aux = aux->sig;
+  }
+
+  printf("\nLa palabra no existe.");
+  return;
+
 }

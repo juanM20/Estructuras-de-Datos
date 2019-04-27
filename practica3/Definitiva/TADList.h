@@ -31,7 +31,9 @@ typedef struct lista{
 void Init(lista *l);
 void Insertar(lista *l, element e);
 boolean Lista_Vacia(lista *l);
-void Eliminar(lista *l, long id);
+void Eliminar(lista *l, char *p);
 void Imprimir_Lista(lista *l);
 void Imprimir_Colisiones(lista *l);
 int Tam_Lista(lista *l);
+void Buscar_Elemento(lista *l, char *p);
+void Modificar_Elemento(lista *l, char *p);

@@ -50,7 +50,7 @@ void Agregar_Definicion(lista *colision, char *palabra, char *definicion){
 
 void menu(){
 
-	printf("1.- Cargar un archivo de definiciones\n"
+	printf("\n1.- Cargar un archivo de definiciones\n"
 				 "2.- Agregar una palabra y su definici�n\n"
 				 "3.- Buscar una palabra y ver su definici�n\n"
 				 "4.- Modificar una definici�n\n"
@@ -62,6 +62,7 @@ void menu(){
 int main(){
 
   int opcion=0, respuesta=0; // variables para continuar en el menu y seleccionar una opcion.
+	int opcion2=0;//opcion para elegir funcion hash.
 
   /*Estas variables se ocuparan para manipular el archivo que se leerá
     y también se extraerán las "palabras" con su respectiva "definición".
@@ -87,6 +88,7 @@ int main(){
     switch (opcion) {
 
       case 1:
+
               archivo = fopen("Lunfardo.txt","r");
               if(archivo == NULL) printf("\nErro: no se puede abrir el archivo");
               else{
@@ -112,6 +114,7 @@ int main(){
                   }
                   definicion[i] = '\0';
 
+
                   indice = sumaCaracteres(&palabra[0])%TAM_TABLA;
                   if(Tam_Lista(&colisiones[indice]) > 1) num_colisiones++;
                   Agregar_Definicion(&colisiones[indice],&palabra[0],&definicion[0]);
@@ -129,7 +132,51 @@ int main(){
               }
 
               break;
+			case 2:
 
+							while(getchar() != '\n');
+							printf("\nIngresa la palabra: ");
+							gets(palabra);
+
+							while(getchar() != '\n');
+							printf("\nIngresa una Definicion: ");
+							gets(definicion);
+
+							indice = sumaCaracteres(&palabra[0])%TAM_TABLA;
+							Agregar_Definicion(&colisiones[indice],&palabra[0],&definicion[0]);
+							printf("\nIndice: %d \t%s : %s",indice, palabra, definicion);
+
+							break;
+		 case 3:
+		 					while(getchar() != '\n');
+							printf("\nIngresa la palabra: ");
+							gets(palabra);
+							indice = sumaCaracteres(&palabra[0])%TAM_TABLA;
+							if(Tam_Lista(&colisiones[indice]) > 0)
+								Buscar_Elemento(&colisiones[indice],palabra);
+							else printf("\nNo existe la palabra.");
+
+							break;
+		 case 4:
+		 					while(getchar() != '\n');
+							printf("Ingresa la palabra: ");
+							gets(palabra);
+							indice = sumaCaracteres(&palabra[0])%TAM_TABLA;
+							if(Tam_Lista(&colisiones[indice]) > 0)
+								Modificar_Elemento(&colisiones[indice],palabra);
+							else printf("\nNo existe la palabra.");
+
+							break;
+
+		 case 5:
+		 					while(getchar() != '\n');
+							printf("Ingresa la palabra: ");
+							gets(palabra);
+							indice = sumaCaracteres(&palabra[0])%TAM_TABLA;
+							if(Tam_Lista(&colisiones[indice]) > 0)
+								Eliminar(&colisiones[indice], palabra);
+							else printf("\nNo existe la palabra.");
+		  				break;
       default:
               printf("\nError: No existe esa opcion por favor prueba otra vez.");
               break;
