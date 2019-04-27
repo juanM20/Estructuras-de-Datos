@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include "funcionesRec.h"
 
+/*
+
+*/
 void Menu()
 {
   printf("BIENVENIDO A LA PRACTICA 4, SOLUCIONES RECURSIVAS\n");

@@ -7,36 +7,35 @@ int main()
 
   Menu();
   scanf("%d", &opc);
-
-  do
+  if(opc>0 && opc<5)
   {
-    switch (opc) {
+    switch (opc)
+    {
       case 1:
         printf("San fibonacci :v");
         system("cls");
-        menu();
+        Menu();
       break;
 
       case 2:
         printf("San tribonacci :v");
         system("cls");
-        menu();
+        Menu();
       break;
 
       case 3:
         printf("San Hanoi :v");
         system("cls");
-        menu();
+        Menu();
       break;
 
       case 4:
         printf("Santa mezcla ordenada alv :v");
         system("cls");
-        menu();
+        Menu();
       break;
     }//switch
-  }while(opc<5);
-
+  }
 
   return 0;
 }
