@@ -5,7 +5,7 @@ int main()
 {
   int opc=0;
 
-  menu();
+  Menu();
   scanf("%d", &opc);
 
   do

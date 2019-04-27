@@ -4,4 +4,4 @@
 /*
 
 */
-void menu();
+void Menu();
