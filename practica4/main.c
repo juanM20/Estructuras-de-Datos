@@ -12,23 +12,23 @@ int main()
     switch (opc)
     {
       case 1:
-        printf("San fibonacci :v");
         system("cls");
+        printf("San fibonacci :v");
       break;
 
       case 2:
-        printf("San tribonacci :v");
         system("cls");
+        printf("San tribonacci :v");
       break;
 
       case 3:
-        printf("San Hanoi :v");
         system("cls");
+        printf("San Hanoi :v");
       break;
 
       case 4:
-        printf("Santa mezcla ordenada alv :v");
         system("cls");
+        printf("Santa mezcla ordenada alv :v");
       break;
     }//switch
   }
