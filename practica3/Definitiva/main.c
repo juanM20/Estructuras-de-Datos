@@ -176,6 +176,7 @@ int main(){
 							if(Tam_Lista(&colisiones[indice]) > 0)
 								Eliminar(&colisiones[indice], palabra);
 							else printf("\nNo existe la palabra.");
+
 		  				break;
       default:
               printf("\nError: No existe esa opcion por favor prueba otra vez.");

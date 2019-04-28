@@ -45,7 +45,8 @@ boolean Lista_Vacia(lista *l){
 
 void Eliminar(lista *l, char *p){
 
-    nodo *aux,*aux2;
+    nodo *aux=NULL;
+    nodo *aux2=NULL;
     boolean r= FALSE;
 
     if(!Lista_Vacia(l)){
@@ -57,26 +58,24 @@ void Eliminar(lista *l, char *p){
             if(strcmp(aux->e.palabra,p) == 0){
 
                 aux2 = aux;
-                aux->ant->sig = aux->sig;
-                aux->sig->ant = aux->ant;
+                aux->ant->sig = aux2->sig;
+                aux->sig->ant = aux2->ant;
                 r=TRUE;
                 l->tam--;
-                break;
+                free(aux2);
+                return;
             }
 
             aux = aux->sig;
         }
 
-        if(r == FALSE){
-            printf("\nNo existe esa palabra...");
-        }
+        if(r == FALSE)
+          printf("\nNo existe esa palabra...");
 
     }
-    else{
-        printf("\nLa lista está vacía...");
-    }
+    else
+      printf("\nLa lista está vacía...");
 
-    if(r == TRUE) free(aux2);
 }
 
 void Imprimir_Lista(lista *l){
