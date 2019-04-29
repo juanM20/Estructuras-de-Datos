@@ -1,25 +1,40 @@
-//gcc TADList.c main.c -o Funcion_Hash-1
+//gcc TADList.c main-2.c -o Funcion_Hash-2
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "TADList.h"
 
 #define TAM_TABLA 600 //definimos el tamaño de la tabla HASH.
 #define TAM_PALABRA 50 //definimos el tamaño de la palabra.
-#define TAM_DEF 150 //definimos el tamaño de la definicion.
+#define TAM_DEF 650 //definimos el tamaño de la definicion.
 #define TAM_CADENA TAM_DEF+TAM_PALABRA
 
-
-int sumaCaracteres(char * cadena)
+/*
+Esta es la funcion hashing
+que nos dara el indice donde
+colocaremos la palabra y su definicion
+en la tabla hash.
+*/
+long long sumaCaracteres(char * cadena)
 {
 
-	int sumatotal=0,i=0;
+	int i=0, car=0;
+	long long sumatotal=0;
+
 
 	while(cadena[i] != '\0'){
-		sumatotal+=(int) cadena[i];
+
+		car = (int)cadena[i];
+		if(car < 0) car*=-1;
+
+		sumatotal += car*(pow(i,2));
 		i++;
 	}
+
+	if(sumatotal < 0)
+		sumatotal*=-1;
 
 return sumatotal;
 
@@ -35,8 +50,6 @@ void Agregar_Definicion(lista *colision, char *palabra, char *definicion)
 
   element e;
 	int i=0;
-
-  e.id_palabra = sumaCaracteres(palabra);
 
 	while(palabra[i] != '\0'){
 		e.palabra[i] = palabra[i];
@@ -98,7 +111,7 @@ int main()
 
       case 1:
 
-              archivo = fopen("Lunfardo.txt","r");
+              archivo = fopen("BIOQUANTUM.txt","r");
               if(archivo == NULL) printf("\nErro: no se puede abrir el archivo");
               else
 							{
@@ -106,7 +119,7 @@ int main()
                 while(!feof(archivo))
 								{
 
-                  fgets(cad_aux,200,archivo);
+                  fgets(cad_aux,TAM_CADENA,archivo);
 
                   i=0;
                   while(cad_aux[i] != ':')
@@ -193,7 +206,7 @@ int main()
 							{
 								if(Tam_Lista(&colisiones[i]) >= 2)
 									num_colisiones += Tam_Lista(&colisiones[i])-1;
-									
+
 								printf("Lista: %d ",i+1);
 								Imprimir_Colisiones(&colisiones[i]);
 								printf("\n\n");

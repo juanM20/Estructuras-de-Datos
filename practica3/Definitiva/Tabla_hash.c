@@ -5,26 +5,17 @@
 #include "Tabla_hash.h"
 
 
-int sumaCaracteres(char * cadena)
+
+/*Funcion Agregar_Definicion:
+	Se copian las cadenas de palabra y definicion
+	en una variable de tipo "elment" para insertarlas
+	después en la tabla hash dependiendo de
+*/
+void Agregar_Definicion(lista *colision, char *palabra, char *definicion)
 {
-
-	int sumatotal=0,i=0;
-
-	while(cadena[i] != '\0'){
-		sumatotal+=(int) cadena[i];
-		i++;
-	}
-
-return sumatotal;
-
-}
-
-void Agregar_Definicion(lista *colision, char *palabra, char *definicion){
 
   element e;
 	int i=0;
-
-  e.id_palabra = sumaCaracteres(palabra);
 
 	while(palabra[i] != '\0'){
 		e.palabra[i] = palabra[i];
@@ -42,14 +33,22 @@ void Agregar_Definicion(lista *colision, char *palabra, char *definicion){
   Insertar(colision,e);
 }
 
-void menu(){
 
-	printf("1.- Cargar un archivo de definiciones\n"
+/*
+Menu de la practica 3
+Con este menu se decide que
+que operacion hacer con la tabla hash
+*/
+void menu()
+{
+
+	printf("\n1.- Cargar un archivo de definiciones\n"
 				 "2.- Agregar una palabra y su definici�n\n"
 				 "3.- Buscar una palabra y ver su definici�n\n"
 				 "4.- Modificar una definici�n\n"
 				 "5.- Eliminar una palabra\n"
-				 "6.- Salir\n");
+				 "6.- Mostrar Estadisticas\n"
+				 "7.- Salir\n");
 }
 
 /*
@@ -90,6 +89,25 @@ long Dec_Bin(int numAscii)
 }
 
 /*
+Cuenta los digitos que contiene el número binario, es util para analizar
+dicho numero y manipularlo,
+recibe el binario en formato long, y devuelve un entero que representa
+la cantidad de digitos (0 o 1) que lo componen.
+*/
+int CuentaDigitosDeBinario(long num)
+{
+	int contador=1;
+
+	while(num/10>0)
+	{
+		num=num/10;
+		contador++;
+	}
+
+	return contador;
+}
+
+/*
 Convierte un numero binario a decimal,
 recibe un long, y devuelve un int con su equivalencia en base 10.
 */
@@ -116,43 +134,6 @@ int Bin_Dec(long numBin)
 }
 
 /*
-Cuenta los digitos que contiene el número binario, es util para analizar
-dicho numero y manipularlo,
-recibe el binario en formato long, y devuelve un entero que representa
-la cantidad de digitos (0 o 1) que lo componen.
-*/
-int CuentaDigitosDeBinario(long num)
-{
-	int contador=1;
-
-	while(num/10>0)
-	{
-		num=num/10;
-		contador++;
-	}
-
-	return contador;
-}
-
-/*
-Realiza la acción de acomodar la palabra en la tabla hash
-*/
-int Operacion_Hash(long numBin, long* numInicial)
-{
-	int ret, i, tam_bin;
-	int array0s[]= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//32 es el tamaño que naneja el simulador
-	long sumaBinaria;
-
-	sumaBinaria= Suma_Binaria(*numInicial, numBin);
-	printf("\nBinaria %d", sumaBinaria);
-	*numInicial= Compuerta_XOR(sumaBinaria);
-	printf("\nNvo init %d", (*numInicial));
-	ret= *numInicial%TAM_TABLA;
-
-	return ret;
-}
-
-/*
 Realiza la suma de los numero bianrios generados en las conversiones de
 las funciones correcpondientes
 */
@@ -168,6 +149,29 @@ long Suma_Binaria(long numBin, long numInicial)
   //printf("suma: %d\n", suma);
 	return suma;
 }
+
+/*
+Auxiliar para al comparacion de 0s y 1s, contiene la tabla de verdad de la compuerta XOR
+*/
+int Comparacion_XOR(int bitArraySuma, int bitAuxXOR)
+{
+	int salidaXOR;
+
+	if(bitArraySuma==0 && bitAuxXOR==0)
+		salidaXOR=0;
+
+	if(bitArraySuma==0 && bitAuxXOR==1)
+		salidaXOR=1;
+
+	if(bitArraySuma==1 && bitAuxXOR==0)
+		salidaXOR=1;
+
+	if(bitArraySuma==1 && bitAuxXOR==1)
+		salidaXOR=0;
+
+	return salidaXOR;
+}
+
 
 /*
 Realiza la comparacion de una seccion del arreglo inicial con un arreglo auxiliar,
@@ -222,24 +226,21 @@ long Compuerta_XOR(long sumaBinaria)
 	return res_XOR;
 }
 
+
 /*
-Auxiliar para al comparacion de 0s y 1s, contiene la tabla de verdad de la compuerta XOR
+Realiza la acción de acomodar la palabra en la tabla hash
 */
-int Comparacion_XOR(int bitArraySuma, int bitAuxXOR)
+int Operacion_Hash(long numBin, long* numInicial)
 {
-	int salidaXOR;
+	int ret, i, tam_bin;
+	int array0s[]= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//32 es el tamaño que naneja el simulador
+	long sumaBinaria;
 
-	if(bitArraySuma==0 && bitAuxXOR==0)
-		salidaXOR=0;
+	sumaBinaria= Suma_Binaria(*numInicial, numBin);
+	printf("\nBinaria %ld", sumaBinaria);
+	*numInicial= Compuerta_XOR(sumaBinaria);
+	printf("\nNvo init %ld", (*numInicial));
+	ret= *numInicial%TAM_TABLA;
 
-	if(bitArraySuma==0 && bitAuxXOR==1)
-		salidaXOR=1;
-
-	if(bitArraySuma==1 && bitAuxXOR==0)
-		salidaXOR=1;
-
-	if(bitArraySuma==1 && bitAuxXOR==1)
-		salidaXOR=0;
-
-	return salidaXOR;
+	return ret;
 }

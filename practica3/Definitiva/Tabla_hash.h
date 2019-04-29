@@ -7,14 +7,14 @@
 #define TAM_CADENAS 50 //Tamanio de todas las cadenas usadas para el tratamiento de binario/decimal.
 #define MAX_VALOR_ASCII 255 //Guarda el maximo valor del ASCII (255).
 
-#define TAM_TABLA 1000 //definimos el tamaño de la tabla HASH.
+#define TAM_TABLA 600 //definimos el tamaño de la tabla HASH.
 #define TAM_PALABRA 50 //definimos el tamaño de la palabra.
-#define TAM_DEF 150 //definimos el tamaño de la definicion.
+#define TAM_DEF 250 //definimos el tamaño de la definicion.
 #define TAM_CADENA TAM_DEF+TAM_PALABRA
 
 
-int sumaCaracteres(char * cadena);
 void Agregar_Definicion(lista *colision, char *palabra, char *definicion);
+
 void menu();
 
 /*
