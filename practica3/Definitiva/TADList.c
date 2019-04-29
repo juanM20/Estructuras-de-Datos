@@ -125,7 +125,7 @@ void Imprimir_Colisiones(lista *l){
 
     while(aux != NULL){
 
-        printf("[%s]-> ", aux->e.palabra);
+        printf("[%s]-> ",aux->e.palabra);
         aux = aux->sig;
     }
 }
@@ -159,6 +159,7 @@ void Modificar_Elemento(lista *l, char *p){
 
   while(aux != NULL){
     if(strcmp(aux->e.palabra,p) == 0){
+      printf("presiona enter.");
       while(getchar() != '\n');
       printf("\nEcribe la nueva definicion: ");
       gets(nueva_def);
