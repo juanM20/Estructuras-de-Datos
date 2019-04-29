@@ -15,3 +15,13 @@ void Menu()
   printf("4. Ordenamiento por mezcla.\n");
   return;
 }
+
+/*
+
+*/
+int fibonacci(int n)
+{
+  int n0=0, nuevoN;
+  nuevoN= n0+(n0+1);
+  
+}
