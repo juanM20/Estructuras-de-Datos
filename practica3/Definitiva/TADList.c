@@ -51,7 +51,33 @@ void Eliminar(lista *l, char *p){
 
     if(!Lista_Vacia(l)){
 
+        if(l->frente == l->fin){
+          aux2 = l->frente;
+          l->frente = NULL;
+          l->fin = NULL;
+          l->tam = 0;
+          free(aux2);
+          printf("\nSe ha elimiado correctamente!");
+          return;
+
+        }
+
         aux = l->frente;
+
+        if(strcmp(aux->e.palabra, p) == 0){
+
+          aux2 = aux;
+          aux = aux->sig;
+          aux->sig->ant = NULL;
+          l->frente = l->frente->sig;
+          l->frente->sig->ant = NULL;
+          l->tam--;
+          free(aux2);
+          printf("\nSe ha elimiado correctamente!");
+          return;
+        }
+
+        aux = aux->sig;
 
         while(aux != NULL){
 
@@ -60,9 +86,9 @@ void Eliminar(lista *l, char *p){
                 aux2 = aux;
                 aux->ant->sig = aux2->sig;
                 aux->sig->ant = aux2->ant;
-                r=TRUE;
                 l->tam--;
                 free(aux2);
+                printf("\nSe ha elimiado correctamente!");
                 return;
             }
 
@@ -142,7 +168,7 @@ void Modificar_Elemento(lista *l, char *p){
       }
       aux->e.significado[i] = '\0';
 
-      printf("\n%s: %s",aux->e.palabra,aux->e.significado);
+      printf("\nNueva definicion\n%s: %s",aux->e.palabra,aux->e.significado);
       return;
     }
     aux = aux->sig;
