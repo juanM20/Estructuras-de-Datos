@@ -4,6 +4,7 @@
 int main()
 {
   int opc=0;
+  int numFibo=0, resFibo=0, i;
 
   Menu();
   scanf("%d", &opc);
@@ -12,8 +13,13 @@ int main()
     switch (opc)
     {
       case 1:
-        system("cls");
-        printf("San fibonacci :v");
+        printf("Selecciona el termino n-simo de la serie: ");
+        scanf("%d", &numFibo);
+        for(i=0; i==numFibo; i++)
+        {
+          resFibo= fibonacci(numFibo);
+          printf("%d", resFibo);
+        }
       break;
 
       case 2:
@@ -32,6 +38,8 @@ int main()
       break;
     }//switch
   }
+  else
+    exit(1);
 
   return 0;
 }

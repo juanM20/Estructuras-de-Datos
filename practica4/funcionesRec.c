@@ -19,9 +19,13 @@ void Menu()
 /*
 
 */
-int fibonacci(int n)
+long fibonacci(int n)
 {
-  int n0=0, nuevoN;
-  nuevoN= n0+(n0+1);
-  
+  long fibo;
+	if(n==0 || n==1)//Caso base
+		fibo= n;
+	else
+		fibo= fibonacci(n-2) + fibonacci(n-1);
+
+  return fibo;
 }
