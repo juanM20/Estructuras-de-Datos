@@ -3,23 +3,23 @@
 
 int main()
 {
-  int opc=0;
-  int numFibo=0, resFibo=0, i;
+  int nTermino=0, opc=0, i;
+  char continuarMenu;
 
-  Menu();
-  scanf("%d", &opc);
-  if(opc>0 && opc<5)
+  printf("BIENVENIDO A LA PRACTICA 4, SOLUCIONES RECURSIVAS\n\n");
+
+  do
   {
+    Menu();
+    scanf("%d", &opc);
     switch (opc)
     {
       case 1:
-        printf("Selecciona el termino n-simo de la serie: ");
-        scanf("%d", &numFibo);
-        for(i=0; i==numFibo; i++)
-        {
-          resFibo= fibonacci(numFibo);
-          printf("%d", resFibo);
-        }
+        printf("Selecciona el termino n-simo de la serie: n=");
+        scanf("%d", &nTermino);
+        printf("\nSerie Fibonacci:\n");
+        for(i=0; i<=nTermino; i++)
+          printf("%d,", fibonacci(i)); //se manda el término i a la funcion, para que se imprima la sucesion completa
       break;
 
       case 2:
@@ -37,9 +37,12 @@ int main()
         printf("Santa mezcla ordenada alv :v");
       break;
     }//switch
-  }
-  else
-    exit(1);
+    
+    fflush(stdin);
+    printf("\n\nSeguir en el menu? (S/N): ");
+    scanf("%c", &continuarMenu);
+
+  }while(continuarMenu=='s' || continuarMenu=='S');
 
   return 0;
 }

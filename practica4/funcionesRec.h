@@ -9,4 +9,4 @@ void Menu();
 /*
 
 */
-long fibonacci(int n);
+long long fibonacci(int n);
