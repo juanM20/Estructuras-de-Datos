@@ -15,7 +15,8 @@ int main()
     switch (opc)
     {
       case 1:
-        printf("Selecciona el termino n-simo de la serie: n=");
+        system("cls");
+        printf("Selecciona el termino n-simo de la sucesion: n=");
         scanf("%d", &nTermino);
         printf("\nSerie Fibonacci:\n");
         for(i=0; i<=nTermino; i++)
@@ -24,7 +25,11 @@ int main()
 
       case 2:
         system("cls");
-        printf("San tribonacci :v");
+        printf("Selecciona el termino n-simo de la sucesion: n=");
+        scanf("%d", &nTermino);
+        printf("\nSerie Tribonacci:\n");
+        for(i=0; i<=nTermino; i++)
+          printf("%d,", tribonacci(i)); //se manda el término i a la funcion, para que se imprima la sucesion completa
       break;
 
       case 3:
@@ -36,8 +41,11 @@ int main()
         system("cls");
         printf("Santa mezcla ordenada alv :v");
       break;
+
+      default:
+        exit(1);
     }//switch
-    
+
     fflush(stdin);
     printf("\n\nSeguir en el menu? (S/N): ");
     scanf("%c", &continuarMenu);
