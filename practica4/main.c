@@ -20,7 +20,7 @@ int main()
         scanf("%d", &nTermino);
         printf("\nSerie Fibonacci:\n");
         for(i=0; i<=nTermino; i++)
-          printf("%d,", fibonacci(i)); //se manda el término i a la funcion, para que se imprima la sucesion completa
+          printf("n%d= %d,\n", i,fibonacci(i)); //se manda el término i a la funcion, para que se imprima la sucesion completa
       break;
 
       case 2:
