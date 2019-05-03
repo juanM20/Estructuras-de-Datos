@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "funcionesRec.h"
 
 /*
@@ -30,8 +31,12 @@ long long fibonacci(int n)
 	if(n<2) //caso base
 		fibo= n; //regresa 0 o 1 en esta condicion
 	else
-    fibo= fibonacci(n-1)+fibonacci(n-2);
-
+  {
+    if(n>40)
+      fibo= (1/sqrt(5))*(pow((1+sqrt(5))/2,n)-pow((1-sqrt(5))/2,n));
+    else
+      fibo= fibonacci(n-1)+fibonacci(n-2);
+  }
   return fibo;
 }
 
