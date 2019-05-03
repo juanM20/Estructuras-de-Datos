@@ -6,7 +6,7 @@
 #include <math.h>
 #include "TADList.h"
 
-#define TAM_TABLA 600 //definimos el tamaño de la tabla HASH.
+#define TAM_TABLA 700 //definimos el tamaño de la tabla HASH.
 #define TAM_PALABRA 50 //definimos el tamaño de la palabra.
 #define TAM_DEF 650 //definimos el tamaño de la definicion.
 #define TAM_CADENA TAM_DEF+TAM_PALABRA
@@ -111,7 +111,7 @@ int main()
 
       case 1:
 
-              archivo = fopen("BIOQUANTUM.txt","r");
+              archivo = fopen("Lunfardo.txt","r");
               if(archivo == NULL) printf("\nErro: no se puede abrir el archivo");
               else
 							{

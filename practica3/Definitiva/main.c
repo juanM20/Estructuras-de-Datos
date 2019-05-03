@@ -5,7 +5,7 @@
 #include <string.h>
 #include "TADList.h"
 
-#define TAM_TABLA 600 //definimos el tamaño de la tabla HASH.
+#define TAM_TABLA 700 //definimos el tamaño de la tabla HASH.
 #define TAM_PALABRA 50 //definimos el tamaño de la palabra.
 #define TAM_DEF 150 //definimos el tamaño de la definicion.
 #define TAM_CADENA TAM_DEF+TAM_PALABRA
@@ -193,7 +193,7 @@ int main()
 							{
 								if(Tam_Lista(&colisiones[i]) >= 2)
 									num_colisiones += Tam_Lista(&colisiones[i])-1;
-									
+
 								printf("Lista: %d ",i+1);
 								Imprimir_Colisiones(&colisiones[i]);
 								printf("\n\n");
