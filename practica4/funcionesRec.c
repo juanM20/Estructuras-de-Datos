@@ -58,3 +58,16 @@ long long tribonacci(int n)
 
   return tribo;
 }
+
+/*
+
+*/
+void hanoi(int n,int com, int aux, int des){
+  if(n==1)
+    printf("%c->%c",com,des);
+  else{
+    hanoi(n-1,com,des,aux);
+    printf("\n%c->%c\n",com,des);
+    hanoi(n-1,aux,com,des);
+  }
+}

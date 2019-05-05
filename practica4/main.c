@@ -6,6 +6,11 @@ int main()
   int nTermino=0, opc=0, i;
   char continuarMenu;
 
+  int n;
+  char com='1';
+  char aux='2';
+  char des='3';
+
   printf("BIENVENIDO A LA PRACTICA 4, SOLUCIONES RECURSIVAS\n\n");
 
   do
@@ -34,7 +39,11 @@ int main()
 
       case 3:
         system("cls");
-        printf("San Hanoi :v");
+
+        printf("Ingrese el numero de discos\n");
+        scanf("%d",&n);
+
+        hanoi(n,com,aux,des);
       break;
 
       case 4:

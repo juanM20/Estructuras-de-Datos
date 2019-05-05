@@ -23,3 +23,8 @@ Funcion que se encarga de comparar los terminos n-simos para devolver cada uno d
 consultar la sucesion.
 */
 long long tribonacci(int n);
+
+/*
+
+*/
+void hanoi(int n,int com, int aux, int fin);
