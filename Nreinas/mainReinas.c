@@ -5,7 +5,7 @@
 //******Librerias
 #include <stdio.h>
 #include <stdlib.h>
-#include "presentacion.h"
+#include "funcReinas.h"
 //*****Funcion principal
 
  int main(){

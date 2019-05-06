@@ -8,7 +8,7 @@ Version 1.2 2019
 */
 //LIBRERIAS
 #include <windows.h>
-#include"presentacion.h"
+#include"funcReinas.h"
 int desH =25;
 int desV =5;
 //DEFINICI�N DE FUNCIONES
