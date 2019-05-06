@@ -16,7 +16,7 @@ Recibe un numero entero que representa el indice del termino n-simo de la sucesi
 Funcion que se encarga de comparar los terminos n-simos para devolver cada uno de ellos de manera que el usuario pueda
 consultar la sucesion.
 */
-long long fibonacci(int n);
+long long Fibonacci(int n);
 
 /*
 Devuelve un numero muy largo que representa el termino n-simo de la sucesion Tribonacci.
@@ -24,9 +24,14 @@ Recibe un numero entero que representa el indice del termino n-simo de la sucesi
 Funcion que se encarga de comparar los terminos n-simos para devolver cada uno de ellos de manera que el usuario pueda
 consultar la sucesion.
 */
-long long tribonacci(int n);
+long long Tribonacci(int n);
 
 /*
 
 */
-void hanoi(int n,int com, int aux, int fin);
+void Hanoi(int n,int com, int aux, int des);
+
+/*
+
+*/
+int* Ordenamiento_Por_Mezcla(int* listaParaOrdenar, int tamLista)

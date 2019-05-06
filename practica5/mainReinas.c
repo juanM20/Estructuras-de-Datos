@@ -1,5 +1,6 @@
 /*
-
+Compilacion
+gcc mainReinas.c funcReinas.c -o reinas
 */
 
 //******Librerias
@@ -81,6 +82,7 @@
 	}
 
 	//Impresion de la solucion
+  MoverCursor(60, 2);
 	printf("Solucion: ");
 	printf("(");
 	for (th=0;th<tablero;th++){
