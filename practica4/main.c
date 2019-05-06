@@ -5,6 +5,7 @@ int main()
 {
   int nTermino=0, opc=0, i;
   char continuarMenu;
+  int listaDeNumeros[TAM_LISTA_NUMEROS], *auxlistaDeNumeros, nParaOrdenar;
 
   int n;
   char com='1';
@@ -25,7 +26,7 @@ int main()
         scanf("%d", &nTermino);
         printf("\nSerie Fibonacci:\n");
         for(i=0; i<=nTermino; i++)
-          printf("n%d= %d,\n", i,fibonacci(i)); //se manda el término i a la funcion, para que se imprima la sucesion completa
+          printf("n%d= %d,\n", i,Fibonacci(i)); //se manda el término i a la funcion, para que se imprima la sucesion completa
       break;
 
       case 2:
@@ -34,7 +35,7 @@ int main()
         scanf("%d", &nTermino);
         printf("\nSerie Tribonacci:\n");
         for(i=0; i<=nTermino; i++)
-          printf("%d,", tribonacci(i)); //se manda el término i a la funcion, para que se imprima la sucesion completa
+          printf("%d,", Tribonacci(i)); //se manda el término i a la funcion, para que se imprima la sucesion completa
       break;
 
       case 3:
@@ -43,12 +44,27 @@ int main()
         printf("Ingrese el numero de discos\n");
         scanf("%d",&n);
 
-        hanoi(n,com,aux,des);
+        Hanoi(n,com,aux,des);
       break;
 
       case 4:
         system("cls");
-        printf("Santa mezcla ordenada alv :v");
+
+        printf("Cuantos numeros va a ordenar?\n");
+        scanf("%d", &nParaOrdenar);
+        printf("Ingrese los numeros a ordenar:\n");
+        for(i=0; i<nParaOrdenar; i++)
+        {
+          printf("n%d= ", i+1);
+          scanf("%d", &listaDeNumeros[i]);
+        }
+
+          auxlistaDeNumeros= (int*)Ordenamiento_Por_Mezcla(listaDeNumeros, nParaOrdenar);
+
+          for(i=0; i<nParaOrdenar; i++)
+          {
+            printf("%d, ",auxlistaDeNumeros[i]);
+          }
       break;
 
       default:

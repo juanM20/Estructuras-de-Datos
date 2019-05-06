@@ -25,7 +25,7 @@ Recibe un numero entero que representa el indice del termino n-simo de la sucesi
 Funcion que se encarga de comparar los terminos n-simos para devolver cada uno de ellos de manera que el usuario pueda
 consultar la sucesion.
 */
-long long fibonacci(int n)
+long long Fibonacci(int n)
 {
   long long fibo; //long long es para que pueda abarcar los numeros muy grandes
 	if(n<2) //caso base
@@ -35,7 +35,7 @@ long long fibonacci(int n)
     if(n>40)
       fibo= (1/sqrt(5))*(pow((1+sqrt(5))/2,n)-pow((1-sqrt(5))/2,n));
     else
-      fibo= fibonacci(n-1)+fibonacci(n-2);
+      fibo= Fibonacci(n-1)+Fibonacci(n-2);
   }
   return fibo;
 }
@@ -46,7 +46,7 @@ Recibe un numero entero que representa el indice del termino n-simo de la sucesi
 Funcion que se encarga de comparar los terminos n-simos para devolver cada uno de ellos de manera que el usuario pueda
 consultar la sucesion.
 */
-long long tribonacci(int n)
+long long Tribonacci(int n)
 {
   long long tribo; //long long es para que pueda abarcar los numeros muy grandes
 	if(n<2) //caso base
@@ -54,7 +54,7 @@ long long tribonacci(int n)
   else if(n==2)
     tribo= n-1;
 	else
-    tribo= tribonacci(n-1)+tribonacci(n-2)+tribonacci(n-3);
+    tribo= Tribonacci(n-1)+Tribonacci(n-2)+Tribonacci(n-3);
 
   return tribo;
 }
@@ -62,12 +62,82 @@ long long tribonacci(int n)
 /*
 
 */
-void hanoi(int n,int com, int aux, int des){
+void Hanoi(int n,int com, int aux, int des){
   if(n==1)
     printf("%c->%c",com,des);
   else{
-    hanoi(n-1,com,des,aux);
+    Hanoi(n-1,com,des,aux);
     printf("\n%c->%c\n",com,des);
-    hanoi(n-1,aux,com,des);
+    Hanoi(n-1,aux,com,des);
   }
+
+  return;
+}
+
+
+int* Ordenamiento_Por_Mezcla(int* listaParaOrdenar, int tamLista){
+  int i, j, k;
+  int mitadIzquierda[TAM_LISTA_NUMEROS];
+  int mitadDerecha[TAM_LISTA_NUMEROS];
+
+  for(i=0; i<tamLista; i++)
+  {
+    printf("%d, ",listaParaOrdenar[i]);
+  }
+
+
+  if (tamLista>1)
+  {
+      for(i=0; i<tamLista/2; i++)
+        mitadIzquierda[i] = listaParaOrdenar[i];
+
+      for(i=tamLista/2; i<tamLista; i++)
+        mitadDerecha[i] = listaParaOrdenar[i];
+
+      Ordenamiento_Por_Mezcla(mitadIzquierda, tamLista/2);
+      Ordenamiento_Por_Mezcla(mitadDerecha, tamLista-(tamLista/2));
+
+      i=0;
+      j=0;
+      k=0;
+      while (i<tamLista/2 && j<tamLista-(tamLista/2))
+      {
+        if (mitadIzquierda[i]<mitadDerecha[j])
+        {
+          listaParaOrdenar[k]=mitadIzquierda[i];
+          i=i+1;
+        }
+        else
+        {
+          listaParaOrdenar[k]=mitadDerecha[j];
+          j=j+1;
+          k=k+1;
+        }
+      }
+
+      while (i < tamLista/2)
+      {
+        listaParaOrdenar[k]=mitadIzquierda[i];
+        i=i+1;
+        k=k+1;
+      }
+
+      while (j < tamLista-(tamLista/2))
+      {
+        listaParaOrdenar[k]=mitadDerecha[j];
+        j=j+1;
+        k=k+1;
+      }
+  }
+  //printf("Mezclar ",listaParaOrdenar);
+
+  Ordenamiento_Por_Mezcla(listaParaOrdenar, tamLista-1);
+
+/*
+  for(i=0; i<tamLista; i++)
+  {
+    printf("%d, ",listaParaOrdenar[i]);
+  }
+*/
+  return listaParaOrdenar;
 }

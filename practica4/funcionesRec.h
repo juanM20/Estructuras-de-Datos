@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define TAM_LISTA_NUMEROS 50
+
 /*
 No devuelve valores.
 No recibe valores.
