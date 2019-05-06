@@ -62,7 +62,8 @@ long long Tribonacci(int n)
 /*
 
 */
-void Hanoi(int n,int com, int aux, int des){
+void Hanoi(int n,int com, int aux, int des)
+{
   if(n==1)
     printf("%c->%c",com,des);
   else{
@@ -75,7 +76,8 @@ void Hanoi(int n,int com, int aux, int des){
 }
 
 
-int* Ordenamiento_Por_Mezcla(int* listaParaOrdenar, int tamLista){
+int* Ordenamiento_Por_Mezcla(int* listaParaOrdenar, int tamLista)
+{
   int i, j, k;
   int mitadIzquierda[TAM_LISTA_NUMEROS];
   int mitadDerecha[TAM_LISTA_NUMEROS];

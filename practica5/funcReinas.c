@@ -51,27 +51,28 @@ void DibujarTablero (int t){
 		exit (1);
 	}
 	//Operacion designacion de espacios
-	dimAlt=alto/t;
-	modAlt=alto%t;
-	dimAn=ancho/t;
-	modAn=ancho%t;
+	dimAlt=(alto/t);
+	modAlt=(alto%t);
+	dimAn=(ancho/t);
+	modAn=(ancho%t);
 
 	//Titulo de la matriz
-	MoverCursor (desH, desV/2);
-	printf("Nreinas se encontraran %d reinas\n",t );
+	//MoverCursor (desH, desV/2);
+	MoverCursor (5, 2);
+	printf("Se encuentran probando %d reinas\n",t );
 
 	//Dibujo de lineas horizontales
 	for (y=desV;y<=(alto-modAlt)+desV;y=y+dimAlt)
 		for (x=desH;x<(ancho-modAn)+desH;x++){
 			MoverCursor (x,y);
-			printf("-");
+			printf("*");
 		}
 	//Dibujo de lineas verticales
 
 	for (y=desV;y<(alto-modAlt)+desV;y++)
 		for (x=desH;x<=(ancho-modAn)+desH;x=x+dimAn){
 			MoverCursor(x,y);
-			printf("|");
+			printf("*");
 		}
 	printf("\n\n");
 
