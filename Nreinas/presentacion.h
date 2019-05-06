@@ -1,13 +1,31 @@
 /*
-Autor: Edgardo Adrián Franco Martínez
-Versión 1.0 (25 de Septiembre 2012)
-Descripción: Cabecera de la libreria para recrear presentaciones más agradables al usuario en el modo consola
+Autor: Edgardo Adriï¿½n Franco Martï¿½nez
+Versiï¿½n 1.0 (25 de Septiembre 2012)
+Descripciï¿½n: Cabecera de la libreria para recrear presentaciones mï¿½s agradables al usuario en el modo consola
 
-Observaciones: La implementación de esta libreria es distinta si se trata de Windows o Linux, ya que requerirá de funciones no ANSI C
+Observaciones: La implementaciï¿½n de esta libreria es distinta si se trata de Windows o Linux, ya que requerirï¿½ de funciones no ANSI C
 */
-//DECLARACIÓN DE FUNCIONES
-void MoverCursor( int x, int y ); 	//Función para mover el cursor de escritura de pantalla, simulación de la función gotoxy() que se tenia en borland 3.0 en la libreria conio.h
 
-void EsperarMiliSeg(int t);			//Función para esperar un tiempo en milisegundos, simulación de la función delay() que se tenia en borland 3.0 en la libreria conio.h
+//*****Variables estaticas
 
-void BorrarPantalla(void);			//Función para borrar la pantalla de la consola, simulación de la función clrscr() que se tenia en borland 3.0 en la libreria conio.h
+//Variables para dibujar el tablero
+#define ancho 75
+#define alto 50
+
+
+//Variables para control de tiempo
+#define tiempo 50
+
+//***** Prototipos de funcion
+void DibujarTablero (int t);
+void DibujarReina (int x,int y, int t);
+void BorrarReina(int x,int y, int t);
+int  Nreinas (int fila, int posicion, int *arregloReinas,int t);
+int ValidarPosicion (int fila, int posicion, int *arregloReinas,int t);
+
+//DECLARACIï¿½N DE FUNCIONES
+void MoverCursor( int x, int y ); 	//Funciï¿½n para mover el cursor de escritura de pantalla, simulaciï¿½n de la funciï¿½n gotoxy() que se tenia en borland 3.0 en la libreria conio.h
+
+void EsperarMiliSeg(int t);			//Funciï¿½n para esperar un tiempo en milisegundos, simulaciï¿½n de la funciï¿½n delay() que se tenia en borland 3.0 en la libreria conio.h
+
+void BorrarPantalla(void);			//Funciï¿½n para borrar la pantalla de la consola, simulaciï¿½n de la funciï¿½n clrscr() que se tenia en borland 3.0 en la libreria conio.h
