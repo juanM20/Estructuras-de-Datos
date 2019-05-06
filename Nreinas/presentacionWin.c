@@ -39,16 +39,7 @@ void BorrarPantalla(void)
 
 
 /*
-void DibujarTablero (int t)
-Descripción: Dibuja un tablero de ajedrez cuadrado de n*n
-Recibe: Recibe un numero entero del numero de divisiones por lado
-Devuelve: void
-Observaciones: El numero entero a recibir tiene que ser mayor o
-igual a 1 de lo contrario ocasionara un error.
-2.- Cada que se llama a la funcion hace una limpieza de la pantalla
-3.- El numero entero que recibe debe ser menor a las dimensiones
-asignadas para los limites del tablero que se asignan en
-el programa en el apartado "Variables para dibujar tablero"(ancho,alto)
+Dibuja el tablero nxn, donde n es el numero entero que recibe de parametro
 */
 
 void DibujarTablero (int t){
@@ -89,13 +80,7 @@ void DibujarTablero (int t){
 
 
 /*
-void DibujarReina (int x,int y,int t)
-Descripción: Dibuja dentro del tablero una reina con el caracter designado
-Recibe: Recibe las cordenadas x,y ademas de la dimension de una lado del tablero
-Devuelve: void
-Observaciones: La funcion no evalua si ya se ha dibujado el tablero anteriormente
-			los dezplazamientos tienen que ser iguales a los del Dibujar tablero
-			La funcion no evalua si se esta dentro de los limites del tablero
+Dibuja simbolicamente uan reian en elt tablero
 */
 
 void DibujarReina (int x,int y,int t){
@@ -119,13 +104,8 @@ void DibujarReina (int x,int y,int t){
 
 
 /*
-void BorrarReina (int x,int y,int t)
-Descripción: Imprime un espacio dentro del tablero
-Recibe: Recibe las cordenadas x,y ademas de la dimension de una lado del tablero
-Devuelve: void
-Observaciones: La funcion no evalua si ya se ha dibujado el tablero anteriormente
-			los dezplazamientos tienen que ser iguales a los del Dibujar tablero
-			La funcion no evalua si se esta dentro de los limites del tablero
+Borrra un reina cuando el algoritmo se da cuenta que un determinado camino
+para llegar a la solucion no es valido
 */
 
 void BorrarReina (int x,int y,int t){
@@ -148,13 +128,9 @@ void BorrarReina (int x,int y,int t){
 }
 
 /*
-int ValidarPosicion (int fila, int posicion, int *arregloReinas,int t)
-Descripción: Valida la posicion donde se asigno la reina, valida con diagonales y horizontal
-Recibe: Recibe el arreglo donde se localizan las reinas, el tamaño del arreglo para conocer
-		ademas saber que elemento del arreglo se va evaluar conociendo la fila, y el valor de dicho elemento
-Devuelve: un int, devuelve 1 si la posicion que se quiere evaluar es valida, y 0 si no es valida
-Observaciones: Unicamente hace la evaluacion del las posiciones a la izquierda de la posicion a evaluar, por
-			   lo tanto omite las posiciones a la derecha
+Valida la posicion donde se asigno la reina, valida con diagonales y horizontal
+Recibe: Recibe el arreglo de las reinas, el tamaño del arreglo para conocer
+ademas saber que elemento del arreglo se va evaluar conociendo la fila, y el valor de dicho elemento
 */
 
 int ValidarPosicion (int fila, int posicion, int *arregloReinas,int t){

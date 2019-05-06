@@ -1,3 +1,8 @@
+/*
+Compilacion
+gcc main.c funcionesRec.c -o main
+*/
+
 #include <stdio.h>
 #include "funcionesRec.h"
 
