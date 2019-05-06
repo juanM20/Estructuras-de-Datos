@@ -1,9 +1,10 @@
 /*
-Autor: Edgardo Adri�n Franco Mart�nez
-Versi�n 1.0 (25 de Septiembre 2012)
-Descripci�n: Cabecera de la libreria para recrear presentaciones m�s agradables al usuario en el modo consola
+Autores:
+Ayona Lopez Eugenio Milton
+Benitez Morales Manuel Emilio
+Tellez Perez Juan Manuel
 
-Observaciones: La implementaci�n de esta libreria es distinta si se trata de Windows o Linux, ya que requerir� de funciones no ANSI C
+Version 1.2 2019
 */
 
 //*****Variables estaticas
