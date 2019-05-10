@@ -12,10 +12,10 @@ int main()
   char continuarMenu;
   int listaDeNumeros[TAM_LISTA_NUMEROS], auxlistaDeNumeros, nParaOrdenar;
 
-  int n, numMov;
-  char com='1';
-  char aux='2';
-  char des='3';
+  int n;
+  char com;
+  char aux;
+  char des;
 
   printf("BIENVENIDO A LA PRACTICA 4, SOLUCIONES RECURSIVAS\n\n");
 
@@ -45,11 +45,12 @@ int main()
 
       case 3:
         system("cls");
-
+        com='1';
+        aux='2';
+        des='3';
         printf("Ingrese el numero de discos\n");
         scanf("%d",&n);
-        numMov= Hanoi(n,com,aux,des);
-        printf("Resuelto en %d movimientos", numMov);
+        Hanoi(n,com,aux,des);
       break;
 
       case 4:
