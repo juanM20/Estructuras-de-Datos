@@ -60,22 +60,30 @@ long long Tribonacci(int n)
 }
 
 /*
-
+Devuslve el numero de movimientos realizados.
+Recibe el numero de discos que se usan, el palo de arranque (1), el paño auxiliar (2) y el palo de destino (3).
+Se encarga de mostrar los movimientos de donde a donde se está moviendo cada disco.
 */
-void Hanoi(int n,int com, int aux, int des)
+int Hanoi(int n,int com, int aux, int des)
 {
+  int nMovimientos;
   if(n==1)
+  {
     printf("%c->%c",com,des);
+    nMovimientos=1;
+  }
   else{
     Hanoi(n-1,com,des,aux);
+    nMovimientos++;
     printf("\n%c->%c\n",com,des);
     Hanoi(n-1,aux,com,des);
+    nMovimientos++;
   }
 
-  return;
+  return nMovimientos;
 }
 
-
+/*
 int* Ordenamiento_Por_Mezcla(int* listaParaOrdenar, int tamLista)
 {
   int i, j, k;
@@ -135,11 +143,12 @@ int* Ordenamiento_Por_Mezcla(int* listaParaOrdenar, int tamLista)
 
   Ordenamiento_Por_Mezcla(listaParaOrdenar, tamLista-1);
 
-/*
+
   for(i=0; i<tamLista; i++)
   {
     printf("%d, ",listaParaOrdenar[i]);
   }
-*/
+
   return listaParaOrdenar;
 }
+*/

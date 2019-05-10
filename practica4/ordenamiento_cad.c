@@ -55,6 +55,7 @@ int main(){
 
   long tam;
   int *arreglo;
+  int i;
 
   nodo *arbol;
 
@@ -63,13 +64,13 @@ int main(){
 
   arreglo = (int *)malloc(sizeof(int)*tam);
 
-  for(int i=0; i<tam; i++){
+  for(i=0; i<tam; i++){
     scanf("%d",&arreglo[i]);
   }
 
   printf("\nLista:\n");
 
-  for(int i=0; i<tam; i++){
+  for(i=0; i<tam; i++){
     printf("%d ",arreglo[i]);
     InsertarNodo(&arbol, arreglo[i]);
   }

@@ -29,7 +29,7 @@ long long Tribonacci(int n);
 /*
 
 */
-void Hanoi(int n,int com, int aux, int des);
+int Hanoi(int n,int com, int aux, int des);
 
 /*
 

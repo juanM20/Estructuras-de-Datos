@@ -10,9 +10,9 @@ int main()
 {
   int nTermino=0, opc=0, i;
   char continuarMenu;
-  int listaDeNumeros[TAM_LISTA_NUMEROS], *auxlistaDeNumeros, nParaOrdenar;
+  int listaDeNumeros[TAM_LISTA_NUMEROS], auxlistaDeNumeros, nParaOrdenar;
 
-  int n;
+  int n, numMov;
   char com='1';
   char aux='2';
   char des='3';
@@ -48,8 +48,8 @@ int main()
 
         printf("Ingrese el numero de discos\n");
         scanf("%d",&n);
-
-        Hanoi(n,com,aux,des);
+        numMov= Hanoi(n,com,aux,des);
+        printf("Resuelto en %d movimientos", numMov);
       break;
 
       case 4:
@@ -64,12 +64,6 @@ int main()
           scanf("%d", &listaDeNumeros[i]);
         }
 
-          auxlistaDeNumeros= (int*)Ordenamiento_Por_Mezcla(listaDeNumeros, nParaOrdenar);
-
-          for(i=0; i<nParaOrdenar; i++)
-          {
-            printf("%d, ",auxlistaDeNumeros[i]);
-          }
       break;
 
       default:
