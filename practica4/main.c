@@ -49,7 +49,7 @@ int main()
         aux='2';
         des='3';
         printf("Ingrese el numero de discos\n");
-        scanf("%d",&n);
+        scanf("n=%d\n",&n);
         Hanoi(n,com,aux,des);
       break;
 
