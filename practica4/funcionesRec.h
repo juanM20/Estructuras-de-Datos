@@ -27,11 +27,13 @@ consultar la sucesion.
 long long Tribonacci(int n);
 
 /*
-
+Devuslve el numero de movimientos realizados.
+Recibe el numero de discos que se usan, el palo de arranque (1), el paño auxiliar (2) y el palo de destino (3).
+Se encarga de mostrar los movimientos de donde a donde se está moviendo cada disco.
 */
-void Hanoi(int n,int com, int aux, int des);
+int Hanoi(int n,int com, int aux, int des);
 
 /*
 
 */
-int* Ordenamiento_Por_Mezcla(int* listaParaOrdenar, int tamLista)
+int* Ordenamiento_Por_Mezcla(int* listaParaOrdenar, int tamLista);

@@ -10,12 +10,12 @@ int main()
 {
   int nTermino=0, opc=0, i;
   char continuarMenu;
-  int listaDeNumeros[TAM_LISTA_NUMEROS], *auxlistaDeNumeros, nParaOrdenar;
+  int listaDeNumeros[TAM_LISTA_NUMEROS], auxlistaDeNumeros, nParaOrdenar;
 
   int n;
-  char com='1';
-  char aux='2';
-  char des='3';
+  char com;
+  char aux;
+  char des;
 
   printf("BIENVENIDO A LA PRACTICA 4, SOLUCIONES RECURSIVAS\n\n");
 
@@ -45,10 +45,11 @@ int main()
 
       case 3:
         system("cls");
-
-        printf("Ingrese el numero de discos\n");
+        com='1';
+        aux='2';
+        des='3';
+        printf("Ingrese el numero de discos: n=");
         scanf("%d",&n);
-
         Hanoi(n,com,aux,des);
       break;
 
@@ -64,12 +65,6 @@ int main()
           scanf("%d", &listaDeNumeros[i]);
         }
 
-          auxlistaDeNumeros= (int*)Ordenamiento_Por_Mezcla(listaDeNumeros, nParaOrdenar);
-
-          for(i=0; i<nParaOrdenar; i++)
-          {
-            printf("%d, ",auxlistaDeNumeros[i]);
-          }
       break;
 
       default:
