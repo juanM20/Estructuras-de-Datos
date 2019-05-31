@@ -3,26 +3,21 @@
 #include <string.h>
 #include "funcArbol.h"
 
-int Menu()
+void Menu()
 {
-  int opcion;
-  printf("1. Para meter un dato en el arbol\n");
-  printf("2. Para imprimir el arbol\n");
-  printf("3. Para mostrar los datos del arbol en preorden\n");
-  printf("4. Para mostrar los datos del arbol en inorden\n");
-  printf("5. Para mostrar los datos del arbol en postorden\n");
-  printf("6. Para mostrar profundidad del arbol\n");
-  printf("7. Para eliminar dato del arbol\n");
-  printf("8. Para salir del programa\n");
-  scanf("%d",&opcion);
-  return opcion;
+  printf("1. Cargar un archivo de deficiniones\n");
+  printf("2. Agregar una palabra y su definicion\n");
+  printf("3. Buscar una palabra y ver su definicion\n");
+  printf("4. Modificar una definicion\n");
+  printf("5. Eliminar una palabra\n");
+  printf("6. Salir\n");
 }
 
-void Cargar_Archivo()
+void Cargar_Archivo(char* ruta, FILE* archivo)
 {
-  printf("Ingrese la ruta del archivo:\n");
-  scanf();/*
-  archivo = fopen("Lunfardo.txt","r");
+  //printf("%s", ruta);
+
+  archivo = fopen(ruta,"r");
   if(archivo == NULL)
     printf("\nERROR: NO SE PUEDE ABRIR EL ARCHIVO");
   else
@@ -60,9 +55,9 @@ void Cargar_Archivo()
 
     }
 
-  }*/
+  }
 }
-
+/*
 void imprimirArbol(struct nodo *ptrRaiz,int contador)
 {
 	int i,j;
@@ -144,3 +139,4 @@ int maxProfundidad(struct nodo*ptrRaiz)
   }
 
 }
+*/
