@@ -49,14 +49,13 @@ void Cargar_Archivo(char* ruta, FILE* archivo)
       }
 
       definicion[i] = '\0';
-/*
-      indice = sumaCaracteres(&palabra[0])%TAM_TABLA;
-      if(Tam_Lista(&colisiones[indice]) > 1) num_colisiones++;
-      Agregar_Definicion(&colisiones[indice],&palabra[0],&definicion[0]);
-      printf("\nIndice: %d \t%s : %s",indice, palabra, definicion);
-*/
+
     }
     printf("\nARCHIVO CARGADO CON EXITO!!!");
+
+    //for(i=0; i<strlen(palabra); i++){
+      printf("%s", palabra[0]);
+    //}
   }
 }
 /*
