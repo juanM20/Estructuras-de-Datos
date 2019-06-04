@@ -9,6 +9,8 @@ int main()
   char continuarMenu;
   char rutaDeArchivo[TAM_CADENA_DE_RUTA];
   FILE* archivo;
+  arbol_bin diccionarbol;
+  Initialize(&diccionarbol);
 
   printf("BIENVENIDO A LA PRACTICA 6, DICCIONAIO CON AVL\n");
   printf("Selecciona una opcion\n\n");
@@ -56,7 +58,6 @@ int main()
     scanf("%c", &continuarMenu);
 
   }while(continuarMenu=='s' || continuarMenu=='S');
-
 
   return 0;
 }

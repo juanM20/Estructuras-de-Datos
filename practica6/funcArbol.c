@@ -58,6 +58,8 @@ void Cargar_Archivo(char* ruta, FILE* archivo)
     //}
   }
 }
+
+
 /*
 void imprimirArbol(struct nodo *ptrRaiz,int contador)
 {
@@ -73,10 +75,10 @@ void imprimirArbol(struct nodo *ptrRaiz,int contador)
 		imprimirArbol(ptrRaiz->ptrIzq,i+1);
 	}
 }
-
-
-
-struct nodo* balancear(struct nodo *ptr){
+*/
+/*
+struct nodo* balancear(struct nodo *ptr)
+{
   calculaAltura(ptr);
 
      if ( altura(ptr -> ptrIzq) - altura(ptr -> ptrDer) == 2 )
@@ -96,13 +98,14 @@ struct nodo* balancear(struct nodo *ptr){
      printf("\n %d",ptr->bal );
      return ptr;
 }
-
-
-void calculaAltura(struct nodo*p)
+*/
+/*
+void calculaAltura(posicion p)
 {
-	p->bal=1+maximo(altura(p->ptrIzq),altura(p->ptrDer));
+	p->e=1+maximo(altura(p->izq),altura(p->der));
 }
-
+*/
+/*
 struct nodo* rota_izquierda(struct nodo* ptr){
     struct nodo * temp;
     temp = ptr -> ptrDer;

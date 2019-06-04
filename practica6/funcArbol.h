@@ -24,5 +24,6 @@ void calculaAltura(struct nodo*p);
 int maxProfundidad(struct nodo *ptrRaiz);
 elemento rota_derecha(struct nodo*ptr);
 elemento rota_izquierda(struct nodo*ptr);
+
 void Menu();
 void Cargar_Archivo(char* ruta, FILE* archivo);
